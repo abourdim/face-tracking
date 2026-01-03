@@ -1,86 +1,107 @@
-# 😊 Face Tracking Project
+# 😊 Face Tracking – Teacher & Workshop Guide
 
-## 📌 About
-This project is a **Face Tracking Web Application** built using **HTML, CSS, and JavaScript (TypeScript)**.  
-It uses a **camera** to detect a human face and track its movement in real time.
+**by Workshop-Diy**
 
-This project is made for **learning**, **students**, **beginners**, and **kids**.
+---
+
+## 🎯 Workshop Overview
+
+**Face Tracking** is an educational project designed to introduce **artificial intelligence**, **computer vision**, and **human–computer interaction** in a fun and hands-on way.
+
+Participants use a **web camera** to detect and track a face in real time, learning how computers can “see” and react to human movement.
+
+This guide helps **teachers, educators, and facilitators** run a clear, structured, and kid-friendly workshop using the Face Tracking web app.
+
+---
+
+## 👥 Target Audience
+
+- 👧🧒 **Age:** 9–15 years  
+- 🧑‍🎓 **Level:** Beginners (no AI experience required)  
+- 🏫 **Context:** Schools, STEM clubs, coding camps, makerspaces  
+
+---
+
+## ⏱️ Workshop Duration
+
+**Total time:** 60–90 minutes
+
+| Activity | Time |
+|--------|------|
+| Introduction & demo | 10 min |
+| What is AI & face tracking | 10 min |
+| Project exploration | 15 min |
+| Hands-on experimentation | 20–30 min |
+| Discussion & wrap-up | 10 min |
 
 ---
 
 ## 🤖 What is Face Tracking?
+
 Face tracking allows a computer to:
-- Use a **camera** to see a face
+- Use a **camera** to see a human face
 - Detect where the face is
 - Follow the face when it moves
-- Recognize simple actions like:
-  - smiling
-  - blinking
-  - looking left or right
-  - moving closer or farther
+- Recognize simple actions such as smiling, blinking, and head movement
+
+---
+
+## 🧠 Learning Objectives
+
+Participants will:
+- Understand basic AI and computer vision ideas
+- Learn how cameras are used in web apps
+- Explore real-time interaction
+- Gain confidence with technology
+
+---
+
+## 🧰 Technologies Used
+
+- HTML, CSS
+- JavaScript / TypeScript
+- MediaPipe
+- Webcam
+- micro:bit (optional)
 
 ---
 
 ## 📂 Project Files
-```
-index.html        - Main web page
-styles.css        - Page design
-makecode_v23.ts   - Face tracking logic
-logo.svg          - Project logo
-README.md         - Documentation
-```
 
----
-
-## 🛠️ Technologies Used
-- HTML
-- CSS
-- JavaScript / TypeScript
-- MediaPipe (Face Detection)
-- Webcam (Camera)
-- micro:bit (Bluetooth – optional)
+```
+index.html
+styles.css
+makecode_v23.ts
+logo.svg
+README.md
+```
 
 ---
 
 ## ▶️ How to Run
-1. Open `index.html` in a web browser (Chrome or Edge recommended)
+
+1. Open the project in Chrome or Edge
 2. Allow camera access
 3. Stand in front of the camera
-4. Move your face and watch the tracking
-
-Optional:
-- Connect a **micro:bit** using Bluetooth
-- Send face data in real time
-
----
-
-## 🎮 Try This
-- Smile 🙂
-- Blink 😉
-- Turn your head left or right
-- Move closer to the camera
-
----
-
-## 📚 What You Learn
-- How computers detect faces
-- How code controls behavior
-- How to use a camera in a web project
-- How software can communicate with hardware
+4. Move and observe the tracking
 
 ---
 
 ## ⚠️ Notes
-- Works best on Chrome or Edge
-- Camera and Bluetooth permissions are required
-- For educational use only
+
+- Camera permission required
+- Bluetooth (micro:bit) works on desktop only
+- Educational use only
 
 ---
 
 ## 👤 Author
-Made by **The best**
+
+Workshop-Diy  
+https://workshop-diy.org
 
 ---
 
 ## 📄 License
+
 Educational use only.
