@@ -361,7 +361,11 @@
           <div class="btnRow" style="margin-top:12px">
             <button class="btn blue" id="btnCam">📷 Start webcam</button>
             <button class="btn" id="btnStopCam">⏹ Stop webcam</button>
-            <button class="btn" id="btnSwitchCam">🔄 Switch camera</button>
+          </div>
+
+          <div class="btnRow" style="margin-top:10px">
+            <button class="btn" id="switchCamBtn">🔄 Switch camera</button>
+            <button class="btn" id="flipCamBtn">🪞 Mirror: ON</button>
           </div>
 
           <!-- Only camera + fps here -->
@@ -1121,19 +1125,52 @@
 
   let faceLandmarker = null;
   let running = false;
-  let camStream = null;
-  let currentFacingMode = "user"; // "user" = front, "environment" = back
+  let rafId = null;
 
-  function applyMirror(){
-    const mirror = currentFacingMode === "user";
-    video.style.transform = mirror ? "scaleX(-1)" : "scaleX(1)";
-    canvas.style.transform = mirror ? "scaleX(-1)" : "scaleX(1)";
+  function stopLoop(){
+    if(rafId !== null){
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
   }
 
+  function startLoop(){
+    stopLoop();
+    rafId = rafId = requestAnimationFrame(loop);
+  }
+
+  async function waitForVideoReady(){
+    if(video.readyState >= 2 && video.videoWidth > 0 && video.videoHeight > 0) return;
+    await new Promise((resolve) => {
+      const done = () => { video.removeEventListener('loadedmetadata', done); resolve(); };
+      video.addEventListener('loadedmetadata', done, { once: true });
+      // Safety timeout in case the event never fires
+      setTimeout(resolve, 1200);
+    });
+  }
+
+  let camStream = null;
+
+  // Camera controls (tablet-friendly)
+  let currentFacingMode = "user";   // "user" = front/selfie, "environment" = back camera
+  let mirrorEnabled = true;          // mirror (flip) display ON/OFF
 
   const video = el("video");
   const canvas = el("overlay");
   const ctx = canvas.getContext("2d");
+
+  function setFlipBtnLabel(){
+    const btn = el("flipCamBtn");
+    if(btn) btn.textContent = mirrorEnabled ? "🪞 Mirror: ON" : "🪞 Mirror: OFF";
+  }
+
+  function applyMirror(){
+    // Flip the display only (video + overlay canvas stay aligned)
+    const scale = mirrorEnabled ? "scaleX(-1)" : "scaleX(1)";
+    video.style.transform = scale;
+    canvas.style.transform = scale;
+    setFlipBtnLabel();
+  }
 
   function clamp(n,a,b){ return Math.max(a, Math.min(b,n)); }
   function pad2(n){ return String(clamp(Math.round(n),0,99)).padStart(2,"0"); }
@@ -1281,20 +1318,47 @@
   async function startCamera(){
     if(!faceLandmarker) await initLandmarker();
     log("k","Requesting webcam…");
-    camStream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode: currentFacingMode }, audio:false });
+
+    // Pause processing while (re)starting the camera
+    running = false;
+    stopLoop();
+
+    // If a stream is already running (e.g., switching cameras), stop it first
+    if(camStream){
+      camStream.getTracks().forEach(t => t.stop());
+      camStream = null;
+    }
+
+    // Request the chosen camera
+    camStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: currentFacingMode },
+      audio: false
+    });
+
     video.srcObject = camStream;
     await video.play();
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+    await waitForVideoReady();
+
+    // Match overlay canvas to the video resolution (after metadata is ready)
+    canvas.width = video.videoWidth || 640;
+    canvas.height = video.videoHeight || 480;
+
+    // Apply mirror (display only)
     applyMirror();
+
+    const wasRunning = running;
     running = true;
-    setPill(pillCam,true,"Cam: running");
+
+    setPill(pillCam,true,`Cam: running (${currentFacingMode === "user" ? "front" : "back"})`);
     log("ok","Webcam started.");
-    requestAnimationFrame(loop);
+
+    // Start (or restart) the loop
+    startLoop();
   }
 
   function stopCamera(){
     running = false;
+    stopLoop();
     if(camStream){
       camStream.getTracks().forEach(t => t.stop());
       camStream = null;
@@ -1308,18 +1372,21 @@
   el("btnCam").onclick = () => startCamera().catch(e => { console.error(e); log("err","Camera failed. Check console."); });
   el("btnStopCam").onclick = () => stopCamera();
 
-  el("btnSwitchCam").onclick = async () => {
-    // Toggle between front and back camera
+  // Separate controls: switch camera vs mirror (flip)
+  el("switchCamBtn").onclick = () => {
     currentFacingMode = (currentFacingMode === "user") ? "environment" : "user";
-    log("k", `Switching camera: ${currentFacingMode === "user" ? "front" : "back"}…`);
-    // If camera is running, restart it with the new facing mode
-    if(camStream){
-      stopCamera();
-      await startCamera();
+    // Friendly default: mirror ON for front camera, OFF for back camera
+    mirrorEnabled = (currentFacingMode === "user");
+    if(running) startCamera().catch(e => { console.error(e); log("err","Switch camera failed. Check console."); });
+    else {
+      applyMirror();
+      log("k",`Camera set to ${currentFacingMode === "user" ? "front" : "back"}. Start webcam when ready.`);
     }
-    // If camera is not running yet, it will use the new camera next time you press Start
+  };
+
+  el("flipCamBtn").onclick = () => {
+    mirrorEnabled = !mirrorEnabled;
     applyMirror();
-    refreshControls();
   };
 
   // ----------------- Main loop -----------------
@@ -1335,6 +1402,12 @@
     pillFps.innerHTML = `<span class="miniDot"></span>FPS: ${Math.round(1000/dt)}`;
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Wait until the video frame is actually available (avoids 'texImage2D: no video')
+    if(video.readyState < 2 || video.videoWidth === 0 || video.videoHeight === 0){
+      rafId = rafId = requestAnimationFrame(loop);
+      return;
+    }
 
     const res = faceLandmarker.detectForVideo(video, now);
     const hasFace = res.faceLandmarks && res.faceLandmarks.length > 0;
@@ -1402,7 +1475,7 @@
       await sendLine(packet);
     }
 
-    requestAnimationFrame(loop);
+    rafId = requestAnimationFrame(loop);
   }
 
   // Boot
