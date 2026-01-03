@@ -361,6 +361,7 @@
           <div class="btnRow" style="margin-top:12px">
             <button class="btn blue" id="btnCam">📷 Start webcam</button>
             <button class="btn" id="btnStopCam">⏹ Stop webcam</button>
+            <button class="btn" id="btnSwitchCam">🔄 Switch camera</button>
           </div>
 
           <!-- Only camera + fps here -->
@@ -1121,6 +1122,14 @@
   let faceLandmarker = null;
   let running = false;
   let camStream = null;
+  let currentFacingMode = "user"; // "user" = front, "environment" = back
+
+  function applyMirror(){
+    const mirror = currentFacingMode === "user";
+    video.style.transform = mirror ? "scaleX(-1)" : "scaleX(1)";
+    canvas.style.transform = mirror ? "scaleX(-1)" : "scaleX(1)";
+  }
+
 
   const video = el("video");
   const canvas = el("overlay");
@@ -1272,11 +1281,12 @@
   async function startCamera(){
     if(!faceLandmarker) await initLandmarker();
     log("k","Requesting webcam…");
-    camStream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:"user" }, audio:false });
+    camStream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode: currentFacingMode }, audio:false });
     video.srcObject = camStream;
     await video.play();
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
+    applyMirror();
     running = true;
     setPill(pillCam,true,"Cam: running");
     log("ok","Webcam started.");
@@ -1297,6 +1307,20 @@
 
   el("btnCam").onclick = () => startCamera().catch(e => { console.error(e); log("err","Camera failed. Check console."); });
   el("btnStopCam").onclick = () => stopCamera();
+
+  el("btnSwitchCam").onclick = async () => {
+    // Toggle between front and back camera
+    currentFacingMode = (currentFacingMode === "user") ? "environment" : "user";
+    log("k", `Switching camera: ${currentFacingMode === "user" ? "front" : "back"}…`);
+    // If camera is running, restart it with the new facing mode
+    if(camStream){
+      stopCamera();
+      await startCamera();
+    }
+    // If camera is not running yet, it will use the new camera next time you press Start
+    applyMirror();
+    refreshControls();
+  };
 
   // ----------------- Main loop -----------------
   let lastT = performance.now();
