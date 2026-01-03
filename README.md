@@ -1,7 +1,8 @@
 # 😊 Face Tracking – Teacher & Workshop Guide
 
 **by Workshop-Diy**
-Link: https://abourdim.github.io/face-tracking/
+
+app: https://abourdim.github.io/face-tracking/
 ---
 
 ## 🎯 Workshop Overview
