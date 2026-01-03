@@ -365,12 +365,14 @@
 
           <div class="btnRow" style="margin-top:10px">
             <button class="btn" id="switchCamBtn">🔄 Switch camera</button>
-            <button class="btn" id="flipCamBtn">🪞 Mirror: ON</button>
+            <button class="btn" id="flipCamBtn">🪞 Mirror ON</button>
           </div>
 
           <!-- Only camera + fps here -->
           <div class="statusLine">
-            <span class="pill bad" id="pillCam"><span class="miniDot"></span>Cam: not started</span>
+            <span class="pill bad" id="pillCam"><span class="miniDot"></span>📷 Camera: OFF</span>
+            <span class="pill" id="pillMirror"><span class="miniDot"></span>🪞 Mirror: ON</span>
+            <span class="pill bad" id="pillFace"><span class="miniDot"></span>👀 Looking for a face…</span>
             <span class="pill" id="pillFps"><span class="miniDot"></span>FPS: —</span>
           </div>
 
@@ -451,10 +453,7 @@
           </div>
 
           <div class="statusLine" style="margin-top:10px">
-            <label class="pill" style="gap:10px;">
-              <input type="checkbox" id="chkSpeech">
-              Speech
-            </label>
+            <button class="btn" id="btnSpeechToggle">🔊 Start Speech</button>
 
             <label class="pill" style="gap:10px;">
               <input type="checkbox" id="chkSendCmd">
@@ -597,6 +596,11 @@
     pill.classList.add(ok ? "ok" : "bad");
     pill.innerHTML = `<span class="miniDot"></span>${text}`;
   }
+
+  function updateMirrorStatus(){
+    if(!pillMirror) return;
+    setPill(pillMirror, true, mirrorEnabled ? "🪞 Mirror: ON" : "🪞 Mirror: OFF");
+  }
   function setBtnEnabled(btn, enabled){
     if(!btn) return;
     btn.disabled = !enabled;
@@ -608,7 +612,9 @@
   const outEl = el("out");
   const pillCam = el("pillCam");
   const pillFps = el("pillFps");
-  const chkMesh = el("chkMesh");
+    const pillMirror = el("pillMirror");
+  const pillFace = el("pillFace");
+const chkMesh = el("chkMesh");
   const chkContours = el("chkContours");
   const chkPoints = el("chkPoints");
 
@@ -862,8 +868,8 @@
   const demoLabelEl = el("demoLabel");
   const demoHintEl  = el("demoHint");
 
-  const chkSpeech = el("chkSpeech");
-  const chkSendCmd = el("chkSendCmd");
+  const btnSpeechToggle = el("btnSpeechToggle");
+const chkSendCmd = el("chkSendCmd");
   const btnSpeechTest = el("btnSpeechTest");
 
   const rngSpeechRate = el("rngSpeechRate");
@@ -955,20 +961,29 @@
     log("k","Demo reset.");
   });
 
-  chkSpeech.checked = false;
-  chkSpeech.addEventListener("change", () => {
-    demo.speech = chkSpeech.checked;
+  demo.speech = false;
+
+  function updateSpeechBtn(){
+    if(!btnSpeechToggle) return;
+    btnSpeechToggle.textContent = demo.speech ? "🔇 Stop Speech" : "🔊 Start Speech";
+  }
+  updateSpeechBtn();
+
+  btnSpeechToggle?.addEventListener("click", () => {
+    demo.speech = !demo.speech;
+
     if(demo.speech){
       if(canSpeak()) rebuildVoiceList();
-      log("ok", canSpeak() ? "Speech ON." : "Speech ON (not supported).");
+      log("ok", canSpeak() ? "🔊 Speech ON." : "🔊 Speech ON (not supported).");
       speakOnce("Speech on", true);
     }else{
-      log("warn","Speech OFF.");
+      log("warn","🔇 Speech OFF.");
       try{ window.speechSynthesis.cancel(); }catch{}
     }
-  });
 
-  chkSendCmd.addEventListener("change", () => {
+    updateSpeechBtn();
+  });
+chkSendCmd.addEventListener("change", () => {
     demo.sendCmd = chkSendCmd.checked;
     log(demo.sendCmd ? "ok" : "warn", demo.sendCmd ? "CMD sending ON." : "CMD sending OFF.");
   });
@@ -996,7 +1011,7 @@
 
   btnSpeechTest.addEventListener("click", () => {
     if(!demo.speech){
-      log("warn","Enable Speech first.");
+      log("warn","Press Start Speech first.");
       return;
     }
     speakOnce("Hello. This is a voice test.", true);
@@ -1161,7 +1176,7 @@
 
   function setFlipBtnLabel(){
     const btn = el("flipCamBtn");
-    if(btn) btn.textContent = mirrorEnabled ? "🪞 Mirror: ON" : "🪞 Mirror: OFF";
+    if(btn) btn.textContent = mirrorEnabled ? "🪞 Mirror ON" : "🪞 Mirror OFF";
   }
 
   function applyMirror(){
@@ -1170,6 +1185,8 @@
     video.style.transform = scale;
     canvas.style.transform = scale;
     setFlipBtnLabel();
+  updateMirrorStatus();
+    updateMirrorStatus();
   }
 
   function clamp(n,a,b){ return Math.max(a, Math.min(b,n)); }
@@ -1349,10 +1366,11 @@
     const wasRunning = running;
     running = true;
 
-    setPill(pillCam,true,`Cam: running (${currentFacingMode === "user" ? "front" : "back"})`);
+    setPill(pillCam,true, currentFacingMode === "user" ? "🤳 Front camera ON" : "📷 Back camera ON");
     log("ok","Webcam started.");
-
-    // Start (or restart) the loop
+    updateMirrorStatus();
+    if(pillFace) setPill(pillFace,false,"👀 Looking for a face…");
+// Start (or restart) the loop
     startLoop();
   }
 
@@ -1365,7 +1383,8 @@
     }
     video.srcObject = null;
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    setPill(pillCam,false,"Cam: stopped");
+    setPill(pillCam,false,"📷 Camera: OFF");
+      if(pillFace) setPill(pillFace,false,"🙂 Press Start Camera");
     log("warn","Webcam stopped.");
   }
 
@@ -1374,13 +1393,23 @@
 
   // Separate controls: switch camera vs mirror (flip)
   el("switchCamBtn").onclick = () => {
+    const wasRunning = !!camStream;
+    setPill(pillCam,true,"🔄 Changing camera…");
+
     currentFacingMode = (currentFacingMode === "user") ? "environment" : "user";
     // Friendly default: mirror ON for front camera, OFF for back camera
     mirrorEnabled = (currentFacingMode === "user");
-    if(running) startCamera().catch(e => { console.error(e); log("err","Switch camera failed. Check console."); });
-    else {
+
+    if (wasRunning) {
+      startCamera().catch(e => { console.error(e); log("err","Switch camera failed. Check console."); });
+    } else {
       applyMirror();
-      log("k",`Camera set to ${currentFacingMode === "user" ? "front" : "back"}. Start webcam when ready.`);
+      log("k", currentFacingMode === "user"
+        ? "🤳 Front camera selected. Press Start webcam."
+        : "📷 Back camera selected. Press Start webcam."
+      );
+      // Show a friendly idle status
+      setPill(pillCam,false,"📷 Camera: OFF");
     }
   };
 
@@ -1412,7 +1441,11 @@
     const res = faceLandmarker.detectForVideo(video, now);
     const hasFace = res.faceLandmarks && res.faceLandmarks.length > 0;
 
-    let X=0,Y=0,Z=0,Yaw=49,Pitch=49,Mouth=0,LE=0,RE=0,Roll=5,Smile9=0,Vis=0;
+    
+    if(pillFace){
+      setPill(pillFace, !!hasFace, hasFace ? "😊 Face found!" : "👀 Looking for a face…");
+    }
+let X=0,Y=0,Z=0,Yaw=49,Pitch=49,Mouth=0,LE=0,RE=0,Roll=5,Smile9=0,Vis=0;
 
     if(hasFace){
       const lm = res.faceLandmarks[0];
@@ -1480,7 +1513,7 @@
 
   // Boot
   log("k","UI ready → Start webcam → Connect micro:bit → Start sending");
-  setPill(pillCam,false,"Cam: not started");
+  setPill(pillCam,false,"📷 Camera: OFF");
   setBleUi(false);
   refreshControls();
 </script>

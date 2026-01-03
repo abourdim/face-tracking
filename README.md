@@ -1,40 +1,57 @@
-# 😊 Face Tracking – Workshop Guide
+# 😊 Face Tracking – Workshop Guide (Kid-Friendly)
 
 **by Workshop-Diy**
 
-## 🎯 Overview
-A browser app that uses your **camera** to detect and track a face in real time (built with **HTML/CSS/TypeScript** + **MediaPipe**).
-Great for **schools, clubs, and workshops**.
+## 🎯 What is this?
+This is a **Face Tracking** web app. It uses your **camera** to find a face and follow it in real time.
+
+It is great for **kids, beginners, and workshops**.
+
+---
 
 ## 🌐 Live App
-- GitHub Pages: https://abourdim.github.io/face-tracking/
+If you published with GitHub Pages, your link looks like:
 
-## ✅ What you can do
-- Start the webcam
-- Track face position + expressions
-- Show an overlay (mesh/contours/points)
-- (Optional on desktop) Connect to **micro:bit** via Bluetooth UART
+- `https://YOUR-USERNAME.github.io/face-tracking/`
 
-## 📱 Tablet-friendly camera controls
-- **🔄 Switch camera** = front ↔ back
-- **🪞 Mirror** = flip ON/OFF (display only)
+(Open in **Chrome / Edge** and allow camera access.)
 
-> Tip: Mirror ON feels natural for the front/selfie camera.
+---
 
-## ▶️ Run locally
-1. Download / clone this repo
-2. Open `index.html` in **Chrome or Edge**
-3. Allow camera access
+## ▶️ How to use
+1. Open the app in your browser
+2. Click **Start webcam**
+3. Stand in front of the camera
+4. Try: **smile**, **blink**, **look left/right**
 
-## 📂 Files
-- `index.html` – UI + app logic
-- `styles.css` – styling
-- `makecode_v23.ts` – micro:bit / MakeCode helper code
-- `logo.svg` – logo
+---
+
+## 🎛️ Buttons (simple)
+- 🔄 **Switch camera**: front ↔ back  
+- 🪞 **Mirror ON/OFF**: flips the view like a selfie (display only)  
+- 🔊 **Start Speech / Stop Speech**: the app can talk during demo mode  
+
+---
+
+## ✅ Status (kid-friendly)
+- 🤳 **Front camera ON** / 📷 **Back camera ON**
+- 🪞 **Mirror: ON/OFF**
+- 😊 **Face found!** / 👀 **Looking for a face…**
+
+---
+
+## 📂 Project Files
+```
+index.html        - Main web page
+styles.css        - Design
+makecode_v23.ts   - Face tracking logic
+logo.svg          - Logo
+README.md         - This guide
+```
+
+---
 
 ## ⚠️ Notes
-- Camera requires permission and HTTPS (GitHub Pages works).
-- Web Bluetooth (micro:bit) works best on desktop Chrome/Edge.
-
-## 📄 License
-Educational use.
+- Camera permission is required
+- micro:bit Bluetooth works on **desktop** (tablets usually cannot use Web Bluetooth)
+- Educational use only
