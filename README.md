@@ -90,7 +90,7 @@ README.md
 ## ⚠️ Notes
 
 - Camera permission required
-- Bluetooth (micro:bit) works on desktop only
+- Bluetooth (micro:bit) works on desktop, chrome and edge
 - Educational use only
 
 ---
