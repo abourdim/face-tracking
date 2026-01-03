@@ -1,0 +1,1391 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WORKSHOP-DIY Face Link</title>
+  <style>
+    :root{
+      --bg0:#0a1020;
+      --bg1:#070b14;
+      --border:rgba(255,255,255,.08);
+      --text:#d9e6ff;
+      --muted:rgba(217,230,255,.65);
+      --green:#26d07c;
+      --blue:#3aa0ff;
+      --yellow:#ffd166;
+      --red:#ff4d6d;
+      --glow: 0 0 0 1px rgba(120,200,255,.15), 0 12px 35px rgba(0,0,0,.45);
+      --radius:16px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 50% -200px, rgba(58,160,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(38,208,124,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+
+    .top{
+      position:sticky; top:0; z-index:20;
+      background: linear-gradient(180deg, rgba(7,11,20,.95), rgba(7,11,20,.65));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .topbar{
+      max-width: 1200px;
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .brandMark{
+      width:44px; height:44px;
+      border-radius:14px;
+      background: rgba(58,160,255,.12);
+      border:1px solid rgba(58,160,255,.25);
+      display:grid; place-items:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .brandTitle{ line-height:1.1; }
+    .brandTitle .name{
+      font-weight:900;
+      letter-spacing:.12em;
+      color:#a8ff9d;
+      opacity:.95;
+    }
+    .brandTitle .tag{
+      font-size:12px;
+      color:rgba(255,255,255,.65);
+      margin-top:4px;
+    }
+    .readyPill{
+      display:flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(38,208,124,.10);
+      border:1px solid rgba(38,208,124,.28);
+      box-shadow: 0 0 18px rgba(38,208,124,.12);
+      font-weight:800;
+      letter-spacing:.08em;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--green);
+      box-shadow: 0 0 14px rgba(38,208,124,.65);
+    }
+
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:18px;
+      display:grid;
+      grid-template-columns: 420px 1fr;
+      gap:18px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(12,22,40,.95), rgba(10,18,32,.92));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--glow);
+      overflow:hidden;
+    }
+    .cardHeader{
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+    }
+    .cardHeader .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:13px;
+      opacity:.95;
+    }
+    .chip{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .cardBody{ padding:14px; }
+
+    .btnRow{ display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:800;
+      cursor:pointer;
+      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .btn:hover{ border-color: rgba(120,200,255,.30); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: rgba(38,208,124,.15);
+      border-color: rgba(38,208,124,.35);
+      box-shadow: 0 0 18px rgba(38,208,124,.08);
+    }
+    .btn.blue{
+      background: rgba(58,160,255,.14);
+      border-color: rgba(58,160,255,.35);
+      box-shadow: 0 0 18px rgba(58,160,255,.08);
+    }
+    .btn.red{
+      background: rgba(255,77,109,.12);
+      border-color: rgba(255,77,109,.35);
+    }
+    .btn.disabled{
+      opacity:.45;
+      cursor:not-allowed;
+      pointer-events:none;
+    }
+
+    .statusLine{
+      margin-top:12px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+    }
+    .pill .miniDot{
+      width:8px; height:8px; border-radius:999px;
+      background: rgba(255,255,255,.25);
+    }
+    .pill.ok{ border-color: rgba(38,208,124,.35); color: rgba(210,255,230,.9); }
+    .pill.ok .miniDot{ background: var(--green); box-shadow:0 0 10px rgba(38,208,124,.6); }
+    .pill.bad{ border-color: rgba(255,77,109,.35); color: rgba(255,220,228,.9); }
+    .pill.bad .miniDot{ background: var(--red); box-shadow:0 0 10px rgba(255,77,109,.55); }
+
+    .stage{
+      width:100%;
+      aspect-ratio: 16/10;
+      border-radius: 18px;
+      overflow:hidden;
+      background:#02040a;
+      border:1px solid rgba(120,200,255,.18);
+      box-shadow: 0 0 0 1px rgba(0,0,0,.35) inset;
+      position:relative;
+    }
+    video, canvas{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit: cover;
+    }
+
+    .log{
+      height: 260px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.22);
+      padding:10px;
+      overflow:auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:12px;
+      color: rgba(220,235,255,.92);
+      line-height:1.45;
+    }
+    .logLine{ margin-bottom:6px; opacity:.95; }
+    .logLine .t{ color: rgba(255,255,255,.45); margin-right:8px; }
+    .logLine .ok{ color: rgba(120,255,185,.95); }
+    .logLine .warn{ color: rgba(255,209,102,.95); }
+    .logLine .err{ color: rgba(255,110,140,.95); }
+    .logLine .k{ color: rgba(120,200,255,.95); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .field{
+      display:grid;
+      grid-template-columns: 90px 1fr;
+      gap:10px;
+      align-items:center;
+    }
+    .field label{
+      font-weight:800;
+      color: rgba(255,255,255,.88);
+      font-size:12px;
+      letter-spacing:.04em;
+    }
+    .field input{
+      width:100%;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      outline:none;
+      font-weight:900;
+    }
+
+    .packet{
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:13px;
+      color: rgba(255,255,255,.95);
+      overflow:auto;
+    }
+
+    .rightCol{
+      display:grid;
+      grid-template-rows: auto auto 1fr;
+      gap:18px;
+    }
+
+    .footerHint{
+      font-size:12px;
+      color: rgba(255,255,255,.55);
+      margin-top:10px;
+      word-break: break-word;
+    }
+
+    select{
+      background:transparent;
+      color:inherit;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:10px;
+      padding:6px;
+      outline:none;
+    }
+    option{ color:#000; }
+  
+    /* ---------- Logo (uses logo.svg) ---------- */
+    .logoImg{
+      width:28px;
+      height:28px;
+      display:block;
+      object-fit:contain;
+      will-change: transform, filter;
+      filter: drop-shadow(0 0 6px rgba(58,160,255,.35));
+      transition: filter .25s ease;
+    }
+
+    /* Pulse + rotate + glow on hover */
+    .brandMark{
+      position:relative;
+      overflow:hidden;
+      transition: border-color .25s ease, box-shadow .25s ease, background .25s ease, transform .25s ease;
+    }
+    .brandMark:hover{
+      border-color: rgba(120,200,255,.55);
+      background: rgba(58,160,255,.16);
+      box-shadow:
+        0 12px 36px rgba(0,0,0,.38),
+        0 0 0 1px rgba(120,200,255,.28),
+        0 0 26px rgba(58,160,255,.22),
+        0 0 18px rgba(38,208,124,.10);
+      transform: translateY(-1px);
+    }
+    .brandMark:hover .logoImg{
+      animation: logoPulseRotate 1.15s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(58,160,255,.55)) drop-shadow(0 0 18px rgba(38,208,124,.22));
+    }
+
+    @keyframes logoPulseRotate{
+      0%   { transform: scale(1) rotate(0deg); }
+      50%  { transform: scale(1.12) rotate(6deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="top">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brandMark" title="Your Logo">
+          <img src="logo.svg" alt="Workshop-DIY Logo" class="logoImg">
+        </div>
+        <div class="brandTitle">
+          <div class="name">WORKSHOP-DIY.ORG</div>
+          <div class="tag">Explore · Create · Innovate</div>
+        </div>
+      </div>
+
+      <div class="readyPill" id="readyPill">
+        <span class="dot"></span>
+        READY
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- LEFT COLUMN -->
+    <div style="display:grid; gap:18px;">
+      <!-- Face App (NO BLE status/buttons here) -->
+      <div class="card">
+        <div class="cardHeader">
+          <div class="title">🧠 Face App</div>
+          <div class="chip" id="uiState">UI ready</div>
+        </div>
+        <div class="cardBody">
+          <div class="footerHint" style="margin-top:0">
+            Steps: 1) Start camera · 2) Connect micro:bit (in Live Link card) · 3) Start sending (in Live Link card)
+          </div>
+
+          <div class="btnRow" style="margin-top:12px">
+            <button class="btn blue" id="btnCam">📷 Start webcam</button>
+            <button class="btn" id="btnStopCam">⏹ Stop webcam</button>
+          </div>
+
+          <!-- Only camera + fps here -->
+          <div class="statusLine">
+            <span class="pill bad" id="pillCam"><span class="miniDot"></span>Cam: not started</span>
+            <span class="pill" id="pillFps"><span class="miniDot"></span>FPS: —</span>
+          </div>
+
+          <div class="statusLine" style="margin-top:10px">
+            <label class="pill" style="gap:10px;">
+              <input type="checkbox" id="chkMesh" checked>
+              Mesh
+            </label>
+            <label class="pill" style="gap:10px;">
+              <input type="checkbox" id="chkContours" checked>
+              Contours
+            </label>
+            <label class="pill" style="gap:10px;">
+              <input type="checkbox" id="chkPoints">
+              Points
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ BLE single source-of-truth card -->
+      <div class="card">
+        <div class="cardHeader">
+          <div class="title">📡 micro:bit Live Link</div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div class="chip" id="bleProfile">—</div>
+            <div class="chip" id="bleState">DISCONNECTED</div>
+          </div>
+        </div>
+        <div class="cardBody">
+          <div class="btnRow">
+            <button class="btn primary" id="btnBt2">🔗 Connect</button>
+            <button class="btn" id="btnDisc">❌ Disconnect</button>
+          </div>
+
+          <div class="btnRow" style="margin-top:12px">
+            <button class="btn" id="btnTest">🧪 Send TEST</button>
+            <button class="btn primary" id="btnStartSend">🚀 Start sending</button>
+            <button class="btn red" id="btnStopSend">🛑 Stop</button>
+          </div>
+
+          <!-- BLE pill ONLY here -->
+          <div class="statusLine">
+            <span class="pill bad" id="pillBle"><span class="miniDot"></span>BLE: disconnected</span>
+          </div>
+
+          <div class="footerHint">BLE UART (micro:bit UART / Nordic UART). Keep micro:bit powered and nearby.</div>
+          <div class="footerHint" id="bleDevice">DEVICE —</div>
+          <div class="footerHint" id="lastTx">LAST TX —</div>
+          <div class="footerHint" id="lastCmd">LAST CMD —</div>
+          <div class="footerHint" id="lastAck">LAST ACK —</div>
+        </div>
+      </div>
+
+      <!-- Outgoing Packet -->
+      <div class="card">
+        <div class="cardHeader">
+          <div class="title">📦 Outgoing Packet</div>
+          <div class="chip">19 digits</div>
+        </div>
+        <div class="cardBody">
+          <div class="packet" id="out">—</div>
+          <div class="footerHint">Format: XX YY ZZ Yaw Pitch Mouth LEye REye Roll Smile Vis</div>
+        </div>
+      </div>
+
+      <!-- ✅ Demo card -->
+      <div class="card">
+        <div class="cardHeader">
+          <div class="title">🎪 Demo (Funny detections)</div>
+          <div class="chip" id="demoState">OFF</div>
+        </div>
+        <div class="cardBody">
+          <div class="btnRow">
+            <button class="btn primary" id="btnDemoOn">▶ Demo ON</button>
+            <button class="btn" id="btnDemoOff">⏸ Demo OFF</button>
+            <button class="btn" id="btnDemoReset">🔁 Reset</button>
+          </div>
+
+          <div class="statusLine" style="margin-top:10px">
+            <label class="pill" style="gap:10px;">
+              <input type="checkbox" id="chkSpeech">
+              Speech
+            </label>
+
+            <label class="pill" style="gap:10px;">
+              <input type="checkbox" id="chkSendCmd">
+              Send CMD to micro:bit
+            </label>
+
+            <button class="btn" id="btnSpeechTest">🔊 Test voice</button>
+          </div>
+
+          <div class="statusLine" style="margin-top:10px">
+            <label class="pill" style="gap:10px;">
+              Lang
+              <select id="selSpeechLang">
+                <option value="">Auto</option>
+                <option value="en-US">en-US</option>
+                <option value="en-GB">en-GB</option>
+                <option value="fr-FR">fr-FR</option>
+                <option value="es-ES">es-ES</option>
+                <option value="de-DE">de-DE</option>
+                <option value="it-IT">it-IT</option>
+                <option value="pt-PT">pt-PT</option>
+                <option value="pt-BR">pt-BR</option>
+                <option value="nl-NL">nl-NL</option>
+                <option value="ja-JP">ja-JP</option>
+                <option value="ko-KR">ko-KR</option>
+                <option value="zh-CN">zh-CN</option>
+              </select>
+            </label>
+
+            <label class="pill" style="gap:10px; flex:1;">
+              Voice
+              <select id="selSpeechVoice" style="flex:1;min-width:180px;">
+                <option value="">Auto</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="statusLine" style="margin-top:10px">
+            <label class="pill" style="gap:10px;">
+              Rate
+              <input type="range" id="rngSpeechRate" min="0.7" max="1.3" step="0.05" value="1" style="accent-color:#26d07c;">
+            </label>
+
+            <label class="pill" style="gap:10px;">
+              Pitch
+              <input type="range" id="rngSpeechPitch" min="0.6" max="1.6" step="0.05" value="1.05" style="accent-color:#26d07c;">
+            </label>
+          </div>
+
+          <div style="margin-top:12px; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.05);">
+            <div style="font-weight:900; letter-spacing:.08em; text-transform:uppercase; font-size:12px; color:rgba(255,255,255,.70);">
+              Current detection
+            </div>
+            <div id="demoLabel" style="margin-top:6px; font-size:22px; font-weight:900;">
+              —
+            </div>
+            <div id="demoHint" style="margin-top:6px; color: rgba(217,230,255,.70); font-size:12px;">
+              Tip: Smile / Open mouth / Wink / Turn head
+            </div>
+          </div>
+
+          <div class="footerHint" style="margin-top:10px;">
+            Demo uses existing values (no packet format change). If “Send CMD” is enabled it sends lines like <b>CMD:SMILE</b>.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="rightCol">
+      <div class="card">
+        <div class="cardHeader">
+          <div class="title">🎥 Webcam</div>
+          <div class="chip">Live view</div>
+        </div>
+        <div class="cardBody">
+          <div class="stage">
+            <video id="video" autoplay playsinline muted></video>
+            <canvas id="overlay"></canvas>
+          </div>
+          <div class="footerHint">Tip: good lighting helps detection.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="title">🧾 Message Log</div>
+          <button class="btn" id="btnClearLog">🧹 Clear</button>
+        </div>
+        <div class="cardBody">
+          <div class="log" id="log"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="title">📊 Numerics</div>
+          <div class="chip" id="normState">Normalized</div>
+        </div>
+        <div class="cardBody">
+          <div class="grid">
+            <div class="field"><label>X</label><input id="fX" readonly value="0"></div>
+            <div class="field"><label>Y</label><input id="fY" readonly value="0"></div>
+            <div class="field"><label>Distance</label><input id="fZ" readonly value="0"></div>
+            <div class="field"><label>Yaw</label><input id="fYaw" readonly value="0"></div>
+            <div class="field"><label>Pitch</label><input id="fPitch" readonly value="0"></div>
+            <div class="field"><label>Mouth</label><input id="fMouth" readonly value="0"></div>
+            <div class="field"><label>Left Eye</label><input id="fLE" readonly value="0"></div>
+            <div class="field"><label>Right Eye</label><input id="fRE" readonly value="0"></div>
+            <div class="field"><label>Roll</label><input id="fRoll" readonly value="0"></div>
+            <div class="field"><label>Smile/Kiss</label><input id="fSmile" readonly value="0"></div>
+            <div class="field"><label>Face Visible</label><input id="fVis" readonly value="0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script type="module">
+  import { FaceLandmarker, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.21";
+
+  const el = (id) => document.getElementById(id);
+
+  // ----------------- Log -----------------
+  const logEl = el("log");
+  function ts(){ return new Date().toLocaleTimeString(); }
+  function log(kind, msg){
+    const div = document.createElement("div");
+    div.className = "logLine";
+    const cls = kind === "ok" ? "ok" : kind === "warn" ? "warn" : kind === "err" ? "err" : "k";
+    div.innerHTML = `<span class="t">${ts()}</span><span class="${cls}">${msg}</span>`;
+    logEl.appendChild(div);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+  el("btnClearLog").onclick = () => { logEl.innerHTML = ""; log("k","Log cleared."); };
+
+  function setPill(pill, ok, text){
+    pill.classList.remove("ok","bad");
+    pill.classList.add(ok ? "ok" : "bad");
+    pill.innerHTML = `<span class="miniDot"></span>${text}`;
+  }
+  function setBtnEnabled(btn, enabled){
+    if(!btn) return;
+    btn.disabled = !enabled;
+    btn.classList.toggle("disabled", !enabled);
+  }
+
+  // ----------------- Face UI -----------------
+  const uiState = el("uiState");
+  const outEl = el("out");
+  const pillCam = el("pillCam");
+  const pillFps = el("pillFps");
+  const chkMesh = el("chkMesh");
+  const chkContours = el("chkContours");
+  const chkPoints = el("chkPoints");
+
+  // ----------------- BLE UI (ONLY in BLE card) -----------------
+  const bleState = el("bleState");
+  const bleProfileEl = el("bleProfile");
+  const pillBle = el("pillBle");
+  const bleDeviceEl = el("bleDevice");
+  const lastTxEl = el("lastTx");
+  const lastCmdEl = el("lastCmd");
+  const lastAckEl = el("lastAck");
+
+  const btnConnect = el("btnBt2");
+  const btnDisc = el("btnDisc");
+  const btnTest = el("btnTest");
+  const btnStartSend = el("btnStartSend");
+  const btnStopSend = el("btnStopSend");
+
+  // BLE state
+  let bleDevice = null;
+  let writeChar = null;
+  let notifyChar = null;
+  let sendingEnabled = false;
+  let activeProfile = null;
+
+  // ACK RTT tracking (echo ACK)
+  let pendingAckFor = null;
+  let pendingAckAt = 0;
+
+  function refreshControls(){
+    const connected = !!writeChar;
+    setBtnEnabled(btnConnect, !connected);
+    setBtnEnabled(btnDisc, connected);
+    setBtnEnabled(btnTest, connected);
+    setBtnEnabled(btnStartSend, connected);
+    setBtnEnabled(btnStopSend, connected && sendingEnabled);
+  }
+
+  function setBleUi(connected){
+    bleState.textContent = connected ? "CONNECTED" : "DISCONNECTED";
+    bleProfileEl.textContent = connected ? (activeProfile || "—") : "—";
+    bleDeviceEl.textContent  = connected ? `DEVICE — ${bleDevice?.name || "micro:bit"}` : "DEVICE —";
+    setPill(pillBle, connected, connected ? "BLE: connected" : "BLE: disconnected");
+
+    if(!connected){
+      lastTxEl.textContent  = "LAST TX —";
+      lastCmdEl.textContent = "LAST CMD —";
+      lastAckEl.textContent = "LAST ACK —";
+      pendingAckFor = null;
+      pendingAckAt = 0;
+    }
+    refreshControls();
+  }
+
+  function onNotify(event){
+    const text = new TextDecoder().decode(event.target.value);
+    text.split(/\r?\n/).forEach(line => {
+      const t = line.trim();
+      if(!t) return;
+
+      log("k", "RX ← " + t);
+
+      if(t.startsWith("ACK:")){
+        lastAckEl.textContent = `LAST ACK — ${t}`;
+
+        if(pendingAckFor && t === ("ACK:" + pendingAckFor)){
+          const rtt = Math.round(performance.now() - pendingAckAt);
+          log("ok", `ACK RTT: ${rtt} ms`);
+          pendingAckFor = null;
+          pendingAckAt = 0;
+        }
+      }
+    });
+  }
+
+  async function sendLine(str){
+    if(!writeChar){
+      log("warn","TX blocked (no BLE link): " + str);
+      return false;
+    }
+
+    lastTxEl.textContent = `LAST TX — ${str}`;
+    if(str.startsWith("CMD:")) lastCmdEl.textContent = `LAST CMD — ${str}`;
+
+    const data = new TextEncoder().encode(str + "\n");
+    try{
+      if(writeChar.properties.writeWithoutResponse){
+        await writeChar.writeValueWithoutResponse(data);
+      }else{
+        await writeChar.writeValue(data);
+      }
+      return true;
+    }catch(e){
+      console.error(e);
+      log("err","TX failed: " + (e?.message || e));
+      return false;
+    }
+  }
+
+  // UUIDs
+  const MB_UART_SERVICE_UUID = "e95d0753-251d-470a-a062-fa1922dfa9a8";
+  const MB_UART_RX_UUID      = "e95d93ee-251d-470a-a062-fa1922dfa9a8";
+  const MB_UART_TX_UUID      = "e95d9250-251d-470a-a062-fa1922dfa9a8";
+
+  const NUS_SERVICE_UUID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
+  const NUS_RX_UUID      = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
+  const NUS_TX_UUID      = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
+
+  async function pickCharsFromService(service, rxUuid, txUuid){
+    const chars = await service.getCharacteristics();
+    const byId = {};
+    for(const ch of chars) byId[String(ch.uuid).toLowerCase()] = ch;
+
+    const wantedRx = byId[String(rxUuid).toLowerCase()] || null;
+    const wantedTx = byId[String(txUuid).toLowerCase()] || null;
+
+    const isWriter = (ch) => ch && (ch.properties.write || ch.properties.writeWithoutResponse);
+    const isNotifier = (ch) => ch && (ch.properties.notify || ch.properties.indicate);
+
+    let rx = (isWriter(wantedRx) ? wantedRx : null);
+    let tx = (isNotifier(wantedTx) ? wantedTx : null);
+
+    if(!rx || !tx){
+      for(const ch of chars){
+        if(!tx && isNotifier(ch)) tx = ch;
+        if(!rx && isWriter(ch)) rx = ch;
+      }
+    }
+    if(!rx || !tx) throw new Error("UART characteristics not found (need notify + write)");
+    return {rx, tx};
+  }
+
+  async function tryMicrobitUart(server){
+    log("k", "BLE: trying micro:bit UART service…");
+    const service = await server.getPrimaryService(MB_UART_SERVICE_UUID);
+    const rx = await service.getCharacteristic(MB_UART_RX_UUID);
+    const tx = await service.getCharacteristic(MB_UART_TX_UUID);
+    return {rx, tx, profile: "microbit-uart"};
+  }
+
+  async function tryNus(server){
+    log("k", "BLE: trying Nordic UART (NUS)…");
+    const service = await server.getPrimaryService(NUS_SERVICE_UUID);
+    const {rx, tx} = await pickCharsFromService(service, NUS_RX_UUID, NUS_TX_UUID);
+    return {rx, tx, profile: "nus"};
+  }
+
+  async function connectMicrobit(){
+    try{
+      if(!navigator.bluetooth){
+        log("err","Web Bluetooth not available. Use Chrome/Edge.");
+        return;
+      }
+
+      log("k","Requesting micro:bit…");
+      bleDevice = await navigator.bluetooth.requestDevice({
+        acceptAllDevices: true,
+        optionalServices: [MB_UART_SERVICE_UUID, NUS_SERVICE_UUID]
+      });
+
+      bleDevice.addEventListener("gattserverdisconnected", () => {
+        sendingEnabled = false;
+        writeChar = null;
+        notifyChar = null;
+        activeProfile = null;
+        setBleUi(false);
+        log("warn","micro:bit disconnected.");
+      });
+
+      log("k","BLE: connecting…");
+      const server = await bleDevice.gatt.connect();
+
+      let prof;
+      try{ prof = await tryMicrobitUart(server); }
+      catch{
+        log("warn","BLE: micro:bit UART not found, trying NUS…");
+        prof = await tryNus(server);
+      }
+
+      writeChar = prof.rx;
+      notifyChar = prof.tx;
+      activeProfile = prof.profile;
+
+      await notifyChar.startNotifications();
+      notifyChar.addEventListener("characteristicvaluechanged", onNotify);
+      log("ok", "BLE notifications ON (" + activeProfile + ")");
+
+      setBleUi(true);
+      log("ok","micro:bit connected ✔ (" + activeProfile + ")");
+    }catch(e){
+      console.error(e);
+      setBleUi(false);
+      log("err","BLE error: " + (e?.message || e));
+    }
+  }
+
+  async function disconnectMicrobit(){
+    try{
+      sendingEnabled = false;
+      if(notifyChar){
+        try{ await notifyChar.stopNotifications(); }catch{}
+      }
+      if(bleDevice?.gatt?.connected) bleDevice.gatt.disconnect();
+    }finally{
+      writeChar = null;
+      notifyChar = null;
+      activeProfile = null;
+      setBleUi(false);
+      log("warn","Disconnected.");
+    }
+  }
+
+  btnConnect.addEventListener("click", connectMicrobit);
+  btnDisc.addEventListener("click", disconnectMicrobit);
+
+  btnStartSend.addEventListener("click", () => {
+    if(!writeChar){ log("warn","Connect micro:bit first."); return; }
+    sendingEnabled = true;
+    log("ok","Start sending enabled.");
+    refreshControls();
+  });
+
+  btnStopSend.addEventListener("click", () => {
+    sendingEnabled = false;
+    log("warn","Sending stopped.");
+    refreshControls();
+  });
+
+  btnTest.addEventListener("click", async () => {
+    if(!writeChar){ log("warn","Connect micro:bit first."); return; }
+    pendingAckFor = "TEST";
+    pendingAckAt = performance.now();
+    await sendLine("TEST");
+    log("ok","Sent TEST.");
+  });
+
+  // ----------------- Demo + Speech Params -----------------
+  const demo = {
+    on:false,
+    speech:false,
+    sendCmd:false,
+    rate:1,
+    pitch:1.05,
+    lang:"",
+    voiceName:"",
+    last:"",
+    lastAt:0
+  };
+
+  const demoState = el("demoState");
+  const demoLabelEl = el("demoLabel");
+  const demoHintEl  = el("demoHint");
+
+  const chkSpeech = el("chkSpeech");
+  const chkSendCmd = el("chkSendCmd");
+  const btnSpeechTest = el("btnSpeechTest");
+
+  const rngSpeechRate = el("rngSpeechRate");
+  const rngSpeechPitch = el("rngSpeechPitch");
+  const selSpeechLang = el("selSpeechLang");
+  const selSpeechVoice = el("selSpeechVoice");
+
+  let cachedVoices = [];
+
+  function setDemoChip(on){
+    demoState.textContent = on ? "ON" : "OFF";
+    demoState.style.opacity = on ? "1" : ".65";
+  }
+  setDemoChip(false);
+
+  function canSpeak(){ return typeof window !== "undefined" && "speechSynthesis" in window; }
+
+  function rebuildVoiceList(){
+    if(!canSpeak()) return;
+
+    cachedVoices = window.speechSynthesis.getVoices() || [];
+    const prev = selSpeechVoice.value;
+
+    selSpeechVoice.innerHTML = `<option value="">Auto</option>`;
+
+    const sorted = [...cachedVoices].sort((a,b) => {
+      const la = (a.lang || "").localeCompare(b.lang || "");
+      return la !== 0 ? la : (a.name || "").localeCompare(b.name || "");
+    });
+
+    for(const v of sorted){
+      const opt = document.createElement("option");
+      opt.value = v.name;
+      opt.textContent = `${v.name} (${v.lang || "?"})`;
+      selSpeechVoice.appendChild(opt);
+    }
+
+    if(prev && [...selSpeechVoice.options].some(o => o.value === prev)){
+      selSpeechVoice.value = prev;
+    }
+  }
+
+  function pickVoice(){
+    if(!cachedVoices.length) return null;
+
+    if(demo.voiceName){
+      const v = cachedVoices.find(v => v.name === demo.voiceName);
+      if(v) return v;
+    }
+
+    if(demo.lang){
+      const exact = cachedVoices.find(v => (v.lang || "").toLowerCase() === demo.lang.toLowerCase());
+      if(exact) return exact;
+
+      const base = demo.lang.split("-")[0].toLowerCase();
+      const partial = cachedVoices.find(v => (v.lang || "").toLowerCase().startsWith(base));
+      if(partial) return partial;
+    }
+
+    return null;
+  }
+
+  function speakOnce(text, force=false){
+    if(!demo.speech) return;
+    if(!canSpeak()) return;
+    if(!force && (text.includes("Neutral") || text.includes("No face"))) return;
+
+    try{
+      window.speechSynthesis.cancel();
+
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = demo.rate || 1;
+      u.pitch = demo.pitch || 1.05;
+      if(demo.lang) u.lang = demo.lang;
+
+      const v = pickVoice();
+      if(v) u.voice = v;
+
+      window.speechSynthesis.speak(u);
+    }catch{}
+  }
+
+  el("btnDemoOn")?.addEventListener("click", () => { demo.on = true; setDemoChip(true); log("ok","Demo detections ON."); });
+  el("btnDemoOff")?.addEventListener("click", () => { demo.on = false; setDemoChip(false); log("warn","Demo detections OFF."); });
+  el("btnDemoReset")?.addEventListener("click", () => {
+    demo.last = ""; demo.lastAt = 0;
+    demoLabelEl.textContent = "—";
+    demoHintEl.textContent  = "Tip: Smile / Open mouth / Wink / Turn head";
+    log("k","Demo reset.");
+  });
+
+  chkSpeech.checked = false;
+  chkSpeech.addEventListener("change", () => {
+    demo.speech = chkSpeech.checked;
+    if(demo.speech){
+      if(canSpeak()) rebuildVoiceList();
+      log("ok", canSpeak() ? "Speech ON." : "Speech ON (not supported).");
+      speakOnce("Speech on", true);
+    }else{
+      log("warn","Speech OFF.");
+      try{ window.speechSynthesis.cancel(); }catch{}
+    }
+  });
+
+  chkSendCmd.addEventListener("change", () => {
+    demo.sendCmd = chkSendCmd.checked;
+    log(demo.sendCmd ? "ok" : "warn", demo.sendCmd ? "CMD sending ON." : "CMD sending OFF.");
+  });
+
+  rngSpeechRate.value = "1";
+  rngSpeechPitch.value = "1.05";
+  selSpeechLang.value = "";
+  selSpeechVoice.value = "";
+
+  demo.rate = parseFloat(rngSpeechRate.value) || 1;
+  demo.pitch = parseFloat(rngSpeechPitch.value) || 1.05;
+
+  rngSpeechRate.addEventListener("input", () => demo.rate = parseFloat(rngSpeechRate.value) || 1);
+  rngSpeechPitch.addEventListener("input", () => demo.pitch = parseFloat(rngSpeechPitch.value) || 1.05);
+
+  selSpeechLang.addEventListener("change", () => {
+    demo.lang = selSpeechLang.value || "";
+    log("k", "Speech lang: " + (demo.lang || "Auto"));
+  });
+
+  selSpeechVoice.addEventListener("change", () => {
+    demo.voiceName = selSpeechVoice.value || "";
+    log("k", "Speech voice: " + (demo.voiceName || "Auto"));
+  });
+
+  btnSpeechTest.addEventListener("click", () => {
+    if(!demo.speech){
+      log("warn","Enable Speech first.");
+      return;
+    }
+    speakOnce("Hello. This is a voice test.", true);
+  });
+
+  if(canSpeak()){
+    rebuildVoiceList();
+    window.speechSynthesis.onvoiceschanged = rebuildVoiceList;
+  }
+
+  // Eye event tracker (blink + wink)
+  const eyeEvt = {
+    leOpenRef: 85, reOpenRef: 85,
+    leftWinkHold: 0, rightWinkHold: 0, bothBlinkHold: 0,
+    leftWinkLatched: false, rightWinkLatched: false, blinkLatched: false,
+  };
+
+  function updateEyeEvents(LE, RE){
+    if(LE > 60 && RE > 60){
+      eyeEvt.leOpenRef = eyeEvt.leOpenRef * 0.98 + LE * 0.02;
+      eyeEvt.reOpenRef = eyeEvt.reOpenRef * 0.98 + RE * 0.02;
+    }
+    const leOpen = eyeEvt.leOpenRef * 0.80;
+    const reOpen = eyeEvt.reOpenRef * 0.80;
+    const leClosed = eyeEvt.leOpenRef * 0.55;
+    const reClosed = eyeEvt.reOpenRef * 0.55;
+
+    const L_OPEN = LE >= leOpen;
+    const R_OPEN = RE >= reOpen;
+    const L_CLOSED = LE <= leClosed;
+    const R_CLOSED = RE <= reClosed;
+
+    const DIFF_MIN = 18;
+    const leftWinkNow  = L_CLOSED && R_OPEN && (RE - LE) >= DIFF_MIN;
+    const rightWinkNow = R_CLOSED && L_OPEN && (LE - RE) >= DIFF_MIN;
+
+    eyeEvt.leftWinkHold  = leftWinkNow  ? Math.min(eyeEvt.leftWinkHold + 1, 8)  : Math.max(eyeEvt.leftWinkHold - 1, 0);
+    eyeEvt.rightWinkHold = rightWinkNow ? Math.min(eyeEvt.rightWinkHold + 1, 8) : Math.max(eyeEvt.rightWinkHold - 1, 0);
+
+    const bothClosedNow = L_CLOSED && R_CLOSED;
+    eyeEvt.bothBlinkHold = bothClosedNow ? Math.min(eyeEvt.bothBlinkHold + 1, 8) : Math.max(eyeEvt.bothBlinkHold - 1, 0);
+
+    let leftWinkEvent = false, rightWinkEvent = false, blinkEvent = false;
+
+    if(!eyeEvt.leftWinkLatched && eyeEvt.leftWinkHold >= 3){ eyeEvt.leftWinkLatched = true; leftWinkEvent = true; }
+    if(eyeEvt.leftWinkLatched && L_OPEN) eyeEvt.leftWinkLatched = false;
+
+    if(!eyeEvt.rightWinkLatched && eyeEvt.rightWinkHold >= 3){ eyeEvt.rightWinkLatched = true; rightWinkEvent = true; }
+    if(eyeEvt.rightWinkLatched && R_OPEN) eyeEvt.rightWinkLatched = false;
+
+    if(!eyeEvt.blinkLatched && eyeEvt.bothBlinkHold >= 2){ eyeEvt.blinkLatched = true; blinkEvent = true; }
+    if(eyeEvt.blinkLatched && L_OPEN && R_OPEN) eyeEvt.blinkLatched = false;
+
+    return { leftWinkEvent, rightWinkEvent, blinkEvent };
+  }
+
+  function demoDetect({Vis, Mouth, Smile9, Yaw, Pitch, Roll, eyeEvents}){
+    if(!Vis) return {label:"🙈 No face", hint:"Step into view + good lighting", cmd:null};
+
+    const midSmile = Smile9 >= 5;
+    const mouthOpen = Mouth >= 18;
+    const mouthWide = Mouth >= 45;
+
+    const lookLeft  = Yaw <= 35;
+    const lookRight = Yaw >= 65;
+    const lookUp    = Pitch <= 35;
+    const lookDown  = Pitch >= 65;
+    const tilt = (Roll <= 2) || (Roll >= 8);
+
+    if(eyeEvents?.blinkEvent)      return {label:"😆 Blink!",     hint:"Nice! Try a wink 😉",  cmd:"BLINK"};
+    if(eyeEvents?.leftWinkEvent)   return {label:"😉 Left wink",  hint:"Now try RIGHT wink!", cmd:"WINK_L"};
+    if(eyeEvents?.rightWinkEvent)  return {label:"😉 Right wink", hint:"Now try LEFT wink!",  cmd:"WINK_R"};
+
+    if(mouthWide && !midSmile) return {label:"😮 WOOOW!", hint:"Big surprise face!", cmd:"MOUTH_WIDE"};
+    if(mouthOpen && midSmile)  return {label:"😂 Laugh!", hint:"Smile + open mouth", cmd:"MOUTH_OPEN"};
+    if(mouthOpen && !midSmile) return {label:"😲 Mouth open!", hint:"Try bigger / smaller", cmd:"MOUTH_OPEN"};
+
+    if(!mouthOpen && Smile9 >= 7) return {label:"😄 Big smile!", hint:"Hold it for 2 seconds", cmd:"SMILE"};
+
+    if(tilt)     return {label:"🤔 Head tilt!", hint:"Tilt your head", cmd:null};
+    if(lookLeft) return {label:"⬅️ Look LEFT", hint:"Now look RIGHT", cmd:"LOOK_LEFT"};
+    if(lookRight)return {label:"➡️ Look RIGHT", hint:"Now look LEFT", cmd:"LOOK_RIGHT"};
+    if(lookUp)   return {label:"⬆️ Look UP", hint:"Now look DOWN", cmd:"LOOK_UP"};
+    if(lookDown) return {label:"⬇️ Look DOWN", hint:"Now look UP", cmd:"LOOK_DOWN"};
+
+    return {label:"🙂 Neutral", hint:"Try: mouth open, blink, wink, look up/down, left/right", cmd:null};
+  }
+
+  function demoUpdate(values){
+    if(!demo.on) return;
+
+    const eyeEvents = updateEyeEvents(values.LE, values.RE);
+    const {label, hint, cmd} = demoDetect({ ...values, eyeEvents });
+
+    demoLabelEl.textContent = label;
+    demoHintEl.textContent  = hint;
+
+    const now = performance.now();
+    const eventFired = eyeEvents.leftWinkEvent || eyeEvents.rightWinkEvent || eyeEvents.blinkEvent;
+
+    if((label !== demo.last || eventFired) && (now - demo.lastAt) > 450){
+      demo.last = label;
+      demo.lastAt = now;
+      log("k",`DEMO → ${label}`);
+
+      if(cmd && demo.sendCmd && writeChar){
+        const line = `CMD:${cmd}`;
+        pendingAckFor = line;
+        pendingAckAt = performance.now();
+        sendLine(line);
+      }
+
+      if(demo.speech){
+        speakOnce(label.replace(/^[^A-Za-z0-9]+\s*/,""));
+      }
+    }
+  }
+
+  // ----------------- MediaPipe Face Landmarker -----------------
+  const ui = {
+    X: el("fX"), Y: el("fY"), Z: el("fZ"),
+    Yaw: el("fYaw"), Pitch: el("fPitch"),
+    Mouth: el("fMouth"), LE: el("fLE"), RE: el("fRE"),
+    Roll: el("fRoll"), Smile: el("fSmile"), Vis: el("fVis")
+  };
+
+  let faceLandmarker = null;
+  let running = false;
+  let camStream = null;
+
+  const video = el("video");
+  const canvas = el("overlay");
+  const ctx = canvas.getContext("2d");
+
+  function clamp(n,a,b){ return Math.max(a, Math.min(b,n)); }
+  function pad2(n){ return String(clamp(Math.round(n),0,99)).padStart(2,"0"); }
+  function pad1(n){ return String(clamp(Math.round(n),0,9)); }
+
+  const CONTOURS = {
+    faceOval:   [10,338,297,332,284,251,389,356,454,323,361,288,397,365,379,378,400,377,152,148,176,149,150,136,172,58,132,93,234,127,162,21,54,103,67,109],
+    lipsOuter:  [61,146,91,181,84,17,314,405,321,375,291,308,324,318,402,317,14,87,178,88,95,185,40,39,37,0,267,269,270,409,415,310,311,312,13,82,81,80,191,78],
+    lipsInner:  [78,95,88,178,87,14,317,402,318,324,308,291,375,321,405,314,17,84,181,91,146,61],
+    leftEye:    [33,7,163,144,145,153,154,155,133,173,157,158,159,160,161,246],
+    rightEye:   [263,249,390,373,374,380,381,382,362,398,384,385,386,387,388,466],
+    leftBrow:   [70,63,105,66,107,55,65,52,53,46],
+    rightBrow:  [300,293,334,296,336,285,295,282,283,276],
+    noseBridge: [168,6,197,195,5,4],
+    noseBottom: [1,2,98,327,326],
+  };
+
+  const MESH_EDGES = [
+    [33,133],[133,362],[362,263],[263,33],
+    [61,291],[291,0],[0,61],
+    [168,6],[6,197],[197,195],[195,5],[5,4],[4,1],
+    [10,338],[338,297],[297,332],[332,284],[284,251],[251,389],[389,356],[356,454],
+    [454,323],[323,361],[361,288],[288,397],[397,365],[365,379],[379,378],[378,400],[400,377],[377,152],
+    [152,148],[148,176],[176,149],[149,150],[150,136],[136,172],[172,58],[58,132],[132,93],[93,234],
+    [234,127],[127,162],[162,21],[21,54],[54,103],[103,67],[67,109],[109,10],
+  ];
+
+  function drawPolyline(indices,lm,close=false){
+    if(!indices.length) return;
+    ctx.beginPath();
+    const p0 = lm[indices[0]];
+    ctx.moveTo(p0.x*canvas.width, p0.y*canvas.height);
+    for(let i=1;i<indices.length;i++){
+      const p = lm[indices[i]];
+      ctx.lineTo(p.x*canvas.width, p.y*canvas.height);
+    }
+    if(close) ctx.closePath();
+    ctx.stroke();
+  }
+  function drawLine(a,b,lm){
+    const p1 = lm[a], p2 = lm[b];
+    ctx.beginPath();
+    ctx.moveTo(p1.x*canvas.width, p1.y*canvas.height);
+    ctx.lineTo(p2.x*canvas.width, p2.y*canvas.height);
+    ctx.stroke();
+  }
+
+  function drawAll(lm){
+    if(chkMesh.checked){
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "rgba(255,255,255,0.55)";
+      for(const [a,b] of MESH_EDGES) drawLine(a,b,lm);
+    }
+
+    if(chkContours.checked){
+      ctx.lineWidth = 2.6;
+      ctx.strokeStyle = "rgba(255,255,255,0.92)";
+      drawPolyline(CONTOURS.faceOval, lm, true);
+
+      ctx.strokeStyle = "#ff5b5b";
+      drawPolyline(CONTOURS.lipsOuter, lm, true);
+      drawPolyline(CONTOURS.lipsInner, lm, true);
+
+      ctx.strokeStyle = "#00e5ff";
+      drawPolyline(CONTOURS.leftEye, lm, true);
+      drawPolyline(CONTOURS.leftBrow, lm, false);
+
+      ctx.strokeStyle = "#ffc400";
+      drawPolyline(CONTOURS.rightEye, lm, true);
+      drawPolyline(CONTOURS.rightBrow, lm, false);
+
+      ctx.strokeStyle = "rgba(255,255,255,0.85)";
+      drawPolyline(CONTOURS.noseBridge, lm, false);
+      drawPolyline(CONTOURS.noseBottom, lm, false);
+    }
+
+    if(chkPoints.checked){
+      ctx.fillStyle = "rgba(255,255,255,0.9)";
+      for(const p of lm){
+        ctx.beginPath();
+        ctx.arc(p.x*canvas.width, p.y*canvas.height, 1.1, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function bboxFromLandmarks(lm){
+    let minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
+    for(const p of lm){ minX=Math.min(minX,p.x); minY=Math.min(minY,p.y); maxX=Math.max(maxX,p.x); maxY=Math.max(maxY,p.y); }
+    return { cx:(minX+maxX)/2, cy:(minY+maxY)/2, size:Math.max(maxX-minX, maxY-minY) };
+  }
+
+  function mouthOpenness(lm){
+    const upper = lm[13], lower = lm[14];
+    return clamp(Math.abs(lower.y - upper.y) * 300, 0, 99);
+  }
+
+  function eyeOpennessFromLandmarks(lm, upperIdx, lowerIdx, innerIdx, outerIdx){
+    const up = lm[upperIdx], low = lm[lowerIdx], inn = lm[innerIdx], out = lm[outerIdx];
+    const v = Math.hypot(up.x - low.x, up.y - low.y);
+    const h = Math.hypot(inn.x - out.x, inn.y - out.y);
+    const r = v / Math.max(h, 1e-6);
+    const norm = (r - 0.015) / (0.095 - 0.015);
+    return clamp(norm * 99, 0, 99);
+  }
+
+  let leEMA = 99, reEMA = 99;
+  function blendshapeScore(blendShapes, name){
+    const cats = blendShapes?.categories;
+    if(!cats) return 0;
+    const c = cats.find(x => x.categoryName === name);
+    return c ? c.score : 0;
+  }
+
+  function matToEulerYPR(m){
+    const r00 = m[0], r10 = m[1], r20 = m[2];
+    const r21 = m[6], r22 = m[10];
+    const pitch = Math.atan2(-r21, r22);
+    const yaw   = Math.asin(clamp(r20, -1, 1));
+    const roll  = Math.atan2(-r10, r00);
+    const to99 = (rad, rangeRad=1.1) => 49 + (rad / rangeRad) * 50;
+    return { yaw99: clamp(to99(yaw),0,99), pitch99: clamp(to99(pitch),0,99), roll9: clamp((roll/1.1)*5+5,0,9) };
+  }
+
+  async function initLandmarker(){
+    uiState.textContent = "Loading model…";
+    log("k","Loading MediaPipe model…");
+    const fileset = await FilesetResolver.forVisionTasks(
+      "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.21/wasm"
+    );
+    faceLandmarker = await FaceLandmarker.createFromOptions(fileset, {
+      baseOptions: {
+        modelAssetPath:
+          "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+      },
+      runningMode: "VIDEO",
+      numFaces: 1,
+      outputFaceBlendshapes: true,
+      outputFacialTransformationMatrixes: true,
+    });
+    uiState.textContent = "Model loaded";
+    log("ok","Model loaded.");
+  }
+
+  async function startCamera(){
+    if(!faceLandmarker) await initLandmarker();
+    log("k","Requesting webcam…");
+    camStream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:"user" }, audio:false });
+    video.srcObject = camStream;
+    await video.play();
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    running = true;
+    setPill(pillCam,true,"Cam: running");
+    log("ok","Webcam started.");
+    requestAnimationFrame(loop);
+  }
+
+  function stopCamera(){
+    running = false;
+    if(camStream){
+      camStream.getTracks().forEach(t => t.stop());
+      camStream = null;
+    }
+    video.srcObject = null;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    setPill(pillCam,false,"Cam: stopped");
+    log("warn","Webcam stopped.");
+  }
+
+  el("btnCam").onclick = () => startCamera().catch(e => { console.error(e); log("err","Camera failed. Check console."); });
+  el("btnStopCam").onclick = () => stopCamera();
+
+  // ----------------- Main loop -----------------
+  let lastT = performance.now();
+  let lastSent = 0;
+
+  async function loop(){
+    if(!running) return;
+
+    const now = performance.now();
+    const dt = now - lastT;
+    lastT = now;
+    pillFps.innerHTML = `<span class="miniDot"></span>FPS: ${Math.round(1000/dt)}`;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const res = faceLandmarker.detectForVideo(video, now);
+    const hasFace = res.faceLandmarks && res.faceLandmarks.length > 0;
+
+    let X=0,Y=0,Z=0,Yaw=49,Pitch=49,Mouth=0,LE=0,RE=0,Roll=5,Smile9=0,Vis=0;
+
+    if(hasFace){
+      const lm = res.faceLandmarks[0];
+      Vis = 1;
+
+      drawAll(lm);
+
+      const bbox = bboxFromLandmarks(lm);
+      X = clamp(bbox.cx * 99, 0, 99);
+      Y = clamp(bbox.cy * 99, 0, 99);
+      Z = clamp((1 / clamp(bbox.size, 0.05, 0.8)) * 10, 0, 99);
+
+      const mat = res.facialTransformationMatrixes?.[0]?.data;
+      const ang = mat ? matToEulerYPR(mat) : { yaw99:49, pitch99:49, roll9:5 };
+      Yaw = ang.yaw99; Pitch = ang.pitch99; Roll = ang.roll9;
+
+      Mouth = mouthOpenness(lm);
+
+      const bs = res.faceBlendshapes?.[0];
+      Mouth = Math.max(Mouth, clamp(blendshapeScore(bs, "jawOpen") * 99, 0, 99));
+
+      const smile = (blendshapeScore(bs, "mouthSmileLeft") + blendshapeScore(bs, "mouthSmileRight")) / 2;
+
+      const leRaw = eyeOpennessFromLandmarks(lm, 159, 145, 33, 133);
+      const reRaw = eyeOpennessFromLandmarks(lm, 386, 374, 263, 362);
+
+      leEMA = leEMA * 0.7 + leRaw * 0.3;
+      reEMA = reEMA * 0.7 + reRaw * 0.3;
+
+      LE = clamp(leEMA, 0, 99);
+      RE = clamp(reEMA, 0, 99);
+      Smile9 = clamp(smile * 9, 0, 9);
+    }
+
+    ui.X.value = Math.round(X);
+    ui.Y.value = Math.round(Y);
+    ui.Z.value = Math.round(Z);
+    ui.Yaw.value = Math.round(Yaw);
+    ui.Pitch.value = Math.round(Pitch);
+    ui.Mouth.value = Math.round(Mouth);
+    ui.LE.value = Math.round(LE);
+    ui.RE.value = Math.round(RE);
+    ui.Roll.value = Math.round(Roll);
+    ui.Smile.value = Math.round(Smile9);
+    ui.Vis.value = Vis;
+
+    // Demo uses same computed values
+    demoUpdate({ Vis, Mouth, Smile9, LE, RE, Yaw, Pitch, Roll });
+
+    const packet =
+      pad2(X)+pad2(Y)+pad2(Z)+
+      pad2(Yaw)+pad2(Pitch)+
+      pad2(Mouth)+pad2(LE)+pad2(RE)+
+      pad1(Roll)+pad1(Smile9)+String(Vis);
+
+    outEl.textContent = packet;
+
+    if(sendingEnabled && writeChar && (now - lastSent) > 100){
+      lastSent = now;
+      await sendLine(packet);
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  // Boot
+  log("k","UI ready → Start webcam → Connect micro:bit → Start sending");
+  setPill(pillCam,false,"Cam: not started");
+  setBleUi(false);
+  refreshControls();
+</script>
+</body>
+</html>
