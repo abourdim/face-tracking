@@ -1,0 +1,20 @@
+{
+  "PRODUCT_NAME": "Face Tracking Kids",
+  "PRODUCT_SLUG": "FaceTrackingKids",
+  "GITHUB_REPO": "face-tracking",
+  "GITHUB_USER": "abourdim",
+  "LIVE_DEMO_URL": "https://abourdim.github.io/face-tracking/",
+  "VERSION": "v1.0.0",
+  "VERSION_UPPER": "V1.0.0",
+  "VERSION_PLAIN": "1.0.0",
+  "TAGLINE": "See • Follow • Smile",
+  "HARDWARE": "webcam",
+  "PRICE_LAUNCH": "12.99",
+  "PRICE_STANDARD": "17.99",
+  "PRICE_BUNDLE": "29.99",
+  "PRICE_TRIPWIRE": "5",
+  "PRICE_SITE": "199",
+  "PRICE_DISTRICT": "499",
+  "PROMO_CODE": "LAUNCH10",
+  "PROMO_PRICE": "7"
+}

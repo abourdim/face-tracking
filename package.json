@@ -1,0 +1,9 @@
+{
+  "name": "face-tracking",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Face Tracking Kids — See • Follow • Smile",
+  "scripts": { "build:etsy": "node etsy-package/build-package.js" },
+  "devDependencies": { "@playwright/test": "^1.48.0" }
+}
