@@ -78,10 +78,10 @@
 <!-- PAGE 1: Template -->
 <div class="page">
   <div class="header">
-    <div class="header-logo"><span>µP</span></div>
+    <div class="header-logo"><span>F·T</span></div>
     <div class="header-text">
       <h1>Face Tracking Kids Lesson Plan</h1>
-      <span>45-Minute STEM Lesson Planner &bull; v1.0.0</span>
+      <span>45-Minute AI &amp; Computer Vision Lesson Planner &bull; v1.0.0</span>
     </div>
   </div>
 
@@ -100,14 +100,14 @@
 
   <div class="section"><div class="dot"></div> Materials &amp; Setup</div>
   <ul class="checklist">
-    <li>webcam (1 per student or per pair)</li>
-    <li>USB cable or battery pack</li>
-    <li>Laptop / tablet with Chrome or Edge (Bluetooth enabled)</li>
+    <li>Laptop / tablet with built-in or USB webcam (1 per student or pair)</li>
+    <li>Chrome or Edge browser (desktop or Android)</li>
     <li>Face Tracking Kids opened via <code>index.html</code></li>
-    <li>Firmware flashed from <code>makecode.ts</code></li>
-    <li>Servo(s) on pins P1 / P2 (optional)</li>
-    <li>Printed Quick-Start Card &amp; Shortcuts sheet</li>
-    <li>Theme chosen: ________________</li>
+    <li>Good room lighting on faces (no strong backlight)</li>
+    <li>Optional: micro:bit V2 + MakeCode program from <code>makecode.ts</code></li>
+    <li>Optional: headphones (speech output) for paired-work classrooms</li>
+    <li>Printed Quick-Start Card &amp; Control cheat sheet</li>
+    <li>Privacy reminder: video never leaves the device</li>
   </ul>
 
   <div class="section"><div class="dot"></div> Lesson Timeline (45 min)</div>
@@ -115,7 +115,7 @@
     <div class="trow thead">
       <div class="tcol-time">Time</div>
       <div class="tcol-act">Activity</div>
-      <div class="tcol-tool">Playground Tab</div>
+      <div class="tcol-tool">Part of App</div>
       <div class="tcol-notes">Notes</div>
     </div>
     <div class="trow"><div class="tcol-time"></div><div class="tcol-act"></div><div class="tcol-tool"></div><div class="tcol-notes"></div></div>
@@ -129,9 +129,9 @@
 
   <div class="section"><div class="dot"></div> Wrap-up</div>
   <ul class="checklist">
-    <li>Stop streaming (Space)</li>
-    <li>Save session JSON from Graph tab</li>
-    <li>Students share one observation</li>
+    <li>Stop webcam &amp; Speech from each station</li>
+    <li>Students share one smile/blink/turn experiment they tried</li>
+    <li>Discuss: "when can an AI get your face wrong?"</li>
     <li>Exit-ticket question</li>
   </ul>
 
@@ -147,50 +147,50 @@
 <!-- PAGE 2: Sample lesson -->
 <div class="page">
   <div class="header">
-    <div class="header-logo"><span>µP</span></div>
+    <div class="header-logo"><span>F·T</span></div>
     <div class="header-text">
-      <h1>Sample Lesson: Hot or Not? The Sensor Detective</h1>
+      <h1>Sample Lesson: Can a Computer See Your Smile?</h1>
       <span>Ready-to-teach 45-minute example</span>
     </div>
   </div>
 
   <div class="field-row">
-    <div class="field"><label>Lesson Title</label><div class="input"><span class="sample">Hot or Not? The Sensor Detective</span></div></div>
+    <div class="field"><label>Lesson Title</label><div class="input"><span class="sample">Can a Computer See Your Smile?</span></div></div>
     <div class="field" style="width:30%;flex:none;"><label>Duration</label><div class="input"><span class="sample">45 minutes</span></div></div>
   </div>
   <div class="field-row">
-    <div class="field"><label>Grade / Age Group</label><div class="input"><span class="sample">Ages 9&ndash;14</span></div></div>
-    <div class="field"><label>Subject</label><div class="input"><span class="sample">STEM / Physics / Data Literacy</span></div></div>
+    <div class="field"><label>Grade / Age Group</label><div class="input"><span class="sample">Ages 8&ndash;15</span></div></div>
+    <div class="field"><label>Subject</label><div class="input"><span class="sample">AI / Computer Vision / Digital Literacy</span></div></div>
   </div>
 
   <div class="section"><div class="dot"></div> Learning Objectives</div>
-  <div class="field"><div class="input input-tall"><span class="sample">1. Pair a micro:bit V2 over Web Bluetooth.<br>2. Read temperature, light, and sound sensors.<br>3. Graph a measurement over time and identify trends.<br>4. Explain a physical cause for an observed spike.</span></div></div>
+  <div class="field"><div class="input input-tall"><span class="sample">1. Explain what a "face mesh" is and why it has many points.<br>2. Identify at least 4 events the app can detect (smile, open mouth, blink, head turn, face present/absent).<br>3. Describe how landmark positions become numbers (X, Y, yaw, pitch, roll).<br>4. Give one real-world use of face tracking and one privacy concern.</span></div></div>
 
   <div class="section"><div class="dot"></div> Lesson Timeline</div>
   <div class="timeline">
     <div class="trow thead">
       <div class="tcol-time">Time</div>
       <div class="tcol-act">Activity</div>
-      <div class="tcol-tool">Playground</div>
+      <div class="tcol-tool">Part of App</div>
       <div class="tcol-notes">Notes</div>
     </div>
-    <div class="trow"><div class="tcol-time"><span class="sample">0&ndash;5</span></div><div class="tcol-act"><span class="sample">Hook: "Can your micro:bit feel a hand on its face?"</span></div><div class="tcol-tool"><span class="sample">LEDs tab</span></div><div class="tcol-notes"><span class="sample">Show heart preset</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">5&ndash;10</span></div><div class="tcol-act"><span class="sample">Flash firmware &amp; pair board</span></div><div class="tcol-tool"><span class="sample">Connect btn</span></div><div class="tcol-notes"><span class="sample">Help with BLE prompts</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">10&ndash;18</span></div><div class="tcol-act"><span class="sample">Tour the Sensors tab &mdash; name each reading</span></div><div class="tcol-tool"><span class="sample">Sensors (2)</span></div><div class="tcol-notes"><span class="sample">Pause with Space</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">18&ndash;28</span></div><div class="tcol-act"><span class="sample">Investigate: cover light sensor, cup hands around board</span></div><div class="tcol-tool"><span class="sample">Graph (5)</span></div><div class="tcol-notes"><span class="sample">Press R to record</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">28&ndash;35</span></div><div class="tcol-act"><span class="sample">Annotate spikes on the graph</span></div><div class="tcol-tool"><span class="sample">Graph + K</span></div><div class="tcol-notes"><span class="sample">Timestamp notes</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">35&ndash;40</span></div><div class="tcol-act"><span class="sample">Export session JSON, open in next class</span></div><div class="tcol-tool"><span class="sample">Graph &rarr; Export</span></div><div class="tcol-notes"><span class="sample">Save to shared folder</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">40&ndash;45</span></div><div class="tcol-act"><span class="sample">Share one finding + exit ticket</span></div><div class="tcol-tool"><span class="sample">&mdash;</span></div><div class="tcol-notes"><span class="sample">Peer applause</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">0&ndash;5</span></div><div class="tcol-act"><span class="sample">Hook: "Your phone unlocks with your face &mdash; how?"</span></div><div class="tcol-tool"><span class="sample">&mdash;</span></div><div class="tcol-notes"><span class="sample">Quick class discussion</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">5&ndash;10</span></div><div class="tcol-act"><span class="sample">Open the app, Start webcam, allow camera</span></div><div class="tcol-tool"><span class="sample">Face App card</span></div><div class="tcol-notes"><span class="sample">Mirror ON for comfort</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">10&ndash;18</span></div><div class="tcol-act"><span class="sample">Explore Mesh / Contours / Points toggles</span></div><div class="tcol-tool"><span class="sample">Overlay toggles</span></div><div class="tcol-notes"><span class="sample">Count visible points</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">18&ndash;28</span></div><div class="tcol-act"><span class="sample">Turn on Demo + Speech, test each detection</span></div><div class="tcol-tool"><span class="sample">Demo card</span></div><div class="tcol-notes"><span class="sample">Smile, open mouth, wink, turn head</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">28&ndash;35</span></div><div class="tcol-act"><span class="sample">Read live numbers: X, Y, Yaw, Pitch, Mouth, Smile</span></div><div class="tcol-tool"><span class="sample">Numerics panel</span></div><div class="tcol-notes"><span class="sample">Predict before moving</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">35&ndash;40</span></div><div class="tcol-act"><span class="sample">Optional: pair micro:bit, start sending, show reaction</span></div><div class="tcol-tool"><span class="sample">Live Link card</span></div><div class="tcol-notes"><span class="sample">Skip if no board</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">40&ndash;45</span></div><div class="tcol-act"><span class="sample">Privacy talk + exit ticket</span></div><div class="tcol-tool"><span class="sample">&mdash;</span></div><div class="tcol-notes"><span class="sample">"Video never leaves device"</span></div></div>
   </div>
 
   <div class="callout">
-    <h4>Playground features used in this lesson</h4>
+    <h4>App features used in this lesson</h4>
     <ul>
-      <li><span class="pill pg">BLE Connect</span> Web Bluetooth pairing with auto-reconnect</li>
-      <li><span class="pill pb">Live Sensors</span> temp, light, sound, accel, compass all at once</li>
-      <li><span class="pill py">Chart.js Graph</span> live rolling plot, fullscreen with F</li>
-      <li><span class="pill pg">Session Recording</span> press R, export as JSON for later analysis</li>
-      <li><span class="pill pb">Simulate Mode</span> great backup if a board fails mid-class</li>
+      <li><span class="pill pg">Webcam + live mesh</span> on-device AI, nothing uploaded</li>
+      <li><span class="pill pb">Mesh / Contours / Points</span> three ways to visualise landmarks</li>
+      <li><span class="pill py">Demo + Speech</span> the app announces smiles, blinks, head turns</li>
+      <li><span class="pill pg">Numerics panel</span> X, Y, yaw, pitch, mouth, smile, visibility</li>
+      <li><span class="pill pb">BLE Live Link</span> optional micro:bit bridge over Bluetooth</li>
     </ul>
   </div>
 
@@ -202,10 +202,10 @@
       <div class="tcol-tool">Good (2)</div>
       <div class="tcol-notes">Needs Work (1)</div>
     </div>
-    <div class="trow"><div class="tcol-time"><span class="sample">BLE pairing</span></div><div class="tcol-act"><span class="sample">Paired independently</span></div><div class="tcol-tool"><span class="sample">With 1 hint</span></div><div class="tcol-notes"><span class="sample">Needed help</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">Sensor naming</span></div><div class="tcol-act"><span class="sample">Named all 6 correctly</span></div><div class="tcol-tool"><span class="sample">4&ndash;5 correct</span></div><div class="tcol-notes"><span class="sample">&lt; 4 correct</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">Graph reading</span></div><div class="tcol-act"><span class="sample">Explained spike with cause</span></div><div class="tcol-tool"><span class="sample">Identified spike</span></div><div class="tcol-notes"><span class="sample">Missed spike</span></div></div>
-    <div class="trow"><div class="tcol-time"><span class="sample">Curiosity</span></div><div class="tcol-act"><span class="sample">Tested own hypothesis</span></div><div class="tcol-tool"><span class="sample">Followed guide</span></div><div class="tcol-notes"><span class="sample">Off-task</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">Open &amp; start camera</span></div><div class="tcol-act"><span class="sample">Independent</span></div><div class="tcol-tool"><span class="sample">With 1 hint</span></div><div class="tcol-notes"><span class="sample">Needed help</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">Name the detections</span></div><div class="tcol-act"><span class="sample">Named 4+ correctly</span></div><div class="tcol-tool"><span class="sample">2&ndash;3 correct</span></div><div class="tcol-notes"><span class="sample">&lt; 2 correct</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">Read numerics</span></div><div class="tcol-act"><span class="sample">Predicted value before moving</span></div><div class="tcol-tool"><span class="sample">Read value after moving</span></div><div class="tcol-notes"><span class="sample">Did not connect</span></div></div>
+    <div class="trow"><div class="tcol-time"><span class="sample">Privacy answer</span></div><div class="tcol-act"><span class="sample">Used precise reasoning</span></div><div class="tcol-tool"><span class="sample">General idea</span></div><div class="tcol-notes"><span class="sample">Off-topic</span></div></div>
   </div>
 
   <div class="footer">

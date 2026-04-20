@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Face Tracking Kids Keyboard Shortcuts Cheat Sheet</title>
+<title>Face Tracking Kids Control Cheat Sheet</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Orbitron:wght@500&family=Tajawal:wght@400;500;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,14 +35,16 @@
   }
   .row:nth-child(even) { background: rgba(34,197,94,.02); }
 
-  kbd {
+  .btn {
     display: inline-flex; align-items: center; justify-content: center;
-    min-width: 30px; height: 26px; padding: 0 8px;
+    min-width: 70px; height: 26px; padding: 0 10px;
     background: rgba(0,0,0,.6); border: 1px solid rgba(34,197,94,.3);
-    border-radius: 6px; font-family: 'Orbitron', monospace; font-size: 11px;
+    border-radius: 8px; font-family: 'Orbitron', monospace; font-size: 10px;
     color: #22c55e; box-shadow: 0 2px 4px rgba(0,0,0,.4);
     white-space: nowrap;
   }
+  .btn.blue { color:#22d3ee; border-color: rgba(34,211,238,.35); }
+  .btn.red { color:#f87171; border-color: rgba(248,113,113,.35); }
   .label { font-size: 12px; color: #94a3b8; flex: 1; }
 
   .footer {
@@ -64,7 +66,6 @@
   .d-green { background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,.6); }
   .d-amber { background: #fbbf24; box-shadow: 0 0 8px rgba(251,191,36,.6); }
   .d-red { background: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,.6); }
-  .d-blue { background: #22d3ee; box-shadow: 0 0 8px rgba(34,211,238,.6); }
   .d-gray { background: #475569; }
 </style>
 </head>
@@ -72,89 +73,75 @@
 <div class="page">
 
   <div class="header">
-    <h1>Face Tracking Kids Shortcuts</h1>
+    <h1>Face Tracking Kids Controls</h1>
     <span>Cheat Sheet &mdash; Laminate Me!</span>
   </div>
-  <div class="laminate-tip">Print &rarr; Laminate &rarr; Stick near your micro:bit</div>
+  <div class="laminate-tip">Print &rarr; Laminate &rarr; Stick next to the classroom laptop</div>
 
   <div class="cols">
 
-    <!-- Column 1 -->
+    <!-- Column 1: Face App card -->
     <div>
       <div class="group">
-        <div class="group-title">Streaming &amp; Data</div>
-        <div class="row"><kbd>Space</kbd><span class="label">Pause / Resume sensor stream</span></div>
-        <div class="row"><kbd>K</kbd><span class="label">Clear graph buffer</span></div>
-        <div class="row"><kbd>F</kbd><span class="label">Toggle fullscreen graph</span></div>
-        <div class="row"><kbd>R</kbd><span class="label">Start / Stop session recording</span></div>
+        <div class="group-title">Face App Card</div>
+        <div class="row"><span class="btn blue">📷 Start webcam</span><span class="label">Turn on camera &amp; face tracking</span></div>
+        <div class="row"><span class="btn">⏹ Stop webcam</span><span class="label">Stop camera &amp; release device</span></div>
+        <div class="row"><span class="btn">🔄 Switch camera</span><span class="label">Cycle through available cameras</span></div>
+        <div class="row"><span class="btn">🪞 Mirror ON/OFF</span><span class="label">Flip video like a mirror</span></div>
       </div>
 
       <div class="group">
-        <div class="group-title">Tabs (1&ndash;8)</div>
-        <div class="row"><kbd>1</kbd><span class="label">LEDs &mdash; 5&times;5 matrix</span></div>
-        <div class="row"><kbd>2</kbd><span class="label">Sensors &mdash; live readings</span></div>
-        <div class="row"><kbd>3</kbd><span class="label">Servos &mdash; P1 &amp; P2</span></div>
-        <div class="row"><kbd>4</kbd><span class="label">GamePad &mdash; D-pad + Fire</span></div>
-        <div class="row"><kbd>5</kbd><span class="label">Graph &mdash; Chart.js live plot</span></div>
-        <div class="row"><kbd>6</kbd><span class="label">3D Board &mdash; Three.js view</span></div>
-        <div class="row"><kbd>7</kbd><span class="label">Bench &mdash; raw JSON console</span></div>
-        <div class="row"><kbd>8</kbd><span class="label">About &mdash; version &amp; credits</span></div>
+        <div class="group-title">Overlay Toggles</div>
+        <div class="row"><span class="btn">☑ Mesh</span><span class="label">Full face mesh (~468 points)</span></div>
+        <div class="row"><span class="btn">☑ Contours</span><span class="label">Eyes, lips, face outline</span></div>
+        <div class="row"><span class="btn">☐ Points</span><span class="label">Raw landmark dots only</span></div>
       </div>
     </div>
 
-    <!-- Column 2 -->
+    <!-- Column 2: Demo + Speech -->
     <div>
       <div class="group">
-        <div class="group-title">LEDs &amp; Overlays</div>
-        <div class="row"><kbd>P</kbd><span class="label">Open LED preset picker</span></div>
-        <div class="row"><kbd>C</kbd><span class="label">Clear LED matrix</span></div>
-        <div class="row"><kbd>H</kbd><span class="label">Heart preset</span></div>
-        <div class="row"><kbd>S</kbd><span class="label">Smile preset</span></div>
-        <div class="row"><kbd>Esc</kbd><span class="label">Close any overlay / fullscreen</span></div>
+        <div class="group-title">Demo Card (funny detections)</div>
+        <div class="row"><span class="btn">▶ Demo ON</span><span class="label">Start reacting to face events</span></div>
+        <div class="row"><span class="btn">⏸ Demo OFF</span><span class="label">Stop the reaction engine</span></div>
+        <div class="row"><span class="btn">🔁 Reset</span><span class="label">Clear the detection log</span></div>
+        <div class="row"><span class="btn">🔊 Start Speech</span><span class="label">Announce detections out loud</span></div>
+        <div class="row"><span class="btn">🔊 Test voice</span><span class="label">Play a sample phrase</span></div>
       </div>
 
       <div class="group">
-        <div class="group-title">3D Board Models</div>
-        <div class="row"><kbd>M</kbd><span class="label">Switch model (cycle)</span></div>
-        <div class="row"><span style="font-size:14px;">🔲</span><span class="label">micro:bit V2 board</span></div>
-        <div class="row"><span style="font-size:14px;">🚗</span><span class="label">Buggy robot</span></div>
-        <div class="row"><span style="font-size:14px;">🦾</span><span class="label">Robot Arm</span></div>
-        <div class="row"><span style="font-size:14px;">🎯</span><span class="label">Balance game</span></div>
-        <div class="row"><span style="font-size:14px;">🌦️</span><span class="label">Weather station</span></div>
-      </div>
-
-      <div class="group">
-        <div class="group-title">Themes &amp; View</div>
-        <div class="row"><kbd>T</kbd><span class="label">Cycle theme (Stealth &rarr; Neon &rarr; Arctic &rarr; Blaze)</span></div>
-        <div class="row"><kbd>L</kbd><span class="label">Cycle language (EN &rarr; FR &rarr; AR)</span></div>
-        <div class="row"><kbd>?</kbd><span class="label">Show shortcuts help overlay</span></div>
+        <div class="group-title">Voice Settings</div>
+        <div class="row"><span class="btn blue">Lang</span><span class="label">Auto · en-US · en-GB · fr-FR · es-ES · de · it · pt · nl · ja · ko · zh</span></div>
+        <div class="row"><span class="btn blue">Voice</span><span class="label">Pick any system voice</span></div>
+        <div class="row"><span class="btn blue">Rate</span><span class="label">0.7&times; &ndash; 1.3&times; speaking speed</span></div>
+        <div class="row"><span class="btn blue">Pitch</span><span class="label">0.6 &ndash; 1.6 vocal pitch</span></div>
       </div>
     </div>
 
-    <!-- Column 3 -->
+    <!-- Column 3: BLE + Detections -->
     <div>
       <div class="group">
-        <div class="group-title">BLE State Cheat Sheet</div>
+        <div class="group-title">micro:bit Live Link (optional)</div>
+        <div class="row"><span class="btn">🔗 Connect</span><span class="label">Pair over Bluetooth (UART)</span></div>
+        <div class="row"><span class="btn red">❌ Disconnect</span><span class="label">Drop the BLE link</span></div>
+        <div class="row"><span class="btn">🧪 Send TEST</span><span class="label">Send one test packet</span></div>
+        <div class="row"><span class="btn">🚀 Start sending</span><span class="label">Stream face data live</span></div>
+        <div class="row"><span class="btn red">🛑 Stop</span><span class="label">Stop streaming (keep link)</span></div>
+      </div>
+
+      <div class="group">
+        <div class="group-title">BLE State</div>
         <div class="ble-row"><span class="dot d-gray"></span><span class="label"><strong style="color:#cbd5e1;">Disconnected</strong> &mdash; click Connect to pair</span></div>
         <div class="ble-row"><span class="dot d-amber"></span><span class="label"><strong style="color:#fbbf24;">Pairing</strong> &mdash; choose "BBC micro:bit [xxxxx]"</span></div>
-        <div class="ble-row"><span class="dot d-green"></span><span class="label"><strong style="color:#22c55e;">Connected</strong> &mdash; data is streaming live</span></div>
-        <div class="ble-row"><span class="dot d-blue"></span><span class="label"><strong style="color:#22d3ee;">Simulate</strong> &mdash; fake data, no board needed</span></div>
-        <div class="ble-row"><span class="dot d-red"></span><span class="label"><strong style="color:#ef4444;">Error</strong> &mdash; auto-retry 3x, then prompt</span></div>
+        <div class="ble-row"><span class="dot d-green"></span><span class="label"><strong style="color:#22c55e;">Connected</strong> &mdash; 19-digit packet streaming</span></div>
+        <div class="ble-row"><span class="dot d-red"></span><span class="label"><strong style="color:#ef4444;">Error</strong> &mdash; reset micro:bit, retry</span></div>
       </div>
 
       <div class="group">
-        <div class="group-title">Servos (P1 / P2)</div>
-        <div class="row"><kbd>Q</kbd> / <kbd>A</kbd><span class="label">P1 servo +/- 10&deg;</span></div>
-        <div class="row"><kbd>W</kbd> / <kbd>S</kbd><span class="label">P2 servo +/- 10&deg;</span></div>
-        <div class="row"><kbd>0</kbd><span class="label">Center both servos (90&deg;)</span></div>
-        <div class="row"><kbd>O</kbd><span class="label">Servos OFF (detach PWM)</span></div>
-      </div>
-
-      <div class="group">
-        <div class="group-title">Pro Tips</div>
+        <div class="group-title">What Gets Detected</div>
         <div class="row" style="flex-direction:column;align-items:start;">
-          <span class="label" style="color:#22d3ee;">No board? Turn on <strong>Simulate Mode</strong> in Settings for Sine/Random/Ramp data.</span>
-          <span class="label" style="color:#64748b;font-size:11px;">Only <strong>Chrome</strong> / <strong>Edge</strong> (desktop or Android) support Web Bluetooth.</span>
+          <span class="label" style="color:#22d3ee;">😄 Smile &bull; 😮 Open mouth &bull; 😉 Wink (L/R) &bull; 👀 Blink &bull; ⬅➡ Head turn &bull; 🙂 Face appears / disappears</span>
+          <span class="label" style="color:#64748b;font-size:11px;">Packet: <strong>XX YY ZZ Yaw Pitch Mouth LEye REye Roll Smile Vis</strong> (19 digits).</span>
         </div>
       </div>
     </div>
@@ -163,7 +150,7 @@
 
   <div class="footer">
     <span>Face Tracking Kids v1.0.0 &bull; Print on A4 landscape, laminate, love.</span>
-    <span class="brand">For the webcam</span>
+    <span class="brand">Chrome / Edge &bull; Web BLE for micro:bit</span>
   </div>
 
 </div>

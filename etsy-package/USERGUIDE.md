@@ -96,31 +96,32 @@ All six are standalone HTML files designed to be rendered as PNGs by
 The HTML sources ship too, so teachers can tweak them.
 
 #### `quickstart-card.html` — A4 portrait
-- **What:** 5-step setup card (flash firmware → open `index.html` →
-  Chrome/Edge → connect BLE → play).
+- **What:** 5-step setup card (open `index.html` in Chrome/Edge → Start
+  webcam → see the mesh → try Demo + Speech → optional micro:bit Live Link).
 - **When to use:** buyers print it as the first thing they hold when they
   unzip the package. Also the cover image of the "Printables" bundle
   advertised on the listing.
 
 #### `shortcuts-cheatsheet.html` — A4 landscape
-- **What:** Keyboard shortcuts (Space, 1–8, P, F, K, Esc), BLE state
-  cheat sheet, tab map.
+- **What:** Control cheat sheet — every button in the Face App, Demo, and
+  Live Link cards, plus the BLE state colour legend.
 - **When to use:** teachers print and pin next to the classroom PC.
 
 #### `classroom-poster.html` — A3 portrait
-- **What:** "We Control Robots with Code!" poster in 5 big kid-safe steps.
+- **What:** "See • Follow • Smile!" poster in 5 big kid-safe steps.
 - **When to use:** teachers print on A3 for classroom walls. Doubles as
   a strong visual for the listing cover.
 
 #### `lesson-plan-template.html` — A4 portrait
 - **What:** Editable 45-minute lesson-plan template + one ready-to-teach
-  sample ("Hot or Not? The Sensor Detective") with a rubric.
+  sample ("Can a Computer See Your Smile?") with an AI / computer-vision
+  rubric.
 - **When to use:** sell the "teacher-friendly" angle. Print, fill in by
   hand or in Canva, hand out.
 
 #### `sticker-sheet.html` — A4 portrait
-- **What:** 30 circular badges — "I Connected BLE!", theme icons, 3D
-  model crew, language badges, achievement stickers.
+- **What:** 30 circular badges — Mesh Maker, Smile Spotter, Blink Counter,
+  Head-Turn Hero, Speech Starter, BLE Connector, and more.
 - **When to use:** teachers print on sticker paper (Avery 22807 or
   similar) for student rewards. Great "bonus" in Etsy description.
 
@@ -137,13 +138,13 @@ The HTML sources ship too, so teachers can tweak them.
   elements, each 2000×1500 px. Rendered by `build-package.js` into
   `output/etsy-mockup-1.png` … `etsy-mockup-7.png`.
 - **The seven mockups:**
-  1. **Hero shot** — product name + tagline on Stealth background
-  2. **16-cell feature grid** — 8 tabs × features
-  3. **Teacher pitch** — "For teachers" with quotes
-  4. **Kid pitch** — big, playful, colorful
-  5. **What's in the ZIP** — file manifest
-  6. **4-theme showcase** — Stealth / Neon / Arctic / Blaze
-  7. **Trilingual callout** — EN / FR / AR
+  1. **Hero shot** — product name + tagline on a dark background
+  2. **What's in the ZIP** — file manifest
+  3. **16-cell feature grid** — webcam, mesh, detections, numerics, speech, BLE
+  4. **Teacher pitch** — "Made for Teachers" with quotes
+  5. **Kid pitch** — "Your Face Is The Controller!"
+  6. **Privacy** — three-card layout: camera / AI / identity all local
+  7. **Trilingual seller playbooks** — EN / FR / AR playbook callout
 - **When to use:** upload as the 7 listing images on Etsy in this order.
   Etsy shows the first image as the thumbnail in search.
 
