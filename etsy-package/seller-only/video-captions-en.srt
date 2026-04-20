@@ -1,0 +1,37 @@
+1
+00:00:00,000 --> 00:00:03,000
+See, follow, smile — a face-AI lab
+in your browser, in 60 seconds.
+
+2
+00:00:03,000 --> 00:00:10,000
+One page. Allow camera. That's it.
+
+3
+00:00:10,000 --> 00:00:20,000
+Smile — the numbers light up.
+Wink — it catches it.
+
+4
+00:00:20,000 --> 00:00:30,000
+Turn your head — yaw, pitch, roll.
+468 landmarks tracking you.
+
+5
+00:00:30,000 --> 00:00:40,000
+Demo mode announces every move —
+twelve languages plus Auto.
+
+6
+00:00:40,000 --> 00:00:50,000
+Optional: pair a micro:bit V2 —
+face data streams over Bluetooth.
+
+7
+00:00:50,000 --> 00:00:55,000
+Link below — lifetime updates,
+webcam is all you need.
+
+8
+00:00:55,000 --> 00:01:00,000
+See · Follow · Smile.
