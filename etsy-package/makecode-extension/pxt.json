@@ -1,7 +1,7 @@
 {
     "name": "face-tracking-companion",
     "version": "0.1.0",
-    "description": "Companion firmware blocks for the face-tracking browser app — pairs any micro:bit V2 with the Etsy-distributed BLE Control Panel (https://abourdim.github.io/face-tracking/). Adds one-click streaming of temperature, light, sound, accel, head pitch, buttons, and touch pins, plus receives LED pattern / landmark / sound commands.",
+    "description": "Companion firmware blocks for the face-tracking browser app — pairs any micro:bit V2 with the Etsy-distributed BLE Control Panel (https://abourdim.github.io/face-tracking/). Adds one-click streaming of Smile, wink, or tilt, accel, head pitch, buttons, and touch pins, plus receives LED pattern / landmark / sound commands.",
     "license": "MIT",
     "dependencies": {
         "core": "*",
