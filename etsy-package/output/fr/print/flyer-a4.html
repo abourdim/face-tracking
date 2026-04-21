@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr"><head><meta charset="UTF-8"><style>
+  @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Orbitron:wght@500;700&family=Inter:wght@400;600;800;900&family=Tajawal:wght@400;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4 portrait; margin: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #020617;
+    color: #e8ffe8;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page { width: 210mm; height: 297mm; padding: 14mm 14mm; position: relative; overflow: hidden; }
+  .page::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(circle at 85% 10%, rgba(34,197,94,.14) 0%, transparent 50%),
+      radial-gradient(circle at 10% 95%, rgba(34,211,238,.10) 0%, transparent 55%);
+  }
+
+  .top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 4mm;
+  }
+  .brand-mark {
+    font-family: 'Orbitron', monospace; font-size: 9pt;
+    color: #22d3ee; letter-spacing: 0.2em;
+  }
+  .badge {
+    background: #22c55e; color: #020617;
+    padding: 1.5mm 4mm; border-radius: 999px;
+    font-size: 9pt; font-weight: 800; letter-spacing: 0.05em;
+  }
+
+  .title {
+    font-family: 'Orbitron', 'Inter', sans-serif;
+    font-size: 30pt;
+    font-weight: 700;
+    color: #22c55e;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    white-space: pre-line;
+  }
+  .tagline {
+    font-size: 13pt; font-weight: 600; color: #22d3ee;
+    margin-top: 2.5mm;
+  }
+  .subtitle {
+    font-size: 10.5pt; color: #cbd5e1;
+    margin-top: 2mm; line-height: 1.4;
+  }
+
+  .shot-row {
+    display: flex; gap: 3mm; margin: 6mm 0 5mm;
+  }
+  .shot-row .shot {
+    flex: 1; border-radius: 2mm; overflow: hidden;
+    box-shadow: 0 4mm 10mm rgba(0,0,0,.5), 0 0 0 1px rgba(34,197,94,.2);
+    background: #000;
+  }
+  .shot-row .shot img { width: 100%; display: block; }
+
+  .steps-block {
+    background: rgba(15,23,42,.7);
+    border: 1px solid rgba(34,197,94,.18);
+    border-radius: 3mm;
+    padding: 5mm 6mm;
+    margin-bottom: 4mm;
+  }
+  .steps-block h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13pt; color: #22c55e;
+    margin-bottom: 3mm; letter-spacing: 0.02em;
+  }
+  .steps { list-style: none; counter-reset: s; }
+  .steps li {
+    counter-increment: s;
+    padding: 1.5mm 0 1.5mm 10mm;
+    padding-left: 10mm;
+    position: relative;
+    font-size: 10.5pt; color: #cbd5e1; line-height: 1.4;
+    border-bottom: 1px dashed rgba(34,197,94,.1);
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(s);
+    position: absolute; left: 0; top: 1.5mm;
+    width: 6mm; height: 6mm;
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    color: #020617; border-radius: 50%;
+    font-family: 'Orbitron', monospace; font-size: 9pt; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .features {
+    display: flex; gap: 3mm; margin-bottom: 4mm;
+  }
+  .feat {
+    flex: 1;
+    background: rgba(15,23,42,.55);
+    border: 1px solid rgba(34,197,94,.15);
+    border-radius: 2mm;
+    padding: 3mm;
+  }
+  .feat .icon { font-size: 14pt; }
+  .feat h3 { color: #22c55e; font-size: 10pt; font-weight: 800; margin: 1.5mm 0 1mm; }
+  .feat p { color: #94a3b8; font-size: 8.5pt; line-height: 1.35; }
+
+  .bottom {
+    position: absolute; bottom: 10mm; left: 14mm; right: 14mm;
+    display: flex; justify-content: space-between; align-items: center; gap: 6mm;
+  }
+  .qr-block {
+    display: flex; align-items: center; gap: 4mm;
+    background: rgba(10,14,18,.92);
+    padding: 3.5mm 4mm; border-radius: 2mm;
+    border: 1px solid rgba(34,197,94,.3);
+  }
+  .qr-block img { width: 22mm; height: 22mm; background: #fff; padding: 1mm; border-radius: 1mm; display: block; }
+  .qr-block .qr-caption { font-weight: 700; font-size: 9pt; color: #22c55e; }
+  .qr-block .qr-url { font-family: 'Orbitron', monospace; font-size: 7pt; color: #94a3b8; margin-top: 1mm; }
+
+  .bottom-right { text-align: right; flex: 1; }
+  .motto { font-size: 9pt; color: #64748b; font-style: italic; line-height: 1.4; }
+  .audience { font-size: 9pt; color: #22d3ee; margin-top: 2mm; font-weight: 600; }
+</style></head>
+<body><div class="page">
+  <div class="top">
+    <div class="brand-mark">FACE-TRACKING</div>
+    <div class="badge">micro:bit V2</div>
+  </div>
+
+  <div class="title">Chaque capteur,
+en direct dans le navigateur.</div>
+  <div class="tagline">Le navigateur EST l'IDE.</div>
+  <div class="subtitle">Panneau de contrôle prêt pour la classe. 30 ordinateurs. Zéro installation.</div>
+
+  <div class="shot-row">
+    <div class="shot"><img src="file://D:/work/dev/16_workshop/102_etsy/face-tracking/etsy-package/output/fr/screenshots/screenshot-camera.png"></div>
+    <div class="shot"><img src="file://D:/work/dev/16_workshop/102_etsy/face-tracking/etsy-package/output/en/screenshots/screenshot-audience-kid-3d.png"></div>
+    <div class="shot"><img src="file://D:/work/dev/16_workshop/102_etsy/face-tracking/etsy-package/output/en/screenshots/screenshot-audience-maker-3d.png"></div>
+  </div>
+
+  <div class="steps-block">
+    <h2>Démarrez en 60 secondes</h2>
+    <ol class="steps">
+      <li>Branchez le micro:bit (USB ou pile).</li><li>Ouvrez Chrome ou Edge.</li><li>Visitez l'URL ci-dessous — rien à installer.</li><li>Cliquez Connecter, choisissez votre carte.</li><li>Le point passe au vert. C'est parti.</li>
+    </ol>
+  </div>
+
+  <div class="features">
+    
+    <div class="feat">
+      <span class="icon">⚡</span>
+      <h3>Capteurs en direct</h3>
+      <p>Température, son, lumière, accéléromètre, boussole — tout en temps réel.</p>
+    </div>
+    <div class="feat">
+      <span class="icon">🎛️</span>
+      <h3>Contrôle complet</h3>
+      <p>Peindre les LEDs, faire tourner les landmarks, piloter les moteurs. Export CSV.</p>
+    </div>
+    <div class="feat">
+      <span class="icon">🧊</span>
+      <h3>Miroir 3D</h3>
+      <p>Une carte photoréaliste s'incline avec votre micro:bit. La physique prend vie.</p>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="qr-block">
+      <img src="data:image/png;base64,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">
+      <div>
+        <div class="qr-caption">Scannez pour la démo en direct</div>
+        <div class="qr-url">abourdim.github.io/face-tracking</div>
+      </div>
+    </div>
+    <div class="bottom-right">
+      <div class="audience">Pour les enseignants, les enfants et les makers.</div>
+      <div class="motto">Chaque scientifique a commencé par demander « que se passe-t-il si j'appuie ici ? »</div>
+    </div>
+  </div>
+</div></body></html>

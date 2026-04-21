@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════════════
+  ⚠️  REWRITE PER PRODUCT — DO NOT SHIP AS-IS
+  ───────────────────────────────────────────────────────────────────────
+  apply-template.mjs only substituted identifiers (Face Tracking Kids,
+  v1.0.0, https://abourdim.github.io/face-tracking/, etc.). The feature content, steps,
+  shortcuts, and examples below were inherited from the template's
+  source product (face-tracking) and WILL BE WRONG for your product
+  unless you rewrite them.
+  
+  Before including this file in a buyer ZIP:
+    1. Delete this banner.
+    2. Rewrite every mention of specific features, shortcuts,
+       tab names, hardware interactions, etc. to match your product.
+    3. Verify with: grep -iE "landmark|chart\.js|3d board|gamepad|
+       head yaw|head pitch|led matrix|11 signals|sensors tab" this-file.
+  ═══════════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Face Tracking Kids Printable Sticker Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Orbitron:wght@500&family=Tajawal:wght@400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4 portrait; margin: 0; }
+  body { width: 210mm; height: 297mm; font-family: 'Tajawal', sans-serif; background: #fff; overflow: hidden; }
+
+  .page { width: 210mm; height: 297mm; padding: 12mm 14mm; position: relative; }
+
+  .header { text-align: center; margin-bottom: 6mm; }
+  .header h1 { font-family: 'Righteous', sans-serif; font-size: 24px; color: #020617; }
+  .header p { font-size: 11px; color: #94a3b8; }
+
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4mm; }
+
+  .sticker {
+    aspect-ratio: 1; border-radius: 50%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    border: 2px dashed #d1d5db; position: relative; padding: 6px;
+  }
+  .sticker .emoji { font-size: 30px; }
+  .sticker .label { font-size: 9px; color: #374151; font-weight: 700; margin-top: 2px; line-height: 1.2; }
+
+  .s-green { background: #f0fdf4; border-color: #22c55e; }
+  .s-cyan { background: #ecfeff; border-color: #22d3ee; }
+  .s-gold { background: #fffbeb; border-color: #fbbf24; }
+  .s-red { background: #fef2f2; border-color: #ef4444; }
+  .s-purple { background: #faf5ff; border-color: #c084fc; }
+  .s-dark { background: #020617; border-color: #22c55e; }
+  .s-dark .label { color: #22c55e; }
+
+  .cut-note { text-align: center; margin-top: 4mm; font-size: 10px; color: #94a3b8; }
+
+  .footer {
+    position: absolute; bottom: 8mm; left: 14mm; right: 14mm;
+    text-align: center; font-size: 9px; color: #cbd5e1;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>Face Tracking Kids Achievement Stickers</h1>
+    <p>Print on sticker paper &bull; Cut along the dashed lines &bull; Reward young makers!</p>
+  </div>
+
+  <div class="grid">
+    <!-- Row 1: core milestones -->
+    <div class="sticker s-green"><div class="emoji">📡</div><div class="label">I Connected<br>BLE!</div></div>
+    <div class="sticker s-cyan"><div class="emoji">⚡</div><div class="label">Firmware<br>Flasher</div></div>
+    <div class="sticker s-gold"><div class="emoji">💡</div><div class="label">LED<br>Artist</div></div>
+    <div class="sticker s-purple"><div class="emoji">🌡️</div><div class="label">Sensor<br>Detective</div></div>
+    <div class="sticker s-red"><div class="emoji">📈</div><div class="label">Graph<br>Reader</div></div>
+
+    <!-- Row 2: skills -->
+    <div class="sticker s-green"><div class="emoji">⚙️</div><div class="label">Pro<br>Maker</div></div>
+    <div class="sticker s-cyan"><div class="emoji">🎮</div><div class="label">Detections<br>Hero</div></div>
+    <div class="sticker s-gold"><div class="emoji">🎲</div><div class="label">Face Mesh<br>Explorer</div></div>
+    <div class="sticker s-purple"><div class="emoji">⏺</div><div class="label">Session<br>Recorder</div></div>
+    <div class="sticker s-green"><div class="emoji">🤖</div><div class="label">Buggy<br>Driver</div></div>
+
+    <!-- Row 3: 3D models -->
+    <div class="sticker s-dark"><div class="emoji">🔲</div><div class="label">micro:bit<br>V2 Expert</div></div>
+    <div class="sticker s-dark"><div class="emoji">🚗</div><div class="label">Buggy<br>Builder</div></div>
+    <div class="sticker s-dark"><div class="emoji">🦾</div><div class="label">Robot Arm<br>Operator</div></div>
+    <div class="sticker s-dark"><div class="emoji">🎯</div><div class="label">Balance<br>Master</div></div>
+    <div class="sticker s-dark"><div class="emoji">🌦️</div><div class="label">Weather<br>Watcher</div></div>
+
+    <!-- Row 4: themes -->
+    <div class="sticker s-dark"><div class="emoji">🥷</div><div class="label">Stealth<br>Theme</div></div>
+    <div class="sticker s-cyan"><div class="emoji">💠</div><div class="label">Neon<br>Theme</div></div>
+    <div class="sticker s-cyan"><div class="emoji">❄️</div><div class="label">Arctic<br>Theme</div></div>
+    <div class="sticker s-red"><div class="emoji">🔥</div><div class="label">Blaze<br>Theme</div></div>
+    <div class="sticker s-gold"><div class="emoji">🎨</div><div class="label">All 4<br>Themes!</div></div>
+
+    <!-- Row 5: languages + challenges -->
+    <div class="sticker s-green"><div class="emoji">🇬🇧</div><div class="label">English<br>Mode</div></div>
+    <div class="sticker s-cyan"><div class="emoji">🇫🇷</div><div class="label">Mode<br>Français</div></div>
+    <div class="sticker s-gold"><div class="emoji">🇩🇿</div><div class="label">العربية<br>RTL</div></div>
+    <div class="sticker s-purple"><div class="emoji">🧙</div><div class="label">Expert<br>Mode</div></div>
+    <div class="sticker s-red"><div class="emoji">🐣</div><div class="label">Beginner<br>Level Up!</div></div>
+
+    <!-- Row 6: extras -->
+    <div class="sticker s-green"><div class="emoji">🎵</div><div class="label">Sound<br>Sleuth</div></div>
+    <div class="sticker s-dark"><div class="emoji">🧭</div><div class="label">Compass<br>Reader</div></div>
+    <div class="sticker s-cyan"><div class="emoji">📊</div><div class="label">Data<br>Scientist</div></div>
+    <div class="sticker s-gold"><div class="emoji">🏆</div><div class="label">Playground<br>Champion</div></div>
+    <div class="sticker s-red"><div class="emoji">🚀</div><div class="label">Ready for<br>Launch!</div></div>
+  </div>
+
+  <div class="cut-note">Cut along dashed lines &bull; Stick on notebooks, laptops, or lab coats!</div>
+
+  <div class="footer">Face Tracking Kids Sticker Sheet &bull; v1.0.0 &bull; Print on A4 sticker paper</div>
+
+</div>
+<!-- QR-BLOCK-START -->
+<div style="position:fixed;right:12mm;bottom:12mm;display:flex;gap:8mm;align-items:center;
+  background:rgba(10,14,18,0.92);color:#e8ffe8;padding:4mm 5mm;border-radius:3mm;
+  box-shadow:0 2mm 6mm rgba(0,0,0,0.35);font-family:-apple-system,Segoe UI,sans-serif;
+  max-width:80mm;z-index:9999;">
+  <img src="data:image/png;base64,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" alt="QR code — scan to open live demo" style="width:24mm;height:24mm;background:#fff;padding:1mm;border-radius:1.5mm;display:block;"/>
+  <div style="display:flex;flex-direction:column;gap:1mm;min-width:0;">
+    <div style="font-weight:700;font-size:9pt;color:#00ff88;line-height:1.2;">Live demo</div>
+    <div style="font-size:7pt;opacity:0.75;line-height:1.3;word-break:break-all;">abourdim.github.io/face-tracking/</div>
+  </div>
+</div>
+<!-- QR-BLOCK-END -->
+</body>
+</html>
