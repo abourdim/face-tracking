@@ -145,14 +145,15 @@
 <h2>Avant d'appuyer sur Rec</h2>
 <div class="card">
   <ul class="checklist" onclick="var li=event.target.closest('li');if(li)li.classList.toggle('checked')">
-    <li><input type="checkbox"><label>micro:bit V2 allumé, icône <kbd>X</kbd> affichée<span class="where">Sinon → reflasher <code>makecode.ts</code></span></label></li>
-    <li><input type="checkbox"><label>Chrome ou Edge ouvert, <code>index.html</code> chargé<span class="where">Safari/Firefox/iOS ne fonctionneront pas</span></label></li>
-    <li><input type="checkbox"><label>BLE connecté — la puce d'état est <strong>verte</strong><span class="where">Cliquez sur 🔗 Connecter, choisissez BBC micro:bit dans la fenêtre</span></label></li>
-    <li><input type="checkbox"><label>Thème choisi — <strong>Neon</strong> rend le mieux à la caméra<span class="where">En-tête → menu rouleau de peinture</span></label></li>
-    <li><input type="checkbox"><label>Servo branché sur P1 (pour Bras Robot / Buggy)</label></li>
-    <li><input type="checkbox"><label>Onglet 3D Board ouvert, Buggy ou Bras Robot sélectionné<span class="where">Onglet 6 → menu des modèles</span></label></li>
-    <li><input type="checkbox"><label>Téléphone en 9:16 sur trépied, éclairé de face</label></li>
-    <li><input type="checkbox"><label>Bureau dégagé — uniquement la carte et un accessoire dans le cadre</label></li>
+    <li><input type="checkbox"><label>Webcam branchée, autorisation caméra accordée à Chrome<span class="where">Paramètres du site → Caméra → Autoriser</span></label></li>
+    <li><input type="checkbox"><label>Chrome ou Edge ouvert, <code>index.html</code> chargé en HTTPS ou <code>file://</code><span class="where">Safari ne chargera pas MediaPipe FaceLandmarker</span></label></li>
+    <li><input type="checkbox"><label>Maillage du visage dessiné en direct — 468 points visibles sur les joues<span class="where">Bascule : Overlays → Mesh ON</span></label></li>
+    <li><input type="checkbox"><label>Panneau des 11 signaux qui défile à 10 Hz<span class="where">Regardez les barres yaw / pitch / smile / mouth-open bouger en temps réel</span></label></li>
+    <li><input type="checkbox"><label>Langue vocale choisie — commencez par <strong>fr-FR</strong><span class="where">Speech → menu locale (12 choix)</span></label></li>
+    <li><input type="checkbox"><label>Optionnel : micro:bit V2 flashé avec <code>makecode.ts</code>, BLE connecté<span class="where">🔗 Connecter → BBC micro:bit — paquet 19 chiffres défile dans le log</span></label></li>
+    <li><input type="checkbox"><label>Bon éclairage du visage — de face, pas de contre-jour<span class="where">FaceLandmarker perd les repères avec un contre-jour fort</span></label></li>
+    <li><input type="checkbox"><label>Téléphone en 9:16 sur trépied, cadrant l'écran + le visage de l'enfant</label></li>
+    <li><input type="checkbox"><label>L'enfant a répété les 4 détections : sourire, clin d'œil, tête penchée, regard à gauche</label></li>
     <li><input type="checkbox"><label>Script lu à voix haute une fois — chronométré sous 55 s</label></li>
   </ul>
 </div>
@@ -162,12 +163,13 @@
 <h2>Structure</h2>
 <div class="card">
   <pre style="color:var(--accent2);font-family:var(--mono);font-size:.9rem;line-height:1.7;margin:0">
- 0–3 s   ACCROCHE    « Regardez ce que ce micro:bit fait en 60 secondes. »
- 3–10 s  CONTEXTE    Carte à l'écran, icône X → le statut passe au vert.
-10–35 s  DÉMO        Inclinez → le modèle 3D suit. Appuyez sur A → cœur LED. Le servo bouge.
-35–50 s  RÉCOMPENSE  Zoom sur le graphique en direct + modèle 3D qui reflète la carte réelle.
-50–55 s  CTA         « Kit complet dans ma boutique — lien ci-dessous. »
-55–60 s  IMAGE FIN   Logo + pseudo figé pour l'aperçu en boucle.</pre>
+ 0–3 s   ACCROCHE    « Souris. Cligne. Penche la tête. L'ordi voit tout. »
+ 3–10 s  CONTEXTE    Navigateur ouvert, le maillage se dessine — 468 points.
+10–25 s  DÉMO 1      Détections en rafale : SOURIRE · CLIN D'ŒIL · TÊTE PENCHÉE · REGARD GAUCHE.
+25–40 s  DÉMO 2      Retour vocal qui bascule fr-FR → en-US → ja-JP sur le même sourire.
+40–50 s  RÉCOMPENSE  Pont micro:bit optionnel : paquet 19 chiffres + flèche LED qui réagit.
+50–55 s  CTA         « Maillage + 11 signaux + pont BLE — lien en description. »
+55–60 s  IMAGE FIN   Logo + pseudo figés pour l'aperçu en boucle.</pre>
 </div>
 
 <!-- ═══════════ SCRIPT ═══════════ -->
@@ -178,91 +180,97 @@
      Ne laissez JAMAIS ce fichier partir en production avec les coquilles. -->
 
 <h2>Modèle 6 scènes — Face Tracking</h2>
-<p class="aka" style="color:#f59e0b;font-weight:700;">⚠️ Les 6 scènes ci-dessous sont des coquilles. Réécrivez chacune avec une action filmable propre à Face Tracking avant de tourner.</p>
+<p class="aka" style="color:#f59e0b;font-weight:700;">✅ Les 6 scènes ci-dessous sont adaptées à Face Tracking. Lisez chaque ligne à voix haute avant de tourner — total 55 s.</p>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:00–00:03</span><span class="scene-phase phase-hook">ACCROCHE</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 DIRE</div><em>[Phrase d'accroche — 1 seconde, promesse claire du produit, pourquoi scroller s'arrête]</em></div>
-    <div class="do"><div class="do-label">🎬 FAIRE</div><em>[Le plan d'accroche — ce qu'on voit à l'écran pendant la phrase]</em></div>
+    <div class="say"><div class="say-label">🎙 DIRE</div>« Souris. Cligne de l'œil. Penche la tête. L'ordinateur voit tout — et l'envoie au micro:bit. »</div>
+    <div class="do"><div class="do-label">🎬 FAIRE</div>Le visage remplit le cadre. Le maillage vert se dessine en direct sur les joues et les lèvres — 468 points en mouvement.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:03–00:10</span><span class="scene-phase phase-demo">CONTEXTE</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 DIRE</div><em>[Phrase qui situe : à qui c'est destiné, quel problème c'est résolu]</em></div>
-    <div class="do"><div class="do-label">🎬 FAIRE</div><em>[Action à l'écran — setup, connexion, premier affichage utile]</em></div>
+    <div class="say"><div class="say-label">🎙 DIRE</div>« Google MediaPipe. 468 repères. Zéro installation. Tout tourne dans le navigateur — sans compte, sans cloud. »</div>
+    <div class="do"><div class="do-label">🎬 FAIRE</div>Plan sur le portable. Chrome ouvre <code>index.html</code>, le maillage s'accroche. Les 11 barres de signaux (X · Y · distance · yaw · pitch · roll · sourire · bouche · yeux · visibilité) démarrent à 10 Hz.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:10–00:25</span><span class="scene-phase phase-demo">DÉMO 1</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 DIRE</div><em>[Premier wow-moment — une fonctionnalité phare de Face Tracking]</em></div>
-    <div class="do"><div class="do-label">🎬 FAIRE</div><em>[L'action visible — 15 secondes, mouvement à l'écran]</em></div>
+    <div class="say"><div class="say-label">🎙 DIRE</div>« Dix détections prêtes à l'emploi. Regardez. Sourire… rire… clin gauche… clin droit… tête penchée… regard gauche. »</div>
+    <div class="do"><div class="do-label">🎬 FAIRE</div>En rafale : l'enfant sourit → badge SOURIRE s'allume. Rit → RIRE. Cligne à gauche → CLIN GAUCHE. Penche la tête → TÊTE PENCHÉE. Regarde à gauche → REGARD GAUCHE. Chaque badge clignote en vert avec la barre qui saute.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:25–00:40</span><span class="scene-phase phase-demo">DÉMO 2</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 DIRE</div><em>[Second wow-moment — une deuxième fonctionnalité / cas d'usage]</em></div>
-    <div class="do"><div class="do-label">🎬 FAIRE</div><em>[L'action visible — 15 secondes]</em></div>
+    <div class="say"><div class="say-label">🎙 DIRE</div>« L'ordinateur répond. En douze langues. »</div>
+    <div class="do"><div class="do-label">🎬 FAIRE</div>L'enfant sourit — voix fr-FR : « Sourire détecté ». Le curseur bascule le menu sur <code>en-US</code> → "Smile detected". Encore une fois sur <code>ja-JP</code> → « 笑顔を検出 ». Même visage, trois langues.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:40–00:50</span><span class="scene-phase phase-payoff">RÉCOMPENSE</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 DIRE</div><em>[Le « pourquoi c'est utile » — bénéfice concret : temps gagné, sécurité, compétence acquise]</em></div>
-    <div class="do"><div class="do-label">🎬 FAIRE</div><em>[L'écran qui porte le message — export, capture, résultat visible]</em></div>
+    <div class="say"><div class="say-label">🎙 DIRE</div>« Branchez un micro:bit et il devient un pont — 19 chiffres, dix fois par seconde, en BLE. »</div>
+    <div class="do"><div class="do-label">🎬 FAIRE</div>Écran splité : à gauche, le paquet 19 chiffres défile dans le log. À droite, le micro:bit V2 réel — sa matrice 5×5 dessine une flèche qui suit l'inclinaison de la tête.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:50–00:60</span><span class="scene-phase phase-cta">CTA + IMAGE DE FIN</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 DIRE</div><em>[Appel à l'action — kit complet + lien en description]</em></div>
-    <div class="do"><div class="do-label">🎬 FAIRE</div><em>[Overlay logo + image de fin, 3 secondes immobile]</em></div>
+    <div class="say"><div class="say-label">🎙 DIRE</div>« Maillage du visage, onze signaux, pont BLE — lien en description. »</div>
+    <div class="do"><div class="do-label">🎬 FAIRE</div>Arrêt sur le maillage avec le badge « Les images ne quittent jamais votre appareil ». Logo en bas à droite, pseudo tenu 3 secondes.</div>
   </div>
 </div>
 
 <!-- ═══════════ TEXTE D'ANNONCE ═══════════ -->
 <div class="slug" id="listing">SLUG — TEXTE D'ANNONCE PRÊT À COPIER</div>
 <h2>Titre Etsy (140 caractères max)</h2>
-<div class="copybox">[TODO — titre Etsy 140 caractères, voir ETSY_LISTING-fr.md]<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">COPIER</button></div>
+<div class="copybox">Face Tracking — Maillage Facial Temps Réel + 11 Signaux pour Enfants · MediaPipe · 10 Détections · 12 Voix · Pont micro:bit<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">COPIER</button></div>
 
 <h2>Description courte (160 premiers caractères — affichés en recherche)</h2>
-<div class="copybox">[TODO — description courte 160 caractères, voir ETSY_LISTING-fr.md]<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">COPIER</button></div>
+<div class="copybox">Suivi du visage dans le navigateur. Maillage 468 points, 11 signaux en direct, 10 détections, 12 voix. Pont BLE micro:bit V2 optionnel. Sans cloud, sans compte.<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">COPIER</button></div>
 
 <h2>Description complète</h2>
-<div class="copybox">🎮 Face Tracking — un panneau de contrôle BLE dans le navigateur pour le BBC micro:bit V2.
+<div class="copybox">🎭 Face Tracking — un labo de maillage facial dans le navigateur, pour les enfants, basé sur Google MediaPipe FaceLandmarker.
 
-[TODO — 1-phrase pitch de ce que le produit fait quand on ouvre le fichier]
+Ouvrez un seul fichier HTML, autorisez la webcam : 468 repères s'alignent sur le visage en temps réel. 11 signaux en direct à 10 Hz, 10 détections prêtes à l'emploi qui se déclenchent à mesure que l'enfant joue, et l'ordinateur répond en 12 langues — tout depuis Chrome, sans installation, sans compte, sans serveur.
+
 CE QUE VOUS OBTENEZ
-• [TODO — product-specific feature 1]• [TODO — your live signal list]• [TODO — your control surface if any]• [TODO — your interactive surface]
-• [TODO — your record/replay/export feature]• [TODO — your visualization feature if any]• [TODO — your themes / UI variety + languages]• 📱 PWA — installable, utilisable hors ligne
-• [TODO — learning modes if any]
+• 🎯 Maillage facial en temps réel — 468 repères par Google MediaPipe FaceLandmarker (tourne 100% dans le navigateur, sans TensorFlow)
+• 📡 11 signaux en direct à 10 Hz — X, Y, distance, yaw, pitch, roll, bouche ouverte, œil gauche, œil droit, sourire, visibilité du visage
+• ✨ 10 détections intégrées — Sourire, Rire, Wow, Bouche ouverte, Clignement, Clin gauche, Clin droit, Tête penchée, Regard gauche/droite, Regard haut/bas
+• 🗣 Synthèse vocale en 12 langues — en-US, en-GB, fr-FR, es-ES, de-DE, it-IT, pt-PT, pt-BR, nl-NL, ja-JP, ko-KR, zh-CN, avec curseurs de vitesse et hauteur
+• 🎨 Couches affichables — maillage complet, contours (ovale, lèvres, yeux, sourcils, nez), points bruts
+• 📷 Bascule caméra avant/arrière + miroir
+• 🔗 Pont BBC micro:bit V2 optionnel — envoie un paquet de 19 chiffres via BLE UART / Nordic UART à 10 Hz
+• 💾 Firmware <code>makecode.ts</code> prêt à flasher
 
 CONTENU DU TÉLÉCHARGEMENT
 • index.html — l'application complète
-• makecode.ts — firmware micro:bit (à flasher une fois depuis MakeCode)
+• makecode.ts — firmware micro:bit (à flasher une fois depuis MakeCode, optionnel)
 • SETUP.md — démarrage rapide en 5 minutes
 • docs/ — guide illustré, aide-mémoire, FAQ, playbook Etsy
 • LICENSE — licence mono-utilisateur personnelle / classe
 
 PRÉREQUIS
-• BBC micro:bit V2 (V1 fonctionne mais sans capteur de son)
+• N'importe quelle webcam (la caméra intégrée d'un portable suffit)
 • Chrome ou Edge sur ordinateur (ou Chrome sur Android)
-• Bluetooth activé
+• Optionnel : BBC micro:bit V2 pour le pont BLE
 • HTTPS ou file:// — un double-clic sur le HTML suffit
 
 POUR QUI
-Enseignants animant des ateliers STEM · familles en école à la maison · clubs de robotique · makers prototypant des projets BLE · toute personne curieuse du micro:bit.
+Enseignants animant des ateliers STEM + IA · familles en école à la maison · orthophonistes et spécialistes des besoins particuliers utilisant le retour sourire/clignement · clubs de robotique voulant un micro:bit piloté par le visage · makers prototypant des interactions BLE par le visage.
 
 CONFIDENTIALITÉ D'ABORD
-Rien ne quitte votre ordinateur. Pas d'analytique, pas de connexion, pas de cloud. Tous les calibrages, enregistrements et préréglages restent dans le localStorage du navigateur et sur votre disque.
+Les images ne quittent jamais votre appareil. Le modèle tourne 100% dans votre navigateur — pas d'analytique, pas de connexion, pas de cloud, pas d'envoi. Parfait pour les salles de classe et les enfants.
 
 MISES À JOUR À VIE
 Chaque version publiée depuis cette annonce est à vous pour toujours. Retéléchargez le dernier ZIP à tout moment depuis votre page Achats Etsy.
@@ -281,16 +289,16 @@ Bon hacking ! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.w
 <div class="slug" id="tags">SLUG — ÉTIQUETTES + MATÉRIAUX</div>
 <h2>13 étiquettes Etsy (20 caractères chacune)</h2>
 <div class="pills">
-  <span class="pill">micro:bit</span>
-  <span class="pill">BLE</span>
-  <span class="pill">bluetooth</span>
-  <span class="pill">éducation</span>
+  <span class="pill">suivi visage</span>
+  <span class="pill">face mesh</span>
+  <span class="pill">mediapipe</span>
+  <span class="pill">webcam IA</span>
+  <span class="pill">IA enfants</span>
   <span class="pill">STEM</span>
-  <span class="pill">robotique</span>
-  <span class="pill">code enfants</span>
   <span class="pill">ressource prof</span>
-  <span class="pill">capteurs</span>
-  <span class="pill">[product tag]</span>
+  <span class="pill">orthophonie</span>
+  <span class="pill">micro:bit</span>
+  <span class="pill">web bluetooth</span>
   <span class="pill">classe</span>
   <span class="pill">école maison</span>
   <span class="pill">makerspace</span>
@@ -300,10 +308,11 @@ Bon hacking ! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.w
 <div class="pills">
   <span class="pill">HTML5</span>
   <span class="pill">JavaScript</span>
+  <span class="pill">MediaPipe</span>
+  <span class="pill">FaceLandmarker</span>
+  <span class="pill">Web Speech API</span>
   <span class="pill">Web Bluetooth</span>
-  <span class="pill">[render lib]</span>
-  <span class="pill">[3D lib if any]</span>
-  <span class="pill">PWA</span>
+  <span class="pill">Canvas 2D</span>
   <span class="pill">MakeCode</span>
   <span class="pill">TypeScript</span>
 </div>
@@ -316,13 +325,13 @@ Bon hacking ! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.w
 <h2>Séquence d'images (Etsy affiche 1 &amp; 2 en plus grand)</h2>
 <div class="card">
   <ol style="padding-left:22px;line-height:2">
-    <li><strong>[TODO — Hero shot: hardware + computer screen showing the marquee product state]</strong></li>
-    <li><strong>[TODO — grille des écrans ou fonctionnalités du produit]</strong></li>
-    <li><strong>[TODO — plan serré sur votre feature phare]</strong></li>
-    <li><strong>[TODO — split screen of two headline product features]</strong> — capture partagée montrant deux des cinq modèles Three.js.</li>
-    <li><strong>[TODO — plan main-sur-carte ou démo terrain]</strong></li>
-    <li><strong>[TODO — styling / variety grid].</li>
-    <li><strong>Carte texte</strong> — « Licence mono-utilisateur · Mises à jour à vie · Pas de cloud · Chrome / Edge » sur dégradé sombre.</li>
+    <li><strong>Image héroïne</strong> — gros plan serré d'un visage d'enfant avec le maillage vert complet sur les 468 repères. Titre Orbitron : « 468 repères · zéro installation ».</li>
+    <li><strong>Panneau 11 signaux</strong> — capture de la colonne des signaux en direct, toutes les barres en mouvement (yaw, pitch, roll, sourire, bouche, yeux, distance). Légende : « 11 signaux en direct · 10 Hz ».</li>
+    <li><strong>Badges de détection</strong> — pile des 10 détections toutes allumées : SOURIRE, RIRE, WOW, CLIN GAUCHE, CLIN DROIT, CLIGNEMENT, BOUCHE OUVERTE, TÊTE PENCHÉE, REGARD G/D, REGARD H/B.</li>
+    <li><strong>Sélecteur de voix</strong> — menu ouvert affichant les 12 locales (en-US, en-GB, fr-FR, es-ES, de-DE, it-IT, pt-PT, pt-BR, nl-NL, ja-JP, ko-KR, zh-CN) avec curseurs vitesse + hauteur.</li>
+    <li><strong>Contrôles caméra</strong> — bascule avant/arrière, miroir, couches (maillage / contours / points). Capture UI propre.</li>
+    <li><strong>Pont BLE optionnel</strong> — portable avec le maillage + le log du paquet 19 chiffres, plus un vrai BBC micro:bit V2 affichant une flèche sur sa matrice 5×5 qui suit l'inclinaison de la tête.</li>
+    <li><strong>Carte texte confidentialité</strong> — « Les images ne quittent jamais votre appareil · Licence mono-utilisateur · Mises à jour à vie · Chrome / Edge » sur dégradé sombre.</li>
   </ol>
 </div>
 
@@ -331,7 +340,7 @@ Bon hacking ! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.w
 <h2>Erreurs fréquentes</h2>
 <table>
   <tr><th>❌ À éviter</th><th>✅ À faire</th></tr>
-  <tr><td>Commencer par « Bonjour, je suis… » + 10 s d'intro</td><td>Ouvrir avec une action produit visible dans les 3 premières secondes</td></tr>
+  <tr><td>Commencer par « Bonjour, je suis… » + 10 s d'intro</td><td>Ouvrir sur un visage entièrement maillé dans les 3 premières secondes — 468 points en mouvement</td></tr>
   <tr><td>Filmer en paysage (16:9)</td><td>Portrait 9:16 — Etsy lit en auto sur mobile</td></tr>
   <tr><td>Parler par-dessus une animation chargée</td><td>Laisser le visuel respirer 1 s, puis expliquer</td></tr>
   <tr><td>Oublier les sous-titres (Etsy joue muet)</td><td>Incruster des sous-titres ou ajouter un texte à chaque scène</td></tr>
@@ -341,8 +350,8 @@ Bon hacking ! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.w
 
 <!-- ═══════════ CARTE RAPIDE ═══════════ -->
 <div class="slug">SLUG — AIDE-MÉMOIRE DE POCHE</div>
-<div class="copybox">PRÉ     V2 allumé (icône X) · Chrome ouvert · BLE vert · téléphone 9:16
-TOURNE  Accroche en 3 s · [TODO — 3 key verbs for your product] · CTA
+<div class="copybox">PRÉ     Webcam ON · Chrome · maillage dessiné · 11 signaux actifs · téléphone 9:16
+TOURNE  Accroche maillage · sourire-clin-tête · parler en 3 langues · CTA
 POST    Coupez à 55 s · sous-titres incrustés · première image = miniature
 ANNONCE Titre · desc 160 car. · 13 étiquettes · 7 images · tarifs</div>
 

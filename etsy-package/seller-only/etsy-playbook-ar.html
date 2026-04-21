@@ -147,14 +147,15 @@
 <h2>قبل الضغط على تسجيل</h2>
 <div class="card">
   <ul class="checklist" onclick="var li=event.target.closest('li');if(li)li.classList.toggle('checked')">
-    <li><input type="checkbox"><label>جهاز micro:bit V2 يعمل ويعرض أيقونة <kbd>X</kbd><span class="where">إن لم يكن كذلك ← أعد تحميل <code>makecode.ts</code></span></label></li>
-    <li><input type="checkbox"><label>Chrome أو Edge مفتوح، وملف <code>index.html</code> محمَّل<span class="where">Safari وFirefox وiOS لن تعمل</span></label></li>
-    <li><input type="checkbox"><label>BLE متصل — شارة الحالة <strong>خضراء</strong><span class="where">اضغط 🔗 اتصال، ثم اختر BBC micro:bit من النافذة</span></label></li>
-    <li><input type="checkbox"><label>تم اختيار السمة — <strong>Neon</strong> تبدو الأفضل أمام الكاميرا<span class="where">الرأس ← قائمة رولر الطلاء</span></label></li>
-    <li><input type="checkbox"><label>المحرِّك موصول بـ P1 (عند عرض الذراع الروبوتية أو العربة)</label></li>
-    <li><input type="checkbox"><label>علامة تبويب 3D Board مفتوحة، مع اختيار العربة أو الذراع<span class="where">علامة التبويب 6 ← قائمة النماذج</span></label></li>
-    <li><input type="checkbox"><label>الهاتف بوضع 9:16 على ترايبود، مضاء من الأمام</label></li>
-    <li><input type="checkbox"><label>المكتب مرتَّب — اللوحة وقطعة واحدة فقط في الإطار</label></li>
+    <li><input type="checkbox"><label>الكاميرا موصولة، وتم منح Chrome إذن الوصول إليها<span class="where">إعدادات الموقع ← الكاميرا ← السماح</span></label></li>
+    <li><input type="checkbox"><label>Chrome أو Edge مفتوح، وملف <code>index.html</code> مُحمَّل عبر HTTPS أو <code>file://</code><span class="where">Safari لن يحمّل MediaPipe FaceLandmarker</span></label></li>
+    <li><input type="checkbox"><label>شبكة الوجه ترسم مباشرة — 468 نقطة ظاهرة على الخدين<span class="where">المفاتيح: Overlays ← Mesh ON</span></label></li>
+    <li><input type="checkbox"><label>لوحة الإشارات الإحدى عشرة تنبض بمعدل 10 هرتز<span class="where">راقب أشرطة yaw / pitch / smile / mouth-open تتحرك فورًا</span></label></li>
+    <li><input type="checkbox"><label>تم اختيار لغة النطق — ابدأ بـ <strong>ar-SA</strong> أو <strong>en-US</strong><span class="where">Speech ← قائمة اللغات (12 خيارًا)</span></label></li>
+    <li><input type="checkbox"><label>اختياري: micro:bit V2 مُحمَّل عليه <code>makecode.ts</code>، وBLE متصل<span class="where">🔗 اتصال ← BBC micro:bit — تيار من 19 رقمًا يظهر في السجل</span></label></li>
+    <li><input type="checkbox"><label>إضاءة جيدة على الوجه — من الأمام، بلا إضاءة خلفية قوية<span class="where">FaceLandmarker يفقد النقاط في الإضاءة الخلفية الحادة</span></label></li>
+    <li><input type="checkbox"><label>الهاتف 9:16 على ترايبود، يُظهر شاشة الحاسوب ووجه الطفل</label></li>
+    <li><input type="checkbox"><label>الطفل تمرَّن على 4 إشارات: ابتسامة، غمزة، إمالة الرأس، نظر إلى اليسار</label></li>
     <li><input type="checkbox"><label>قراءة النص بصوت عالٍ مرة واحدة — بزمن أقل من 55 ثانية</label></li>
   </ul>
 </div>
@@ -164,11 +165,12 @@
 <h2>البنية</h2>
 <div class="card">
   <pre style="color:var(--accent2);font-family:var(--mono);font-size:.9rem;line-height:1.7;margin:0">
- 0–3 s   HOOK        «Watch what this micro:bit does in 60 seconds.»
- 3–10 s  CONTEXT     Board on-screen, X icon → status turns green.
-10–35 s  DEMO        Tilt → 3D model follows. Press A → LED heart. Servo swings.
-35–50 s  PAYOFF      Zoom on live graph + 3D model mirroring real board.
-50–55 s  CTA         «Full kit in my shop — link below.»
+ 0–3 s   HOOK        "Smile. Wink. Tilt. The computer sees it all."
+ 3–10 s  CONTEXT     Browser open, mesh draws itself — 468 dots live.
+10–25 s  DEMO 1      Rapid-fire detections: SMILE · WINK · HEAD-TILT · LOOK-LEFT.
+25–40 s  DEMO 2      Voice flips ar-SA → en-US → ja-JP on the same smile.
+40–50 s  PAYOFF      Optional micro:bit bridge: 19-digit packet + LED arrow.
+50–55 s  CTA         "Mesh + 11 signals + BLE bridge — link below."
 55–60 s  END FRAME   Logo + handle frozen for the loop preview.</pre>
 </div>
 
@@ -179,97 +181,97 @@
      لا تُرسل هذا الملف إلى الإنتاج مع النصوص المائلة كما هي. -->
 
 <h2>قالب 6 مشاهد — Face Tracking</h2>
-<p class="aka" style="color:#f59e0b;font-weight:700;">⚠️ المشاهد الستة أدناه قوالب فارغة. استبدل كل سطر بفعلٍ قابلٍ للتصوير خاصٍ بـ Face Tracking قبل تسجيل الفيديو.</p>
+<p class="aka" style="color:#f59e0b;font-weight:700;">✅ المشاهد الستة أدناه مُعدَّة لـ Face Tracking. اقرأ كل سطر بصوت عالٍ قبل التصوير — الإجمالي 55 ثانية.</p>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:00–00:03</span><span class="scene-phase phase-hook">الخطاف</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 قل</div><em>[جملة الجذب — ثانية واحدة، وعد واضح يوقف التمرير]</em></div>
-    <div class="do"><div class="do-label">🎬 افعل</div><em>[لقطة الجذب — ما يظهر على الشاشة أثناء الجملة]</em></div>
+    <div class="say"><div class="say-label">🎙 قل</div>«ابتسم. اغمز. أمِل رأسك. الحاسوب يرى كل ذلك — ويرسله إلى micro:bit.»</div>
+    <div class="do"><div class="do-label">🎬 افعل</div>الوجه يملأ الإطار. الشبكة الخضراء ترسم نفسها حيَّةً على الخدين والشفتين — 468 نقطة في حركة.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:03–00:10</span><span class="scene-phase phase-demo">السياق</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 قل</div><em>[لمن هذا المنتج، ما المشكلة التي يحلّها]</em></div>
-    <div class="do"><div class="do-label">🎬 افعل</div><em>[لقطة الإعداد — الاتصال، أول شاشة مفيدة]</em></div>
+    <div class="say"><div class="say-label">🎙 قل</div>«Google MediaPipe. 468 نقطة. بلا تثبيت. كل شيء يعمل داخل المتصفح — بلا حساب، بلا سحابة.»</div>
+    <div class="do"><div class="do-label">🎬 افعل</div>انتقال إلى الحاسوب. Chrome يفتح <code>index.html</code>، الشبكة تلتصق. أعمدة الإشارات الإحدى عشرة (X · Y · المسافة · yaw · pitch · roll · ابتسامة · فم · عيون · ظهور الوجه) تبدأ بمعدل 10 هرتز.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:10–00:25</span><span class="scene-phase phase-demo">العرض 1</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 قل</div><em>[لحظة الإبهار الأولى — ميزة رئيسية لـ Face Tracking]</em></div>
-    <div class="do"><div class="do-label">🎬 افعل</div><em>[لقطة الفعل — 15 ثانية من الحركة المرئية]</em></div>
+    <div class="say"><div class="say-label">🎙 قل</div>«عشر إشارات جاهزة. شاهد. ابتسامة… ضحكة… غمزة يسار… غمزة يمين… إمالة… نظرة يسار.»</div>
+    <div class="do"><div class="do-label">🎬 افعل</div>متتالية سريعة: الطفل يبتسم ← شارة SMILE تُضيء. يضحك ← LAUGH. يغمز يسارًا ← WINK LEFT. يميل رأسه ← HEAD TILT. ينظر يسارًا ← LOOK LEFT. كل شارة تومض خضراء مع قفزة الشريط.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:25–00:40</span><span class="scene-phase phase-demo">العرض 2</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 قل</div><em>[لحظة الإبهار الثانية — ميزة/حالة استخدام ثانية]</em></div>
-    <div class="do"><div class="do-label">🎬 افعل</div><em>[لقطة الفعل — 15 ثانية]</em></div>
+    <div class="say"><div class="say-label">🎙 قل</div>«الحاسوب يردّ. بـ اثنتي عشرة لغة.»</div>
+    <div class="do"><div class="do-label">🎬 افعل</div>الطفل يبتسم — صوت en-US يقول "Smile detected". المؤشر يبدّل القائمة إلى <code>fr-FR</code> ← «Sourire détecté». ثم إلى <code>ja-JP</code> ← «笑顔を検出». نفس الوجه، ثلاث لغات.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:40–00:50</span><span class="scene-phase phase-payoff">المكافأة</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 قل</div><em>[لماذا هذا مهم — الوقت الموفّر، المهارة المكتسبة، الأمان]</em></div>
-    <div class="do"><div class="do-label">🎬 افعل</div><em>[الشاشة التي تحمل الرسالة — تصدير، التقاط، نتيجة مرئية]</em></div>
+    <div class="say"><div class="say-label">🎙 قل</div>«وصِّل micro:bit فيصبح جسرًا — 19 رقمًا، عشر مرات في الثانية، عبر BLE.»</div>
+    <div class="do"><div class="do-label">🎬 افعل</div>إطار منقسم: على الجانب، الحزمة من 19 رقمًا تمرّ في السجل. على الجانب الآخر، micro:bit V2 حقيقي — مصفوفته 5×5 ترسم سهمًا يتبع ميل رأس الطفل.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:50–00:60</span><span class="scene-phase phase-cta">CTA + إطار الختام</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 قل</div><em>[الدعوة للشراء — الطقم الكامل + الرابط في الوصف]</em></div>
-    <div class="do"><div class="do-label">🎬 افعل</div><em>[طبقة الشعار، إطار ختام ثابت لـ 3 ثوانٍ]</em></div>
+    <div class="say"><div class="say-label">🎙 قل</div>«شبكة الوجه، 11 إشارة، وجسر BLE — الرابط في الأسفل.»</div>
+    <div class="do"><div class="do-label">🎬 افعل</div>توقُّف على الشبكة مع شارة الخصوصية «الصور لا تغادر جهازك أبدًا». الشعار يظهر في الزاوية، واسم المتجر يبقى 3 ثوانٍ.</div>
   </div>
 </div>
 
 <!-- ═══════════ نص الإعلان ═══════════ -->
 <div class="slug" id="listing">نص إعلان جاهز للنسخ</div>
 <h2>عنوان Etsy (140 حرفًا كحد أقصى)</h2>
-<div class="copybox">Face Tracking — لوحة تحكم BLE للمعلمين والأطفال · حساسات · محركات · مخطط حي · نماذج 3D · بلا تثبيت · Chrome / Edge<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">نسخ</button></div>
+<div class="copybox">Face Tracking — تتبُّع الوجه في المتصفح للأطفال · شبكة 468 نقطة · 11 إشارة · 10 إيماءات · 12 صوتًا · جسر micro:bit<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">نسخ</button></div>
 
 <h2>الوصف المختصر (أول 160 حرفًا — تظهر في البحث)</h2>
-<div class="copybox">لوحة تحكم BLE داخل المتصفح للوحة BBC micro:bit V2. حساسات ومحركات ومخططات حية ونماذج ثلاثية الأبعاد ويد تحكم — كلها من Chrome. بلا تثبيت وبلا حساب.<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">نسخ</button></div>
+<div class="copybox">تتبُّع الوجه داخل المتصفح للأطفال. شبكة 468 نقطة، 11 إشارة مباشرة، 10 إيماءات، 12 لغة صوتية. جسر BLE اختياري مع micro:bit V2. بلا سحابة، بلا حساب.<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">نسخ</button></div>
 
 <h2>الوصف الكامل</h2>
-<div class="copybox">🎮 Face Tracking — لوحة تحكم BLE تعمل داخل المتصفح للوحة BBC micro:bit V2.
+<div class="copybox">🎭 Face Tracking — مختبر شبكة الوجه داخل المتصفح، للأطفال، مبني على Google MediaPipe FaceLandmarker.
 
-افتح ملف HTML واحدًا في Chrome أو Edge، واقترن عبر Bluetooth، وافتح 8 علامات تبويب من المرح التعليمي (STEM) التفاعلي — بلا تثبيت، بلا حساب، بلا خادم خلفي، بلا تتبع.
+افتح ملف HTML واحدًا، وامنح إذن الكاميرا، فتلتصق 468 نقطة على الوجه في الوقت الحقيقي. 11 إشارة مباشرة بمعدل 10 هرتز، و10 إيماءات جاهزة تنطلق مع لعب الطفل، والحاسوب يردّ بـ 12 لغة — كل ذلك من Chrome، بلا تثبيت، بلا حساب، بلا خادم.
 
 ما ستحصل عليه
-• 🎛 شبكة LED + أيقونات جاهزة + نص متحرك
-• 📡 حساسات مباشرة: الحرارة، الإضاءة، الصوت، مقياس التسارع، البوصلة، اللمس
-• ⚙️ محركان (P1 + P2) مع منزلقات ومؤشرات وضبط وأزرار إيقاف
-• 🎮 يد تحكم D-pad للروبوتات والألعاب
-• 📈 [TODO — ميزة منتجك الرئيسية]• 🎲 5 نماذج ثلاثية الأبعاد تفاعلية (Three.js): micro:bit، العربة، الذراع، التوازن، الطقس
-• 🎨 4 سمات (Stealth · Neon · Arctic · Blaze) + 3 لغات (EN · FR · AR مع دعم RTL كامل)
-• 📱 PWA — قابل للتثبيت ويعمل بدون إنترنت
-• 👶 وضع المبتدئ + 🧙 وضع الخبير
+• 🎯 شبكة وجه في الوقت الحقيقي — 468 نقطة بواسطة Google MediaPipe FaceLandmarker (تعمل 100% داخل المتصفح، بدون TensorFlow)
+• 📡 11 إشارة مباشرة بمعدل 10 هرتز — X، Y، المسافة، yaw، pitch، roll، فتح الفم، العين اليسرى، العين اليمنى، الابتسامة، ظهور الوجه
+• ✨ 10 إيماءات مبنية مسبقًا — ابتسامة، ضحك، إندهاش (Wow)، فم مفتوح، رمشة، غمزة يسار، غمزة يمين، إمالة الرأس، نظر يسار/يمين، نظر أعلى/أسفل
+• 🗣 نطق نصي بـ 12 لغة — en-US، en-GB، fr-FR، es-ES، de-DE، it-IT، pt-PT، pt-BR، nl-NL، ja-JP، ko-KR، zh-CN، مع منزلقات السرعة والطبقة
+• 🎨 طبقات قابلة للتبديل — الشبكة الكاملة، الخطوط (بيضوي الوجه، الشفاه، العينان، الحاجبان، الأنف)، نقاط خام
+• 📷 تبديل الكاميرا الأمامية/الخلفية + عكس المرآة
+• 🔗 جسر BBC micro:bit V2 اختياري — يرسل حزمة من 19 رقمًا عبر BLE UART / Nordic UART بمعدل 10 هرتز
+• 💾 برنامج ثابت <code>makecode.ts</code> جاهز للتحميل
 
 محتويات التنزيل
 • index.html — التطبيق الكامل
-• makecode.ts — برنامج micro:bit الثابت (تُحمَّل مرة واحدة من MakeCode)
+• makecode.ts — برنامج micro:bit الثابت (يُحمَّل مرة واحدة من MakeCode، اختياري)
 • SETUP.md — بداية سريعة في 5 دقائق
 • docs/ — دليل مصور، ومرجع سريع، وأسئلة شائعة، ودليل Etsy
 • LICENSE — رخصة مستخدم وحيد للاستخدام الشخصي / الصفي
 
 المتطلبات
-• BBC micro:bit V2 (V1 يعمل لكن بدون حساس صوت)
+• أي كاميرا ويب (كاميرا اللابتوب الداخلية تكفي)
 • Chrome أو Edge على سطح المكتب (أو Chrome على أندرويد)
-• تفعيل Bluetooth
+• اختياري: BBC micro:bit V2 للجسر BLE
 • HTTPS أو file:// — النقر المزدوج على HTML يكفي
 
 لمن هو موجَّه
-المعلمون الذين يديرون ورش STEM · الأسر التي تدرّس منزليًا · نوادي الروبوتات · صانعو النماذج الأولية لمشاريع BLE · كل مهتم بـ micro:bit.
+المعلمون الذين يديرون ورش STEM والذكاء الاصطناعي · الأسر التي تدرّس منزليًا · أخصائيو النطق وذوي الاحتياجات الخاصة الذين يستخدمون ردود الابتسامة/الرمشة · نوادي الروبوتات التي تريد micro:bit يُقاد بالوجه · صانعو النماذج الأولية للتفاعلات BLE عبر الوجه.
 
 الخصوصية أولًا
-لا شيء يغادر جهازك. بلا تتبع، بلا تسجيل دخول، بلا سحابة. جميع المعايرات والتسجيلات والإعدادات المسبقة تبقى في localStorage للمتصفح وعلى قرصك.
+الصور لا تغادر جهازك أبدًا. النموذج يعمل 100% داخل متصفحك — بلا تتبع، بلا تسجيل دخول، بلا سحابة، بلا رفع. مثالي للصفوف وللأطفال.
 
 تحديثات مدى الحياة
 كل إصدار يُطرح من هذا الإعلان هو ملكك للأبد. أعد تنزيل أحدث ZIP في أي وقت من صفحة مشترياتك في Etsy.
@@ -288,16 +290,16 @@
 <div class="slug" id="tags">الوسوم والمواد</div>
 <h2>13 وسمًا لـ Etsy (20 حرفًا لكل وسم)</h2>
 <div class="pills">
-  <span class="pill">micro:bit</span>
-  <span class="pill">BLE</span>
-  <span class="pill">bluetooth</span>
-  <span class="pill">تعليم</span>
+  <span class="pill">تتبع الوجه</span>
+  <span class="pill">face mesh</span>
+  <span class="pill">mediapipe</span>
+  <span class="pill">ذكاء اصطناعي</span>
+  <span class="pill">AI للأطفال</span>
   <span class="pill">STEM</span>
-  <span class="pill">روبوتات</span>
-  <span class="pill">برمجة أطفال</span>
   <span class="pill">مورد للمعلم</span>
-  <span class="pill">حساسات</span>
-  <span class="pill">محركات</span>
+  <span class="pill">علاج نطق</span>
+  <span class="pill">micro:bit</span>
+  <span class="pill">web bluetooth</span>
   <span class="pill">غرفة صف</span>
   <span class="pill">تعليم منزلي</span>
   <span class="pill">ميكرسبيس</span>
@@ -307,10 +309,11 @@
 <div class="pills">
   <span class="pill">HTML5</span>
   <span class="pill">JavaScript</span>
+  <span class="pill">MediaPipe</span>
+  <span class="pill">FaceLandmarker</span>
+  <span class="pill">Web Speech API</span>
   <span class="pill">Web Bluetooth</span>
-  <span class="pill">[render lib]</span>
-  <span class="pill">[3D lib if any]</span>
-  <span class="pill">PWA</span>
+  <span class="pill">Canvas 2D</span>
   <span class="pill">MakeCode</span>
   <span class="pill">TypeScript</span>
 </div>
@@ -323,13 +326,13 @@
 <h2>تسلسل الصور (Etsy يعرض 1 و 2 بأكبر حجم)</h2>
 <div class="card">
   <ol style="padding-right:22px;line-height:2">
-    <li><strong>الصورة البطل</strong> — micro:bit حقيقي + لقطة شاشة مقسومة للحاسوب تُظهر النموذج ثلاثي الأبعاد وهو يعكس ميل اللوحة. عنوان بخط Orbitron فوقها.</li>
-    <li><strong>نظرة عامة على الألسنة</strong> — لقطة شبكية لجميع الألسنة الثماني مع رموزها.</li>
-    <li><strong>[TODO — لقطة قريبة لأهم ميزة]</strong></li>
-    <li><strong>[TODO — لقطة مقسومة تُظهر ميزتين رئيسيتين]</strong></li>
-    <li><strong>يد تمسك اللوحة</strong> — محرك حقيقي موصول بـ P1، والمنزلقات على الشاشة في الخلفية.</li>
-    <li><strong>عيّنة السمات</strong> — شبكة 2×2: Stealth · Neon · Arctic · Blaze.</li>
-    <li><strong>بطاقة نصية</strong> — «رخصة مستخدم وحيد · تحديثات مدى الحياة · بلا سحابة · Chrome / Edge» على تدرج داكن.</li>
+    <li><strong>الصورة البطل</strong> — لقطة قريبة لوجه طفل مع شبكة خضراء كاملة على 468 نقطة. عنوان Orbitron فوقها: «468 نقطة · بلا تثبيت».</li>
+    <li><strong>لوحة 11 إشارة</strong> — لقطة لعمود الإشارات المباشرة مع تحرُّك جميع الأشرطة (yaw، pitch، roll، ابتسامة، فم، عيون، مسافة). تسمية: «11 إشارة مباشرة · 10 هرتز».</li>
+    <li><strong>شارات الإيماءات</strong> — كوم من الإيماءات العشر كلها مُضاءة: SMILE، LAUGH، WOW، WINK LEFT، WINK RIGHT، BLINK، MOUTH-OPEN، HEAD TILT، LOOK L/R، LOOK U/D.</li>
+    <li><strong>قائمة لغات النطق</strong> — القائمة مفتوحة تُظهر الأصوات الـ 12 (en-US، en-GB، fr-FR، es-ES، de-DE، it-IT، pt-PT، pt-BR، nl-NL، ja-JP، ko-KR، zh-CN) مع منزلقات السرعة والطبقة.</li>
+    <li><strong>أدوات الكاميرا</strong> — تبديل أمامية/خلفية، مرآة، طبقات (شبكة / خطوط / نقاط). لقطة UI نظيفة.</li>
+    <li><strong>جسر BLE اختياري</strong> — لابتوب مع شبكة الوجه + سجل حزمة الـ 19 رقمًا، ومعه BBC micro:bit V2 حقيقي يعرض سهمًا على مصفوفته 5×5 يتبع ميل رأس الطفل.</li>
+    <li><strong>بطاقة نصية للخصوصية</strong> — «الصور لا تغادر جهازك · رخصة مستخدم وحيد · تحديثات مدى الحياة · Chrome / Edge» على تدرج داكن.</li>
   </ol>
 </div>
 
@@ -338,7 +341,7 @@
 <h2>أخطاء شائعة</h2>
 <table>
   <tr><th>❌ لا تفعل</th><th>✅ افعل</th></tr>
-  <tr><td>ابدأ بـ «مرحبًا، أنا…» مع 10 ثوانٍ من المقدمة</td><td>افتح باللوحة الحقيقية وهي تُميل نموذجًا ثلاثي الأبعاد في أول 3 ثوانٍ</td></tr>
+  <tr><td>ابدأ بـ «مرحبًا، أنا…» مع 10 ثوانٍ من المقدمة</td><td>افتح بوجه مُشبَّك بالكامل في أول 3 ثوانٍ — 468 نقطة متحركة</td></tr>
   <tr><td>التصوير بالوضع الأفقي (16:9)</td><td>عمودي 9:16 — Etsy يشغّل تلقائيًا على الجوال</td></tr>
   <tr><td>التحدث فوق رسوم متحركة مزدحمة</td><td>اترك الصورة تتنفس لثانية، ثم اشرح</td></tr>
   <tr><td>نسيان الترجمة (Etsy يشغّل كتم الصوت)</td><td>ادمج الترجمة أو أضف نصًا في كل مشهد</td></tr>
@@ -348,8 +351,8 @@
 
 <!-- ═══════════ بطاقة سريعة ═══════════ -->
 <div class="slug">بطاقة الجيب المرجعية</div>
-<div class="copybox">قبل     V2 يعمل (أيقونة X) · Chrome مفتوح · BLE أخضر · هاتف 9:16
-صوِّر   خطاف في 3 ثوانٍ · إمالة ← انعكاس 3D · محرك يتحرك · محاكاة مخطط · CTA
+<div class="copybox">قبل     الكاميرا ON · Chrome · الشبكة تُرسم · 11 إشارة تنبض · هاتف 9:16
+صوِّر   خطاف شبكة الوجه · ابتسامة-غمزة-إمالة · تحدَّث بـ 3 لغات · CTA
 بعد     قصّ إلى 55 ثانية · ترجمة مدمجة · أول إطار = المصغَّرة
 أعلن    عنوان · وصف 160 حرفًا · 13 وسمًا · 7 صور · فئات الأسعار</div>
 

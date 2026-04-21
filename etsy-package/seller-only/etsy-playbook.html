@@ -145,14 +145,15 @@
 <h2>Before you press Record</h2>
 <div class="card">
   <ul class="checklist" onclick="var li=event.target.closest('li');if(li)li.classList.toggle('checked')">
-    <li><input type="checkbox"><label>micro:bit V2 powered on, showing <kbd>X</kbd> icon<span class="where">If not → reflash <code>makecode.ts</code></span></label></li>
-    <li><input type="checkbox"><label>Chrome or Edge open, <code>index.html</code> loaded<span class="where">Safari/Firefox/iOS will not work</span></label></li>
-    <li><input type="checkbox"><label>BLE connected — status chip is <strong>green</strong><span class="where">Click 🔗 Connect, pick BBC micro:bit from picker</span></label></li>
-    <li><input type="checkbox"><label>Theme picked — <strong>Neon</strong> looks best on camera<span class="where">Header → paint-roller dropdown</span></label></li>
-    <li><input type="checkbox"><label>Servo plugged into P1 (if showing Robot Arm / Buggy)</label></li>
-    <li><input type="checkbox"><label>3D Board tab open, Buggy or Robot Arm selected<span class="where">Tab 6 → model dropdown</span></label></li>
-    <li><input type="checkbox"><label>Phone in 9:16 mode on a tripod, lit from the front</label></li>
-    <li><input type="checkbox"><label>Desk cleared — only the board and one prop in frame</label></li>
+    <li><input type="checkbox"><label>Webcam plugged in and granted camera permission in Chrome<span class="where">Site settings → Camera → Allow</span></label></li>
+    <li><input type="checkbox"><label>Chrome or Edge open, <code>index.html</code> loaded over HTTPS or <code>file://</code><span class="where">Safari will not load MediaPipe FaceLandmarker</span></label></li>
+    <li><input type="checkbox"><label>Face mesh drawing live — 468 landmarks visible on the cheeks<span class="where">Toggle: Overlays → Mesh ON</span></label></li>
+    <li><input type="checkbox"><label>11-signals panel ticking at 10 Hz<span class="where">Watch yaw / pitch / smile / mouth-open bars move in real time</span></label></li>
+    <li><input type="checkbox"><label>Voice language picked — start with <strong>en-US</strong><span class="where">Speech → locale dropdown (12 choices)</span></label></li>
+    <li><input type="checkbox"><label>Optional: micro:bit V2 flashed with <code>makecode.ts</code>, BLE connected<span class="where">Click 🔗 Connect → BBC micro:bit — 19-digit packet scrolls in the log</span></label></li>
+    <li><input type="checkbox"><label>Good face lighting — front-lit, no backlit window<span class="where">FaceLandmarker loses landmarks in harsh backlight</span></label></li>
+    <li><input type="checkbox"><label>Phone in 9:16 mode on a tripod, framing the laptop screen + your face</label></li>
+    <li><input type="checkbox"><label>Kid practiced the 4 detections: smile, wink, head-tilt, look-left</label></li>
     <li><input type="checkbox"><label>Script read aloud once — timed under 55 s</label></li>
   </ul>
 </div>
@@ -162,11 +163,12 @@
 <h2>Structure</h2>
 <div class="card">
   <pre style="color:var(--accent2);font-family:var(--mono);font-size:.9rem;line-height:1.7;margin:0">
- 0–3 s   HOOK        "Watch what this micro:bit does in 60 seconds."
- 3–10 s  CONTEXT     Board on-screen, X icon → status turns green.
-10–35 s  DEMO        Tilt → 3D model follows. Press A → LED heart. Servo swings.
-35–50 s  PAYOFF      Zoom on live graph + 3D model mirroring real board.
-50–55 s  CTA         "Full kit in my shop — link below."
+ 0–3 s   HOOK        "Smile. Wink. Tilt. The computer sees it all."
+ 3–10 s  CONTEXT     Browser open, mesh draws itself on the face — 468 dots.
+10–25 s  DEMO 1      Rapid-fire detections: SMILE · WINK · HEAD-TILT · LOOK-LEFT.
+25–40 s  DEMO 2      Voice feedback flips en-US → fr-FR → ja-JP on the same smile.
+40–50 s  PAYOFF      Optional micro:bit bridge: 19-digit packet scrolls, LED arrow reacts.
+50–55 s  CTA         "Face mesh + 11 signals + BLE bridge — link below."
 55–60 s  END FRAME   Logo + handle frozen for the loop preview.</pre>
 </div>
 
@@ -177,91 +179,97 @@
      Never ship this file with the placeholder italics still in place. -->
 
 <h2>6-scene template — Face Tracking</h2>
-<p class="aka" style="color:#f59e0b;font-weight:700;">⚠️ The 6 scenes below are shells. Replace every line with a filmable action specific to Face Tracking before you shoot.</p>
+<p class="aka" style="color:#f59e0b;font-weight:700;">✅ The 6 scenes below are tuned to Face Tracking. Read each line aloud before you shoot — total time 55 s.</p>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:00–00:03</span><span class="scene-phase phase-hook">HOOK</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 SAY</div><em>[Hook line — 1-second promise, the reason a scroller stops]</em></div>
-    <div class="do"><div class="do-label">🎬 DO</div><em>[The hook shot — what the viewer sees during the line]</em></div>
+    <div class="say"><div class="say-label">🎙 SAY</div>"Smile. Wink. Tilt your head. The computer sees it all — and sends it to your micro:bit."</div>
+    <div class="do"><div class="do-label">🎬 DO</div>Face fills the frame. The green mesh draws itself live across the cheeks and lips — 468 dots in motion.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:03–00:10</span><span class="scene-phase phase-demo">CONTEXT</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 SAY</div><em>[Who this is for, what problem it solves]</em></div>
-    <div class="do"><div class="do-label">🎬 DO</div><em>[Setup shot — connecting, first meaningful screen]</em></div>
+    <div class="say"><div class="say-label">🎙 SAY</div>"Google MediaPipe. 468 landmarks. Zero setup. Runs right in the browser — no sign-in, no cloud."</div>
+    <div class="do"><div class="do-label">🎬 DO</div>Cut to the laptop. Chrome tab opens <code>index.html</code>, mesh snaps on. 11 signal bars (X · Y · distance · yaw · pitch · roll · smile · mouth · eyes · visibility) start ticking at 10 Hz.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:10–00:25</span><span class="scene-phase phase-demo">DEMO 1</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 SAY</div><em>[First wow-moment — a marquee feature of Face Tracking]</em></div>
-    <div class="do"><div class="do-label">🎬 DO</div><em>[The 15-second action shot]</em></div>
+    <div class="say"><div class="say-label">🎙 SAY</div>"Ten built-in detections. Watch. Smile… laugh… wink left… wink right… tilt… look left."</div>
+    <div class="do"><div class="do-label">🎬 DO</div>Rapid-fire: kid smiles → SMILE badge lights. Laughs → LAUGH. Winks left → WINK LEFT. Tilts head → HEAD TILT. Looks left → LOOK LEFT. Each badge flashes green as the signal bar spikes.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:25–00:40</span><span class="scene-phase phase-demo">DEMO 2</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 SAY</div><em>[Second wow-moment — second feature / use case]</em></div>
-    <div class="do"><div class="do-label">🎬 DO</div><em>[The 15-second action shot]</em></div>
+    <div class="say"><div class="say-label">🎙 SAY</div>"Your computer talks back. In twelve languages."</div>
+    <div class="do"><div class="do-label">🎬 DO</div>Kid smiles — en-US voice says "Smile detected". Cursor flips the locale dropdown to <code>fr-FR</code> → "Sourire détecté". Again to <code>ja-JP</code> → "笑顔を検出". Same face, three tongues.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:40–00:50</span><span class="scene-phase phase-payoff">PAYOFF</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 SAY</div><em>[The "why it matters" — time saved, skill acquired, safety]</em></div>
-    <div class="do"><div class="do-label">🎬 DO</div><em>[The screen that carries the message — export, capture, result]</em></div>
+    <div class="say"><div class="say-label">🎙 SAY</div>"Plug in a micro:bit and it becomes a bridge — 19 digits, ten times a second, over BLE."</div>
+    <div class="do"><div class="do-label">🎬 DO</div>Split frame: left side shows the 19-digit packet streaming down the log. Right side shows the real micro:bit V2 — its 5×5 LED matrix draws an arrow that follows the kid's head pitch.</div>
   </div>
 </div>
 
 <div class="scene">
   <div class="scene-head"><span class="scene-time">00:50–00:60</span><span class="scene-phase phase-cta">CTA + END FRAME</span></div>
   <div class="scene-body">
-    <div class="say"><div class="say-label">🎙 SAY</div><em>[Call to action — full kit + link in description]</em></div>
-    <div class="do"><div class="do-label">🎬 DO</div><em>[Logo overlay, 3-second still for the loop]</em></div>
+    <div class="say"><div class="say-label">🎙 SAY</div>"Face mesh, eleven signals, and a BLE bridge — link below."</div>
+    <div class="do"><div class="do-label">🎬 DO</div>Freeze on the mesh overlay with the privacy badge "Frames never leave your device". Logo fades in bottom-right, shop handle holds 3 s.</div>
   </div>
 </div>
 
 <!-- ═══════════ LISTING COPY ═══════════ -->
 <div class="slug" id="listing">SLUG — COPY-READY LISTING TEXT</div>
 <h2>Etsy title (140 chars max)</h2>
-<div class="copybox">[TODO — 140-char Etsy title, see ETSY_LISTING.md]<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">COPY</button></div>
+<div class="copybox">Face Tracking — Real-Time Face Mesh + 11 Signals for Kids · MediaPipe · 10 Detections · 12 Voices · micro:bit BLE Bridge<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">COPY</button></div>
 
 <h2>Short description (first 160 chars — shown in search)</h2>
-<div class="copybox">[TODO — 160-char short description, see ETSY_LISTING.md]<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">COPY</button></div>
+<div class="copybox">Browser face tracker for kids. 468-point mesh, 11 live signals, 10 detections, 12 voice locales. Optional BBC micro:bit V2 BLE bridge. No cloud, no sign-in.<button class="copybtn" onclick="navigator.clipboard.writeText(this.previousSibling.textContent.trim())">COPY</button></div>
 
 <h2>Full description</h2>
-<div class="copybox">🎮 Face Tracking — a browser-based BLE control panel for the BBC micro:bit V2.
+<div class="copybox">🎭 Face Tracking — a browser-based face mesh lab for kids, built on Google MediaPipe FaceLandmarker.
 
-[TODO — 1-sentence pitch of what the product does when opened]
+Open one HTML file, allow the webcam, and 468 landmarks snap onto your face in real time. 11 live signals stream at 10 Hz, 10 pre-built detections fire as the kid plays, and the computer talks back in 12 languages — all from Chrome, no install, no account, no server.
+
 WHAT YOU GET
-• [TODO — product-specific feature 1]• [TODO — your live signal list]• [TODO — your control surface if any]• [TODO — your interactive surface]
-• [TODO — your record/replay/export feature]• [TODO — your visualization feature if any]• [TODO — your themes / UI variety + languages]• 📱 PWA — installable, offline-capable
-• 👶 Beginner mode + 🧙 Expert mode
+• 🎯 Real-time face mesh — 468 landmarks powered by Google MediaPipe FaceLandmarker (runs fully in the browser, TensorFlow-free)
+• 📡 11 live signals at 10 Hz — X, Y, distance, yaw, pitch, roll, mouth-open, left-eye, right-eye, smile, face-visibility
+• ✨ 10 built-in detections — Smile, Laugh, Wow, Mouth-open, Blink, Wink Left, Wink Right, Head Tilt, Look Left/Right, Look Up/Down
+• 🗣 Text-to-speech in 12 locales — en-US, en-GB, fr-FR, es-ES, de-DE, it-IT, pt-PT, pt-BR, nl-NL, ja-JP, ko-KR, zh-CN, with rate and pitch sliders
+• 🎨 Toggleable overlays — full mesh, contours (face oval, lips, eyes, brows, nose), raw landmark points
+• 📷 Front/back camera switch + mirror toggle
+• 🔗 Optional BBC micro:bit V2 bridge — streams a 19-digit signal packet over BLE UART / Nordic UART at 10 Hz
+• 💾 Ready-to-flash <code>makecode.ts</code> firmware included
 
 WHAT'S IN YOUR DOWNLOAD
 • index.html — the full app
-• makecode.ts — micro:bit firmware (flash once from MakeCode)
+• makecode.ts — micro:bit firmware (flash once from MakeCode, optional)
 • SETUP.md — 5-minute quick-start
 • docs/ — illustrated guide, cheat sheet, FAQ, Etsy playbook
 • LICENSE — personal / classroom single-user license
 
 REQUIREMENTS
-• BBC micro:bit V2 (V1 works but has no sound sensor)
+• Any webcam (built-in laptop cam works)
 • Chrome or Edge on desktop (or Chrome on Android)
-• Bluetooth enabled
+• Optional: BBC micro:bit V2 for the BLE bridge
 • HTTPS or file:// — double-clicking the HTML works
 
 WHO IT'S FOR
-Teachers running STEM workshops · home-schooling families · robotics clubs · makers prototyping BLE projects · anyone curious about the micro:bit.
+Teachers running STEM + AI workshops · home-schooling families · speech-therapy and special-needs practitioners using smile/blink feedback · robotics clubs wanting a face-controlled micro:bit · makers prototyping BLE face-input projects.
 
 PRIVACY FIRST
-Nothing leaves your computer. No analytics, no logins, no cloud. All calibrations, recordings, and presets live in your browser's localStorage and on your disk.
+Frames never leave your device. The model runs 100% in your browser — no analytics, no logins, no cloud, no uploads. Perfect for classrooms and kids.
 
 LIFETIME UPDATES
 Every version shipped from this listing is yours forever. Re-download the latest ZIP anytime from your Etsy Purchases page.
@@ -280,16 +288,16 @@ Happy hacking! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.
 <div class="slug" id="tags">SLUG — TAGS + MATERIALS</div>
 <h2>13 Etsy tags (20 chars each)</h2>
 <div class="pills">
-  <span class="pill">micro:bit</span>
-  <span class="pill">BLE</span>
-  <span class="pill">bluetooth</span>
-  <span class="pill">education</span>
+  <span class="pill">face tracking</span>
+  <span class="pill">face mesh</span>
+  <span class="pill">mediapipe</span>
+  <span class="pill">webcam ai</span>
+  <span class="pill">kids AI</span>
   <span class="pill">STEM</span>
-  <span class="pill">robotics</span>
-  <span class="pill">kids coding</span>
   <span class="pill">teacher resource</span>
-  <span class="pill">sensors</span>
-  <span class="pill">[product tag]</span>
+  <span class="pill">speech therapy</span>
+  <span class="pill">micro:bit</span>
+  <span class="pill">web bluetooth</span>
   <span class="pill">classroom</span>
   <span class="pill">home school</span>
   <span class="pill">makerspace</span>
@@ -299,10 +307,11 @@ Happy hacking! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.
 <div class="pills">
   <span class="pill">HTML5</span>
   <span class="pill">JavaScript</span>
+  <span class="pill">MediaPipe</span>
+  <span class="pill">FaceLandmarker</span>
+  <span class="pill">Web Speech API</span>
   <span class="pill">Web Bluetooth</span>
-  <span class="pill">[render lib]</span>
-  <span class="pill">[3D lib if any]</span>
-  <span class="pill">PWA</span>
+  <span class="pill">Canvas 2D</span>
   <span class="pill">MakeCode</span>
   <span class="pill">TypeScript</span>
 </div>
@@ -315,13 +324,13 @@ Happy hacking! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.
 <h2>Image sequence (Etsy shows 1 &amp; 2 largest)</h2>
 <div class="card">
   <ol style="padding-left:22px;line-height:2">
-    <li><strong>[TODO — Hero shot: hardware + computer screen showing the marquee product state]</strong></li>
-    <li><strong>[TODO — grid screenshot of your main screens or features]</strong></li>
-    <li><strong>[TODO — close-up of your marquee feature]</strong></li>
-    <li><strong>[TODO — split screenshot showing two product features]</strong></li>
-    <li><strong>[TODO — shot showing hardware in-use or hand-to-screen reference]</strong></li>
-    <li><strong>[TODO — styling / variety grid].</li>
-    <li><strong>Text card</strong> — "Single-user license · Lifetime updates · No cloud · Chrome / Edge" on a dark gradient.</li>
+    <li><strong>Hero</strong> — tight close-up of a kid's face with the full green mesh drawn across 468 landmarks. Orbitron headline overlaid: "468 landmarks · zero setup".</li>
+    <li><strong>11 signals panel</strong> — screenshot of the live signals column with every bar mid-motion (yaw, pitch, roll, smile, mouth, eyes, distance). Caption: "11 live signals · 10 Hz".</li>
+    <li><strong>Detection badges</strong> — stack of the 10 detections lit up at once: SMILE, LAUGH, WOW, WINK LEFT, WINK RIGHT, BLINK, MOUTH-OPEN, HEAD TILT, LOOK LEFT/RIGHT, LOOK UP/DOWN.</li>
+    <li><strong>TTS locale selector</strong> — dropdown open showing all 12 voices (en-US, en-GB, fr-FR, es-ES, de-DE, it-IT, pt-PT, pt-BR, nl-NL, ja-JP, ko-KR, zh-CN) with rate + pitch sliders visible.</li>
+    <li><strong>Camera controls</strong> — front/back switch, mirror toggle, overlay toggles (mesh / contours / points). Clean UI shot.</li>
+    <li><strong>Optional BLE bridge</strong> — laptop with the face mesh + the 19-digit packet log, plus a real BBC micro:bit V2 showing an arrow on its 5×5 LED matrix responding to head pitch.</li>
+    <li><strong>Privacy text card</strong> — "Frames never leave your device · Single-user license · Lifetime updates · Chrome / Edge" on a dark gradient.</li>
   </ol>
 </div>
 
@@ -330,7 +339,7 @@ Happy hacking! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.
 <h2>Common mistakes</h2>
 <table>
   <tr><th>❌ Don't</th><th>✅ Do</th></tr>
-  <tr><td>Start with "Hi, I'm…" + 10s of intro</td><td>Open with the real board tilting a 3D model in the first 3 s</td></tr>
+  <tr><td>Start with "Hi, I'm…" + 10s of intro</td><td>Open with a face fully meshed in the first 3 seconds — 468 dots in motion</td></tr>
   <tr><td>Film landscape (16:9)</td><td>9:16 portrait — Etsy autoplays on mobile</td></tr>
   <tr><td>Talk over busy on-screen animation</td><td>Let the visual breathe for 1s, then explain</td></tr>
   <tr><td>Forget captions (Etsy plays muted)</td><td>Burn in captions or add a text overlay every scene</td></tr>
@@ -340,8 +349,8 @@ Happy hacking! 🚀🎮🤖<button class="copybtn" onclick="navigator.clipboard.
 
 <!-- ═══════════ QUICK CARD ═══════════ -->
 <div class="slug">SLUG — POCKET CHEAT CARD</div>
-<div class="copybox">PRE    V2 powered (X icon) · Chrome open · BLE green · 9:16 phone
-SHOOT  Hook in 3 s · [TODO — 3 verbs for your product] · CTA
+<div class="copybox">PRE    Webcam on · Chrome · mesh drawing · 11 signals ticking · 9:16 phone
+SHOOT  Hook mesh · smile-wink-tilt · talk in 3 tongues · CTA
 POST   Trim to 55 s · captions burn-in · first frame = thumbnail
 LIST   Title · 160-char desc · 13 tags · 7 images · price tiers</div>
 
