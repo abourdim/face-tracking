@@ -177,8 +177,8 @@
       <h3>Capture setup</h3>
       <ul>
         <li>Open <code>index.html</code> in a fresh Chrome window at <b>1440×900</b>. Hide the bookmarks bar (<kbd>⌘⇧B</kbd>).</li>
-        <li>Start the webcam and let the face mesh lock in — empty video frames look unfinished.</li>
-        <li>Turn <b>Demo ON</b> so the current detection label is visible in the panel while you screenshot.</li>
+        <li>Connect a real micro:bit V2 — empty/disconnected screens look unfinished.</li>
+        <li>Toggle <b>Simulate Mode</b> ON before screenshotting graphs so the lines look alive.</li>
         <li>Use <kbd>⌘⇧4</kbd> then <kbd>Space</kbd> then click the window for clean shadow-included PNGs.</li>
         <li>Save to <code>~/Desktop/etsy-photos/</code> as <code>01-hero.png</code> through <code>10-setup-preview.png</code>.</li>
       </ul>
@@ -187,16 +187,16 @@
       <table>
         <thead><tr><th>#</th><th>Subject</th><th>Theme</th><th>Overlay text</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Hero — a smiling face wearing the green mesh overlay (square crop)</td><td>Dark</td><td>"Face Tracking Kids" + "Instant download"</td></tr>
-          <tr><td>2</td><td>Three-views comparison — Mesh · Contours · Points, same face</td><td>Dark</td><td>"Three ways to see the AI"</td></tr>
-          <tr><td>3</td><td>Detection grid — six frames (smile / open mouth / wink L/R / blink / head turn)</td><td>Dark</td><td>"All detections, spoken out loud"</td></tr>
-          <tr><td>4</td><td>Numerics panel close-up — X, Y, yaw, pitch, smile values live</td><td>Dark</td><td>"Every value, in real time"</td></tr>
-          <tr><td>5</td><td>BLE bridge shot — laptop mesh + micro:bit LEDs forming a heart</td><td>Dark</td><td>"Optional micro:bit Live Link"</td></tr>
-          <tr><td>6</td><td>Mobile width (414×896 in Chrome DevTools) running the app</td><td>Dark</td><td>"Works on Chromebooks &amp; Android"</td></tr>
-          <tr><td>7</td><td>Privacy card — &quot;camera local / AI local / no accounts&quot;</td><td>Dark</td><td>"Video never leaves your device"</td></tr>
+          <tr><td>1</td><td>Hero — LED Matrix tab + real micro:bit next to laptop (square crop)</td><td>Stealth</td><td>"micro:bit V2 Playground" + "Instant download"</td></tr>
+          <tr><td>2</td><td>Signals panel, all sparklines populated, board in motion</td><td>Stealth</td><td>"Live sensor dashboard"</td></tr>
+          <tr><td>3</td><td>Graph tab in fullscreen, ~3 datasets plotting</td><td>Neon</td><td>"Real-time charts • record • export"</td></tr>
+          <tr><td>4</td><td>Face Mesh tab, Buggy model at 3/4 angle</td><td>Stealth</td><td>"5 interactive 3D models"</td></tr>
+          <tr><td>5</td><td>2×2 grid — same tab in each of the 4 themes</td><td>All four</td><td>"4 themes — pick your vibe"</td></tr>
+          <tr><td>6</td><td>Mobile width (414×896 in Chrome DevTools)</td><td>Stealth</td><td>"Works on Chromebooks &amp; Android"</td></tr>
+          <tr><td>7</td><td>Onboarding overlay (run <code>localStorage.clear()</code> first)</td><td>Stealth</td><td>"Friendly first-run guide"</td></tr>
           <tr><td>8</td><td>Compatibility infographic (made in Canva)</td><td>—</td><td>"✅ Chrome / Edge / Android &nbsp; ❌ Safari / iPhone / iPad"</td></tr>
           <tr><td>9</td><td>Feature wall — text-on-image of top 8 features</td><td>—</td><td>Bullet list of features</td></tr>
-          <tr><td>10</td><td><code>README-quickstart.html</code> rendered in a browser or PDF mockup</td><td>—</td><td>"Step-by-step setup included"</td></tr>
+          <tr><td>10</td><td><code>SETUP.md</code> rendered in a browser or PDF mockup</td><td>—</td><td>"Step-by-step setup included"</td></tr>
         </tbody>
       </table>
 
@@ -207,17 +207,17 @@
       <ul class="check" data-key="photos">
         <li><input type="checkbox" id="ph_a"><label for="ph_a"><code>~/Desktop/etsy-photos/</code> folder created</label></li>
         <li><input type="checkbox" id="ph_b"><label for="ph_b">Chrome opened at 1440×900, bookmarks bar hidden, bookmark bar cleared</label></li>
-        <li><input type="checkbox" id="ph_c"><label for="ph_c">Webcam live, mesh locked on a face, Demo ON showing a detection label</label></li>
-        <li><input type="checkbox" id="ph_1"><label for="ph_1"><b>01-hero.png</b> — smiling face with the green mesh overlay, <i>square crop</i></label></li>
-        <li><input type="checkbox" id="ph_2"><label for="ph_2"><b>02-three-views.png</b> — Mesh · Contours · Points side-by-side, same face</label></li>
-        <li><input type="checkbox" id="ph_3"><label for="ph_3"><b>03-detections.png</b> — six-frame grid of face events (smile / open mouth / wink L/R / blink / head turn)</label></li>
-        <li><input type="checkbox" id="ph_4"><label for="ph_4"><b>04-numerics.png</b> — Numerics panel close-up with live X/Y/yaw/pitch/smile</label></li>
-        <li><input type="checkbox" id="ph_5"><label for="ph_5"><b>05-ble-bridge.png</b> — laptop mesh → Bluetooth icon → micro:bit LEDs forming a heart</label></li>
+        <li><input type="checkbox" id="ph_c"><label for="ph_c">Real micro:bit V2 connected, Simulate Mode ON</label></li>
+        <li><input type="checkbox" id="ph_1"><label for="ph_1"><b>01-hero.png</b> — LED Matrix tab + real micro:bit next to laptop, <i>square crop</i></label></li>
+        <li><input type="checkbox" id="ph_2"><label for="ph_2"><b>02-sensors.png</b> — Signals panel with all sparklines populated, board in motion</label></li>
+        <li><input type="checkbox" id="ph_3"><label for="ph_3"><b>03-graph.png</b> — Graph tab in fullscreen, Neon theme, ~3 datasets plotting</label></li>
+        <li><input type="checkbox" id="ph_4"><label for="ph_4"><b>04-3d.png</b> — Face Mesh tab, Buggy model at 3/4 angle</label></li>
+        <li><input type="checkbox" id="ph_5"><label for="ph_5"><b>05-themes.png</b> — 2×2 grid showing all four themes</label></li>
         <li><input type="checkbox" id="ph_6"><label for="ph_6"><b>06-mobile.png</b> — Mobile width (414×896 via Chrome DevTools)</label></li>
-        <li><input type="checkbox" id="ph_7"><label for="ph_7"><b>07-privacy.png</b> — privacy three-card (camera / AI / identity all local)</label></li>
+        <li><input type="checkbox" id="ph_7"><label for="ph_7"><b>07-onboarding.png</b> — Onboarding overlay visible (run <code>localStorage.clear()</code> first)</label></li>
         <li><input type="checkbox" id="ph_8"><label for="ph_8"><b>08-compatibility.png</b> — Compatibility infographic (designed in <a href="https://www.canva.com" target="_blank" rel="noopener">Canva</a>)</label></li>
         <li><input type="checkbox" id="ph_9"><label for="ph_9"><b>09-features.png</b> — Feature wall text-on-image (Canva)</label></li>
-        <li><input type="checkbox" id="ph_10"><label for="ph_10"><b>10-setup-preview.png</b> — README-quickstart.html rendered in a browser or PDF mockup</label></li>
+        <li><input type="checkbox" id="ph_10"><label for="ph_10"><b>10-setup-preview.png</b> — SETUP.md rendered in a browser or PDF mockup</label></li>
         <li><input type="checkbox" id="ph_z1"><label for="ph_z1">All 10 compressed via <a href="https://tinypng.com" target="_blank" rel="noopener">TinyPNG</a> (each &lt; 5 MB)</label></li>
         <li><input type="checkbox" id="ph_z2"><label for="ph_z2">Photo #1 final crop is exactly square (2000×2000 recommended)</label></li>
       </ul>
@@ -232,11 +232,11 @@
       <table>
         <thead><tr><th>Time</th><th>Shot</th></tr></thead>
         <tbody>
-          <tr><td>0:00–0:02</td><td>"Start webcam" button pulsing → click → allow prompt → the green mesh snaps onto a face.</td></tr>
-          <tr><td>0:02–0:04</td><td>Smile → "Smile" label flashes in the Demo panel. Cut to mouth close-up.</td></tr>
-          <tr><td>0:04–0:06</td><td>Wink → right-eye indicator drops → "Wink" label appears.</td></tr>
-          <tr><td>0:06–0:09</td><td>Toggle Mesh → Contours → Points (~900ms each) to show the AI's three views.</td></tr>
-          <tr><td>0:09–0:12</td><td>Cut to Numerics panel as the head rotates — yaw / pitch numbers animate.</td></tr>
+          <tr><td>0:00–0:02</td><td>App home, "Connect" button pulsing → click → green "Connected" chip appears.</td></tr>
+          <tr><td>0:02–0:04</td><td>Finger draws on the 5×5 LED grid → cut to micro:bit hardware lighting up the same pattern.</td></tr>
+          <tr><td>0:04–0:06</td><td>Tilt the physical board → face landmark on screen tilts in sync.</td></tr>
+          <tr><td>0:06–0:09</td><td>Live graph drawing a sine wave in fullscreen, Neon theme.</td></tr>
+          <tr><td>0:09–0:12</td><td>Cycle the 4 themes (Stealth → Neon → Arctic → Blaze, ~700ms each).</td></tr>
           <tr><td>0:12–0:15</td><td>End card: logo + "Face Tracking Kids — works in Chrome / Edge". This is the loop seam.</td></tr>
         </tbody>
       </table>
@@ -245,11 +245,11 @@
       <ul class="check" data-key="video">
         <li><input type="checkbox" id="v1"><label for="v1">Screen recorder installed — <a href="https://obsproject.com" target="_blank" rel="noopener">OBS</a> or QuickTime (built-in on macOS)</label></li>
         <li><input type="checkbox" id="v2"><label for="v2">Video editor installed — <a href="https://www.capcut.com" target="_blank" rel="noopener">CapCut</a> or iMovie</label></li>
-        <li><input type="checkbox" id="v3"><label for="v3">Clip A recorded: Start webcam pulse → click → mesh snaps onto face</label></li>
-        <li><input type="checkbox" id="v4"><label for="v4">Clip B recorded: Smile → &quot;Smile&quot; label flashes in the Demo panel (mouth close-up)</label></li>
-        <li><input type="checkbox" id="v5"><label for="v5">Clip C recorded: Wink → right-eye indicator drops → &quot;Wink&quot; label</label></li>
-        <li><input type="checkbox" id="v6"><label for="v6">Clip D recorded: toggle Mesh → Contours → Points</label></li>
-        <li><input type="checkbox" id="v7"><label for="v7">Clip E recorded: Numerics close-up as the head rotates (yaw / pitch animate)</label></li>
+        <li><input type="checkbox" id="v3"><label for="v3">Clip A recorded: Connect button pulse → click → green "Connected" chip</label></li>
+        <li><input type="checkbox" id="v4"><label for="v4">Clip B recorded: LED grid drawing → micro:bit mirrors the pattern (split screen if possible)</label></li>
+        <li><input type="checkbox" id="v5"><label for="v5">Clip C recorded: tilt physical board → face landmark tilts on screen</label></li>
+        <li><input type="checkbox" id="v6"><label for="v6">Clip D recorded: Graph in fullscreen, Neon theme, sine wave plotting</label></li>
+        <li><input type="checkbox" id="v7"><label for="v7">Clip E recorded: cycle all 4 themes (~700ms each)</label></li>
         <li><input type="checkbox" id="v8"><label for="v8">End-card designed in Canva (logo + "works in Chrome / Edge")</label></li>
         <li><input type="checkbox" id="v9"><label for="v9">All clips assembled in CapCut/iMovie, total runtime 15 seconds</label></li>
         <li><input type="checkbox" id="v10"><label for="v10">Audio stripped (Etsy plays muted — no point)</label></li>
@@ -280,7 +280,7 @@
       <div class="copy">
         <span class="label">Title</span>
         <button class="btn" data-copy>Copy</button>
-        <pre>Face Tracking Kids — Browser Face-AI Lab · Live Mesh · Smile &amp; Blink Detection · Speech in 13 Langs · Optional micro:bit Bluetooth · Chrome / Edge</pre>
+        <pre>micro:bit V2 Playground — Bluetooth Web App + Illustrated Guide | Features, 11 Live Signals, Live Graphs | STEM Classroom | Digital Download</pre>
       </div>
 
       <h3>Category</h3>
@@ -290,30 +290,32 @@
       <div class="copy long">
         <span class="label">Description</span>
         <button class="btn" data-copy>Copy</button>
-        <pre>😊 Face Tracking Kids — See · Follow · Smile. A browser face-AI lab for kids 8–15.
+        <pre>🎮 Face Tracking Kids — the all-in-one Bluetooth control panel for the webcam
 
-Open one HTML file in Chrome or Edge and a live face mesh snaps onto your face. The AI runs on your device — no cloud, no uploads, no accounts. Smile, blink, open your mouth, turn your head — the app announces every event out loud.
+Turn your micro:bit into an interactive STEM lab — no installs, no accounts, no cloud. Just open it in your browser and connect.
 
 ✨ What you get (instant download):
 • A complete web app (HTML, CSS, JS) you run locally in Chrome or Edge
-• On-device face mesh (~468 points) powered by MediaPipe Tasks-Vision
-• Three views: Mesh · Contours · Points
-• Live detections: smile, kiss, open mouth, wink (L/R), blink, head turn, face present/absent
-• Numerics panel: X, Y, distance, yaw, pitch, roll, mouth, eyes, smile, visibility
-• Demo mode that announces each detection out loud
-• Speech in 13 languages with adjustable rate and pitch
-• Optional micro:bit Live Link — 19-digit face packet over Web Bluetooth UART
-• MakeCode starter (makecode.ts) that reacts to smiles and blinks
-• Printable extras: quick-start card, control cheat sheet, A3 classroom poster, lesson plan, 30 stickers
+• Ready-to-flash micro:bit firmware (makecode.ts)
+• ILLUSTRATED trilingual user guide (EN/FR/AR) with built-in diagrams:
+  — architecture diagram • micro:bit V2 pin-out • firmware flow storyboard
+  — interactive LED playground (click cells, copy hex commands)
+  — visual troubleshooting: decision tree, symptom picker, icon gallery, reset recipe
+• A printable Quick Setup guide (SETUP.md)
+• 4 themes (Stealth, Neon, Arctic, Blaze)
+• 11 signals: LED Matrix, Sensors, Landmarks, Detections, Graph, Face Mesh, Bench, Settings
+• 5 interactive 3D models (micro:bit, Buggy, Robot Arm, Balance Game, Weather Station)
+• Session recording, live graphs, annotations, JSON export
+• Beginner &amp; Expert modes — grows with the learner
 
-🧒 Perfect for: classrooms, homeschool, after-school clubs, makerspaces, AI &amp; computer-vision camps, parents teaching kids how face-unlock works.
+🧒 Perfect for: classrooms, homeschool, after-school clubs, makerspaces, STEM camps, robotics enthusiasts, parents teaching kids to code.
 
 ⚙️ Requires:
-• Any webcam (built-in, USB, or phone) + good front lighting
+• webcam (sold separately)
 • Chrome or Edge browser on a desktop, laptop, or Android device
-• Optional: BBC micro:bit V2 for the Bluetooth bridge only
+• Bluetooth enabled
 
-❌ Does NOT work on: Safari, Firefox, iPhone, iPad. (MediaPipe + Web Bluetooth limitation — not the app.)
+❌ Does NOT work on: Safari, Firefox, iPhone, iPad. (Web Bluetooth limitation — not the app.)
 
 📦 Delivery: Instant download after purchase — a single ZIP file.
 
@@ -501,18 +503,18 @@ If both are a yes, you're good to go. Let me know if you'd like me to send a 30-
       <div class="copy">
         <span class="label">Pin titles</span>
         <button class="btn" data-copy>Copy</button>
-        <pre>Teach AI on your students&apos; faces — no cloud, no uploads
-The kid-friendly face-AI lab that runs entirely in a browser
-Homeschool AI: live face mesh, zero installs, zero accounts
-Your face becomes the controller — smile, blink, turn your head
-From &quot;how does face unlock work?&quot; to a working mesh in 60 seconds</pre>
+        <pre>Turn a micro:bit into a STEM lab — works in any browser
+The micro:bit Bluetooth app every STEM teacher wishes existed
+Homeschool STEM: 11 signals, 11 live signals, zero installs
+micro:bit V2 + Chrome = a $10 robotics classroom
+From "what's a micro:bit" to "I built a robot" in 5 minutes</pre>
       </div>
 
       <p><b>Pin description (500 chars):</b></p>
       <div class="copy long">
         <span class="label">Pin description</span>
         <button class="btn" data-copy>Copy</button>
-        <pre>Looking for a kid-friendly way to show how face-AI works? Face Tracking Kids runs a live face mesh entirely in the browser — on-device, no cloud, no uploads. Smile, blink, open your mouth, turn your head, and the app announces each event in 13 voice languages. Optional Bluetooth bridge to a BBC micro:bit V2 so a smile can light up the LEDs. Perfect for AI / computer-vision teachers, homeschool parents, and after-school clubs. Works on Chrome and Edge. One-time download. #faceAI #STEM #homeschool #computervision #edtech</pre>
+        <pre>Looking for a micro:bit project that works straight from the browser? Face Tracking Kids gives you 11 signals of live control — LED matrix, sensors, landmarks, gamepad, real-time graphs, and 5 interactive 3D models — all over Bluetooth. Perfect for STEM teachers, homeschool parents, and after-school clubs. No installs, no accounts. Works on Chrome and Edge. One-time download. #microbit #STEM #homeschool #coding #edtech</pre>
       </div>
 
       <p><b>Hashtag bank (rotate, don't reuse the same set):</b></p>
@@ -526,7 +528,7 @@ From &quot;how does face unlock work?&quot; to a working mesh in 60 seconds</pre
       <table>
         <thead><tr><th>Channel</th><th>Approach</th></tr></thead>
         <tbody>
-          <tr><td>TikTok / Reels</td><td>Reuse the 15-sec demo video. Hook in the first 1.5 seconds: smile → mesh lights up → &quot;Smile&quot; label flashes. Caption: <i>&quot;My kid&apos;s laptop just recognised her smile without uploading a thing.&quot;</i>. Drop the Etsy link in bio.</td></tr>
+          <tr><td>TikTok / Reels</td><td>Reuse the 15-sec demo video. Hook in the first 1.5 seconds: tilt the board → face landmark tilts. Caption: <i>"Bought my class a $20 STEM lab"</i>. Drop the Etsy link in bio.</td></tr>
           <tr><td>Reddit</td><td>Build karma in <a href="https://reddit.com/r/microbit" target="_blank" rel="noopener">r/microbit</a>, <a href="https://reddit.com/r/edtech" target="_blank" rel="noopener">r/edtech</a>, <a href="https://reddit.com/r/homeschool" target="_blank" rel="noopener">r/homeschool</a> for 2–3 weeks first. Then post a demo (no Etsy link). Say "DM me if you want it." Send the link privately.</td></tr>
           <tr><td>Facebook groups</td><td>Highest conversion of all free channels. Search for: "micro:bit teachers", "BBC micro:bit Educators", "Homeschool STEM", "Coding with Kids". Most groups allow self-promo on Friday — read pinned rules.</td></tr>
           <tr><td>YouTube</td><td>Long-term play. Weekly 5-minute "what you can build with Face Tracking Kids" videos. Compounds over 6+ months.</td></tr>
@@ -579,7 +581,7 @@ From &quot;how does face unlock work?&quot; to a working mesh in 60 seconds</pre
       <ul class="check" data-key="pitfalls">
         <li><input type="checkbox" id="pt1"><label for="pt1"><b>Refund requests from iPhone/Safari users</b> — I will refer them to the description (I warned them). Etsy doesn't require refunds on instant downloads.</label></li>
         <li><input type="checkbox" id="pt2"><label for="pt2"><b>Bad first review</b> — I will reply publicly, calmly, with the fix. Future buyers read the reply more than the review itself.</label></li>
-        <li><input type="checkbox" id="pt3"><label for="pt3"><b>Tag-stuffing</b> — my 13 tags don't repeat the same word (no &quot;face / face tracking / face mesh&quot; stacked on top of each other).</label></li>
+        <li><input type="checkbox" id="pt3"><label for="pt3"><b>Tag-stuffing</b> — my 13 tags don't repeat the same word (no "microbit / microbit v2 / face-tracking" combo).</label></li>
         <li><input type="checkbox" id="pt4"><label for="pt4"><b>Pricing too low forever</b> — $9.99 is a launch tactic. Calendar reminder is set to raise after 5 reviews or 30 days.</label></li>
         <li><input type="checkbox" id="pt5"><label for="pt5"><b>ZIP backup</b> — a copy is saved on Google Drive / Dropbox / external disk outside this Mac.</label></li>
         <li><input type="checkbox" id="pt6"><label for="pt6"><b>Response time</b> — Etsy ranks shops on this. I aim for &lt;24h, ideally &lt;4h on weekdays. Etsy notifications enabled on phone.</label></li>
@@ -710,47 +712,46 @@ I'll email you a personalized Site License Certificate (PDF) within 24 hours.
     <!-- 14 -->
     <section id="s14">
       <h2><span class="num">14</span> Third listing: Arabic market (uncontested) <span class="pill-status">Not started</span></h2>
-      <p class="intro">The seller playbooks already ship in Arabic with full RTL (see <code>seller-only/etsy-playbook-ar.html</code>). Almost no Arabic AI/STEM on Etsy. Target: homeschool families in MENA + Arabic-speaking diaspora. Same ZIP as the single-user listing.</p>
+      <p class="intro">V8.2 already ships full Arabic UI with RTL. Almost no Arabic STEM on Etsy. Target: homeschool families in MENA + Arabic-speaking diaspora. Same ZIP as the single-user listing.</p>
 
       <h3>Title (Arabic + transliteration)</h3>
       <div class="copy">
         <span class="label">Arabic title</span>
         <button class="btn" data-copy>Copy</button>
-        <pre>Face Tracking Kids — مختبر ذكاء اصطناعي للوجه داخل المتصفح · كشف ابتسامة ورمش · تتبّع رأس · تحميل فوري · Chrome / Edge</pre>
+        <pre>لوحة تحكم مايكروبت V2 عبر البلوتوث — تطبيق STEM للمعلمين والأطفال | تحميل فوري | Face\ Tracking Arabic</pre>
       </div>
 
       <h3>Description (Arabic)</h3>
       <div class="copy long">
         <span class="label">Arabic description</span>
         <button class="btn" data-copy>Copy</button>
-        <pre>😊 Face Tracking Kids — انظر · تابع · ابتسم. مختبر ذكاء اصطناعي للوجه داخل المتصفح، للأطفال 8–15.
+        <pre>🎮 لوحة تحكم مايكروبت — تطبيق متكامل عبر البلوتوث للوحة webcam
 
-افتح ملف HTML واحدًا في Chrome أو Edge فتلتصق شبكة وجه حيّة بوجهك. الذكاء الاصطناعي يعمل على جهازك — بلا سحابة، بلا رفع، بلا حسابات.
+حوّل المايكروبت إلى مختبر STEM تفاعلي — بدون تثبيت، بدون حساب، بدون إنترنت. فقط افتح المتصفح واتصل.
 
 ✨ ما ستحصل عليه (تحميل فوري):
-• تطبيق ويب كامل (HTML, CSS, JS) يعمل محلياً في Chrome أو Edge
-• شبكة وجه حيّة (~468 نقطة) بقوة MediaPipe Tasks-Vision
-• ثلاث عروض: Mesh (شبكة كاملة)، Contours (معالم)، Points (نقاط خام)
-• كشوفات حيّة: ابتسامة، قبلة، فم مفتوح، غمزة يسرى/يمنى، رمش، تحريك رأس، وجه موجود/غائب
-• لوحة أرقام حيّة: X, Y, المسافة, yaw, pitch, roll, الفم, العينان, الابتسامة, الظهور
-• وضع Demo ينطق كل كشف بصوت عالٍ
-• نظام Speech بـ 13 لغة مع سرعة ونغمة قابلتين للتعديل
-• جسر Bluetooth اختياري إلى BBC micro:bit V2 (حزمة 19 رقمًا عبر Web Bluetooth UART)
-• برنامج MakeCode جاهز (makecode.ts) يتفاعل مع الابتسامات والرمش
-• مطبوعات: بطاقة بداية سريعة، ورقة أوامر، ملصق A3، خطة درس، 30 ملصق إنجاز
+• تطبيق ويب كامل (HTML, CSS, JS) يعمل محلياً في متصفح Chrome أو Edge
+• برنامج جاهز للمايكروبت (makecode.ts)
+• دليل إعداد مطبوع
+• 4 ثيمات (ستيلث، نيون، أركتيك، بليز)
+• 8 تبويبات: مصفوفة LED، المستشعرات، المحركات، جويباد، الرسم البياني، عرض ثلاثي الأبعاد، البنش، الإعدادات
+• 5 نماذج ثلاثية الأبعاد تفاعلية (مايكروبت، روبوت، ذراع روبوتي، لعبة توازن، محطة طقس)
+• تسجيل الجلسات، رسوم بيانية حية، تصدير JSON
+• وضع المبتدئ ووضع الخبير — يتطور مع المتعلم
+• واجهة عربية كاملة مع دعم RTL (اليمين إلى اليسار)
 
-🧒 مناسب لـ: الفصول الدراسية، التعليم المنزلي، النوادي المدرسية، معسكرات الذكاء الاصطناعي ورؤية الحاسوب، الأطفال الفضوليين الذين يتساءلون كيف يفتح الهاتف بالوجه.
+🧒 مناسب لـ: الفصول الدراسية، التعليم المنزلي، النوادي المدرسية، ورش الصنع، معسكرات STEM، الأطفال المهتمين بالبرمجة والروبوتات.
 
 ⚙️ يتطلب:
-• أي كاميرا ويب (مدمجة أو USB أو هاتف) + إضاءة أمامية جيدة
+• لوحة webcam (تُشترى بشكل منفصل)
 • متصفح Chrome أو Edge على كمبيوتر أو لابتوب أو جهاز أندرويد
-• اختياري: BBC micro:bit V2 لجسر Bluetooth فقط
+• تفعيل البلوتوث
 
-❌ لا يعمل على: Safari، Firefox، iPhone، iPad (قيود MediaPipe + Web Bluetooth).
+❌ لا يعمل على: Safari، Firefox، iPhone، iPad (قيود Web Bluetooth).
 
 📦 التسليم: تحميل فوري بعد الشراء — ملف ZIP واحد.
 
-📜 الترخيص: استخدام شخصي / فصل دراسي واحد. لا يجوز إعادة البيع أو إعادة النشر.
+📜 الترخيص: استخدام شخصي وتعليمي. لا يجوز إعادة البيع أو إعادة النشر.
 
 💬 هل لديك سؤال قبل الشراء؟ راسلني وسأجيبك بالعربية في غضون ساعات.</pre>
       </div>
@@ -759,19 +760,19 @@ I'll email you a personalized Site License Certificate (PDF) within 24 hours.
       <div class="copy">
         <span class="label">Arabic tags</span>
         <button class="btn" data-copy>Copy</button>
-        <pre>تتبع الوجه
-شبكة وجه
-ذكاء اصطناعي للأطفال
+        <pre>مايكروبت
 STEM أطفال
-كشف ابتسامة
+تعليم البرمجة
+روبوت للأطفال
+تحميل رقمي
 تعليم منزلي
-face tracking
-face mesh
-kids AI
-computer vision
-homeschool arabic
+microbit arabic
 arabic stem
-برمجة للأطفال</pre>
+homeschool arabic
+coding arabic
+برمجة للأطفال
+علوم stem
+microbit v2</pre>
       </div>
 
       <h3>Auto-reply (Arabic)</h3>
@@ -782,7 +783,7 @@ arabic stem
 
 تم تجهيز التحميل فوراً — ستجد الرابط في بريدك الإلكتروني ومن خلال حسابك في Etsy → Purchases &amp; Reviews.
 
-📘 ابدأ من هنا: فك ضغط الملف وافتح README-quickstart.html (دليل 5 دقائق). تحتاج فقط كاميرا ويب ومتصفح Chrome أو Edge — لا يعمل على Safari أو iPhone (قيود MediaPipe + Web Bluetooth).
+📘 ابدأ من هنا: فك ضغط الملف وافتح SETUP.md (دليل 5 دقائق). تحتاج لوحة webcam ومتصفح Chrome أو Edge — لا يعمل على Safari أو iPhone (قيود Web Bluetooth).
 
 💬 واجهت مشكلة؟ راسلني برقم الطلب وصورة من الشاشة — سأرد خلال 24 ساعة.
 
@@ -790,7 +791,7 @@ arabic stem
 
 ⭐ إذا أعجبك التطبيق، تقييم بنجوم يعني الكثير — المتاجر الصغيرة تعيش على التقييمات.
 
-استمتعوا بالاكتشاف!
+برمجة ممتعة!
 — [اسمك]</pre>
       </div>
 

@@ -1,4 +1,22 @@
 <!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════════════
+  ⚠️  REWRITE PER PRODUCT — DO NOT SHIP AS-IS
+  ───────────────────────────────────────────────────────────────────────
+  apply-template.mjs only substituted identifiers (Face Tracking Kids,
+  v1.0.0, https://abourdim.github.io/face-tracking/, etc.). The feature content, steps,
+  shortcuts, and examples below were inherited from the template's
+  source product (face-tracking) and WILL BE WRONG for your product
+  unless you rewrite them.
+  
+  Before including this file in a buyer ZIP:
+    1. Delete this banner.
+    2. Rewrite every mention of specific features, shortcuts,
+       tab names, hardware interactions, etc. to match your product.
+    3. Verify with: grep -iE "landmark|chart\.js|3d board|gamepad|
+       head yaw|head pitch|led matrix|11 signals|sensors tab" this-file.
+  ═══════════════════════════════════════════════════════════════════════
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -46,51 +64,51 @@
 
   <div class="header">
     <h1>Face Tracking Kids Achievement Stickers</h1>
-    <p>Print on sticker paper &bull; Cut along the dashed lines &bull; Reward young AI explorers!</p>
+    <p>Print on sticker paper &bull; Cut along the dashed lines &bull; Reward young makers!</p>
   </div>
 
   <div class="grid">
-    <!-- Row 1: first steps -->
-    <div class="sticker s-green"><div class="emoji">📷</div><div class="label">Camera<br>Captain</div></div>
-    <div class="sticker s-cyan"><div class="emoji">🌐</div><div class="label">Browser<br>Booter</div></div>
-    <div class="sticker s-gold"><div class="emoji">🪞</div><div class="label">Mirror<br>Mover</div></div>
-    <div class="sticker s-purple"><div class="emoji">🔄</div><div class="label">Camera<br>Switcher</div></div>
-    <div class="sticker s-red"><div class="emoji">💡</div><div class="label">Lighting<br>Pro</div></div>
+    <!-- Row 1: core milestones -->
+    <div class="sticker s-green"><div class="emoji">📡</div><div class="label">I Connected<br>BLE!</div></div>
+    <div class="sticker s-cyan"><div class="emoji">⚡</div><div class="label">Firmware<br>Flasher</div></div>
+    <div class="sticker s-gold"><div class="emoji">💡</div><div class="label">LED<br>Artist</div></div>
+    <div class="sticker s-purple"><div class="emoji">🌡️</div><div class="label">Sensor<br>Detective</div></div>
+    <div class="sticker s-red"><div class="emoji">📈</div><div class="label">Graph<br>Reader</div></div>
 
-    <!-- Row 2: the mesh -->
-    <div class="sticker s-dark"><div class="emoji">🕸️</div><div class="label">Mesh<br>Maker</div></div>
-    <div class="sticker s-dark"><div class="emoji">✏️</div><div class="label">Contour<br>Sketcher</div></div>
-    <div class="sticker s-dark"><div class="emoji">·</div><div class="label">Landmark<br>Hunter</div></div>
-    <div class="sticker s-dark"><div class="emoji">🧠</div><div class="label">AI<br>Friend</div></div>
-    <div class="sticker s-dark"><div class="emoji">468</div><div class="label">468-Point<br>Explorer</div></div>
+    <!-- Row 2: skills -->
+    <div class="sticker s-green"><div class="emoji">⚙️</div><div class="label">Pro<br>Maker</div></div>
+    <div class="sticker s-cyan"><div class="emoji">🎮</div><div class="label">Detections<br>Hero</div></div>
+    <div class="sticker s-gold"><div class="emoji">🎲</div><div class="label">Face Mesh<br>Explorer</div></div>
+    <div class="sticker s-purple"><div class="emoji">⏺</div><div class="label">Session<br>Recorder</div></div>
+    <div class="sticker s-green"><div class="emoji">🤖</div><div class="label">Buggy<br>Driver</div></div>
 
-    <!-- Row 3: face detections -->
-    <div class="sticker s-green"><div class="emoji">😄</div><div class="label">Smile<br>Spotter</div></div>
-    <div class="sticker s-cyan"><div class="emoji">😮</div><div class="label">Open-Mouth<br>Expert</div></div>
-    <div class="sticker s-gold"><div class="emoji">😉</div><div class="label">Wink<br>Master</div></div>
-    <div class="sticker s-purple"><div class="emoji">👀</div><div class="label">Blink<br>Counter</div></div>
-    <div class="sticker s-red"><div class="emoji">↔️</div><div class="label">Head-Turn<br>Hero</div></div>
+    <!-- Row 3: 3D models -->
+    <div class="sticker s-dark"><div class="emoji">🔲</div><div class="label">micro:bit<br>V2 Expert</div></div>
+    <div class="sticker s-dark"><div class="emoji">🚗</div><div class="label">Buggy<br>Builder</div></div>
+    <div class="sticker s-dark"><div class="emoji">🦾</div><div class="label">Robot Arm<br>Operator</div></div>
+    <div class="sticker s-dark"><div class="emoji">🎯</div><div class="label">Balance<br>Master</div></div>
+    <div class="sticker s-dark"><div class="emoji">🌦️</div><div class="label">Weather<br>Watcher</div></div>
 
-    <!-- Row 4: head pose + numbers -->
-    <div class="sticker s-green"><div class="emoji">📐</div><div class="label">Yaw &amp; Pitch<br>Scientist</div></div>
-    <div class="sticker s-cyan"><div class="emoji">🎢</div><div class="label">Roll<br>Rider</div></div>
-    <div class="sticker s-gold"><div class="emoji">📏</div><div class="label">Distance<br>Reader</div></div>
-    <div class="sticker s-purple"><div class="emoji">📊</div><div class="label">Numerics<br>Navigator</div></div>
-    <div class="sticker s-red"><div class="emoji">🎯</div><div class="label">Position<br>Tracker</div></div>
+    <!-- Row 4: themes -->
+    <div class="sticker s-dark"><div class="emoji">🥷</div><div class="label">Stealth<br>Theme</div></div>
+    <div class="sticker s-cyan"><div class="emoji">💠</div><div class="label">Neon<br>Theme</div></div>
+    <div class="sticker s-cyan"><div class="emoji">❄️</div><div class="label">Arctic<br>Theme</div></div>
+    <div class="sticker s-red"><div class="emoji">🔥</div><div class="label">Blaze<br>Theme</div></div>
+    <div class="sticker s-gold"><div class="emoji">🎨</div><div class="label">All 4<br>Themes!</div></div>
 
-    <!-- Row 5: speech / demo -->
-    <div class="sticker s-green"><div class="emoji">🔊</div><div class="label">Speech<br>Starter</div></div>
-    <div class="sticker s-cyan"><div class="emoji">🎪</div><div class="label">Demo<br>Director</div></div>
-    <div class="sticker s-gold"><div class="emoji">🎙️</div><div class="label">Voice<br>Chooser</div></div>
-    <div class="sticker s-purple"><div class="emoji">🌍</div><div class="label">Polyglot<br>(13 langs)</div></div>
-    <div class="sticker s-red"><div class="emoji">⚡</div><div class="label">Rate &amp; Pitch<br>Tuner</div></div>
+    <!-- Row 5: languages + challenges -->
+    <div class="sticker s-green"><div class="emoji">🇬🇧</div><div class="label">English<br>Mode</div></div>
+    <div class="sticker s-cyan"><div class="emoji">🇫🇷</div><div class="label">Mode<br>Français</div></div>
+    <div class="sticker s-gold"><div class="emoji">🇩🇿</div><div class="label">العربية<br>RTL</div></div>
+    <div class="sticker s-purple"><div class="emoji">🧙</div><div class="label">Expert<br>Mode</div></div>
+    <div class="sticker s-red"><div class="emoji">🐣</div><div class="label">Beginner<br>Level Up!</div></div>
 
-    <!-- Row 6: micro:bit + milestones -->
-    <div class="sticker s-dark"><div class="emoji">🔗</div><div class="label">BLE<br>Connector</div></div>
-    <div class="sticker s-dark"><div class="emoji">🚀</div><div class="label">Packet<br>Sender</div></div>
-    <div class="sticker s-dark"><div class="emoji">🧩</div><div class="label">MakeCode<br>Tinkerer</div></div>
-    <div class="sticker s-gold"><div class="emoji">🏆</div><div class="label">Face-AI<br>Champion</div></div>
-    <div class="sticker s-red"><div class="emoji">😊</div><div class="label">See · Follow<br>· Smile!</div></div>
+    <!-- Row 6: extras -->
+    <div class="sticker s-green"><div class="emoji">🎵</div><div class="label">Sound<br>Sleuth</div></div>
+    <div class="sticker s-dark"><div class="emoji">🧭</div><div class="label">Compass<br>Reader</div></div>
+    <div class="sticker s-cyan"><div class="emoji">📊</div><div class="label">Data<br>Scientist</div></div>
+    <div class="sticker s-gold"><div class="emoji">🏆</div><div class="label">Playground<br>Champion</div></div>
+    <div class="sticker s-red"><div class="emoji">🚀</div><div class="label">Ready for<br>Launch!</div></div>
   </div>
 
   <div class="cut-note">Cut along dashed lines &bull; Stick on notebooks, laptops, or lab coats!</div>

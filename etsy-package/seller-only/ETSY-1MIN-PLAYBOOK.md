@@ -25,15 +25,15 @@ A second-by-second script: **what to say** + **what to click / do** to produce a
 
 Before you press Record:
 
+- [ ] webcam powered on, showing the **X** icon *(if not → re-flash `makecode.ts`)*
 - [ ] Chrome or Edge open with `index.html` loaded
-- [ ] Webcam permission granted, **Start webcam** tested — mesh visible on your face
-- [ ] **Mirror ON** (most natural for on-camera talent)
-- [ ] **Demo ON** + **Start Speech** tested — one sample phrase heard
-- [ ] A clear voice selected in the Voice dropdown (rate ~1.0, pitch ~1.05)
-- [ ] (Optional) micro:bit V2 flashed with `makecode.ts` and paired — only if you film the BLE scene
-- [ ] Good front lighting on the face — no backlight, no window behind you
-- [ ] Phone in 9:16 on a tripod, clean background, facing the laptop screen
-- [ ] Desk cleared — only the laptop (and micro:bit, if used) in frame
+- [ ] BLE paired — status chip is **green**
+- [ ] Theme set — **Neon** photographs best; **Arctic** reads best in harsh daylight
+- [ ] Language matches your voiceover (EN / FR / AR)
+- [ ] micro:bit V2 paired (optional)
+- [ ] Tab 6 (3D) open with Buggy or Robot Arm selected — looks impressive in the hero shot
+- [ ] Phone in 9:16 on a tripod, front-lit, clean background
+- [ ] Desk cleared — only the board + one prop (buggy / landmark / cable) in frame
 - [ ] Captions app running OR on-screen text plan ready
 - [ ] Script read aloud once, timed under 55 seconds
 - [ ] Phone silenced, kids / dogs warned
@@ -43,12 +43,10 @@ Before you press Record:
 ## The 60-second arc
 
 ```
- 0–3 s   HOOK        "Watch an AI track my face in 60 seconds — no cloud."
- 3–10 s  CONTEXT     Open index.html → Start webcam → mesh snaps on.
-10–25 s  FACE DEMO   Smile / open mouth / wink / turn head — Speech names each.
-25–38 s  MESH DEMO   Toggle Mesh / Contours / Points.
-38–50 s  PAYOFF      Numerics panel — X, Y, yaw, pitch, smile live.
-           OR (if filmed) BLE bridge — smile lights the micro:bit LEDs.
+ 0–3 s   HOOK        "Watch what this micro:bit does in 60 seconds."
+ 3–10 s  CONTEXT     Board → laptop → Connect → green chip.
+10–35 s  DEMO        Demo the core features. Highlight main benefits.
+35–50 s  PAYOFF      Live graph with Simulate. Record / Replay / CSV.
 50–55 s  CTA         "Full kit, lifetime updates — link below."
 55–60 s  END FRAME   Logo + handle frozen for the loop preview.
 ```
@@ -57,51 +55,52 @@ Etsy loops the video, so the **end frame should match the cover** — keeps view
 
 ---
 
-## Script Template A — "See • Follow • Smile" (hero demo)
+## Script Template A — "Your micro:bit becomes a playground" (hero demo)
 
-**Use case:** the main Etsy listing video. Shows the mesh, the detections, and the voice callouts in one take.
+**Use case:** the main Etsy listing video. Showcases the 3D, the BLE pairing, and the live graph in one go.
 
 | Time | What to SAY | What to CLICK / DO |
 |---|---|---|
-| 0–3 s | *"Watch an AI track my face in 60 seconds — no cloud, no upload."* | Close-up of your face. Mesh snaps on. Title overlay: **See · Follow · Smile**. |
-| 3–10 s | *"One HTML file in Chrome — no install, no login."* | Cut to screen: double-click `index.html` → click **📷 Start webcam** → allow camera. |
-| 10–20 s | *"Smile. Open your mouth. Wink. Turn your head."* | Demo ON + Start Speech. Perform each gesture. Burn in labels: "Smile", "Open mouth", "Wink", "Head turn". |
-| 20–30 s | *"Here is how the AI sees you — 468 points."* | Toggle **Mesh** → **Contours** → **Points**. Fast cuts. Counter overlay "~468 points". |
-| 30–45 s | *"Every value is live — X, Y, yaw, pitch, smile, eyes."* | Cut to Numerics panel. Slight head turn. Yaw number flips. Slow-mo. |
-| 45–55 s | *"Runs on your device. No cloud. No account."* | Text overlay: "100% local · Chrome / Edge · lifetime updates". |
-| 55–60 s | *"Link below."* | Face-cam, smile, freeze on logo. |
+| 0–3 s | *"Your micro:bit becomes a playground — in the browser, in 60 seconds."* | Close-up of the real board with the X icon on the LEDs. Your hand holds it. |
+| 3–10 s | *"One page, one click, paired."* | Cut to the laptop. Click **🔗 Connect to micro:bit** → pick the board → chip turns green. |
+| 10–20 s | *"Sensors live — tilt it, the 3D model tilts too."* | Tab **6 · Face Mesh**. Tilt the real board. The virtual one mirrors it. Hold both in frame. |
+| 20–30 s | *"Click through the live demo — features run in the browser."* | Click through the live demo; features run in the browser.|
+| 30–40 s | *"Live graph with record, replay, CSV. A lab in a browser tab."* | Tab **5 · Graph** → click **🎲 Simulate** → chart dances → hover on **⏺ Record** and **📄 CSV**. |
+| 40–50 s | *"4 themes, 3 languages, works offline, no install, no account."* | Quick theme swap (header dropdown) → show Neon → Arctic. |
+| 50–55 s | *"Link below — lifetime updates, teachers and kids welcome."* | Face-cam back on. Eye contact. |
+| 55–60 s | *"Happy hacking."* | Hold still. Logo + handle overlay freezes. This becomes the loop frame. |
 
 ---
 
 ## Script Template B — "Teacher Tuesday" (classroom angle)
 
-**Use case:** targeting teachers of AI, computer vision, or STEM.
+**Use case:** targeting teachers and STEM workshop organisers.
 
 | Time | What to SAY | What to CLICK / DO |
 |---|---|---|
-| 0–3 s | *"Teachers — want to show AI on your students' faces?"* | Overhead: a laptop + the classroom poster in frame. |
-| 3–10 s | *"One browser tab. The camera never leaves the laptop."* | Start webcam → mesh locks. Text overlay: "No uploads · No accounts". |
-| 10–20 s | *"The mesh is the AI's view of a face. 468 landmarks, live."* | Toggle Mesh → Contours → Points. Emphasise the point count. |
-| 20–32 s | *"Smile. Blink. Turn your head. The app calls them out."* | Demo ON + Speech. Act out each event. Captions follow. |
-| 32–45 s | *"Site license for up to 30 teachers. Lifetime updates."* | Text overlay with the licensing tiers + shop name. |
-| 45–55 s | *"45-minute AI lesson is included in the kit."* | Quick flash of the printed lesson plan page. |
-| 55–60 s | *"Link below. Tag me when your class makes an AI smile back."* | Face-cam, smile, freeze on logo. |
+| 0–3 s | *"STEM teachers — you need to see this."* | Overhead shot of a laptop + 5 micro:bits laid out on a desk. |
+| 3–10 s | *"One browser tab. Live sensors. No install on 30 laptops."* | Click Connect. Status goes green. Cut to Signals panel — values streaming. |
+| 10–20 s | *"Calibrate the head pitch right in the UI. Baseline the sound for a quiet classroom."* | Signals panel → Calibrate. Show the Set Level / Set Ambient buttons. |
+| 20–30 s | *"Record a full lesson. Export CSV. Drop into a lab report."* | Graph tab → Record → Stop → Save Session → CSV. |
+| 30–40 s | *"4 themes — Arctic for projectors. 3 languages — Arabic with full RTL."* | Swap theme to Arctic. Swap language to Arabic — watch the UI flip RTL. |
+| 40–50 s | *"Site license for up to 30 teachers. Lifetime updates."* | Text overlay with the licensing tiers + Etsy shop name. |
+| 50–60 s | *"Link below. Tag me when you run a workshop."* | Face-cam, hold the micro:bit, smile, freeze on logo. |
 
 ---
 
-## Script Template C — "Kid meets AI" (parent / home-school angle)
+## Script Template C — "Kid builds a robot" (parent / home-school angle)
 
-**Use case:** UGC / influencer feel — a young maker using the app.
+**Use case:** showing a young maker using the app — UGC / influencer feel.
 
 | Time | What to SAY | What to CLICK / DO |
 |---|---|---|
-| 0–3 s | *"My kid taught a computer to see a smile."* | Close-up: a small hand clicking Start webcam. |
-| 3–12 s | *"No install. No login. Just a browser."* | Cut to index.html opening. Mesh lands on the kid's face. |
-| 12–25 s | *"Smile — it says smile. Wink — it says wink."* | Demo ON + Speech. Kid smiles / winks. Captions burn in the labels. |
-| 25–35 s | *"Look — every dot the AI is tracking."* | Toggle to Points view. Kid pulls funny faces. Dots follow. |
-| 35–45 s | *"Connect a micro:bit and a smile lights it up."* (optional) | BLE Connect → Start sending. Kid smiles → micro:bit LEDs show a heart. |
-| 45–55 s | *"Nothing leaves the laptop. Offline after first load."* | Toggle Wi-Fi off. App still works. |
-| 55–60 s | *"Full kit on Etsy. Link below."* | Kid smiling next to the laptop. Freeze. |
+| 0–3 s | *"My kid built a robot. With a browser tab."* | Close-up: a small hand tapping Connect. |
+| 3–10 s | *"The micro:bit drives the landmark. The 3D model mirrors the real robot."* | Tab 6 (face landmark). Real robot next to the laptop. Buggy in 3D follows. |
+| 10–20 s | *"D-pad in the browser → arrows on the LED → commands to the motors."* | Tab 4 (Detections). Press ⬆ → LED arrow. Buggy crawls forward. |
+| 20–30 s | *"Tilt the brain — the ball rolls to the targets."* | Tab 6 → Balance Game model. Tilt the board. Ball rolls. |
+| 30–40 s | *"Graph the sensors. Record the run. Replay for homework."* | Tab 5 → Record 3 s of accel → Replay → Save Session. |
+| 40–50 s | *"No login. Nothing leaves the computer. Offline after first load."* | Close the Wi-Fi indicator (airplane mode). App still works. |
+| 50–60 s | *"Full kit on Etsy. Link below."* | Kid holding the robot + board. Smile. Freeze. |
 
 ---
 
@@ -109,7 +108,7 @@ Etsy loops the video, so the **end frame should match the cover** — keeps view
 
 - **One scene per phase.** Do not cut every 2 s — it feels frantic.
 - **Switch scenes on words**, not mid-sentence.
-- **Pause 1 second on the mesh snap-on** — visual emphasis for the hook.
+- **Pause 1 second on the graph record button** — visual emphasis.
 - **Look at the camera lens**, not the screen, during all CTAs.
 - **Smile for the final 3 seconds**. The loop frame matters.
 - **Watch the clock** — if you pass 55 s, re-cut. Etsy compresses aggressively.
@@ -120,11 +119,10 @@ Etsy loops the video, so the **end frame should match the cover** — keeps view
 
 | ❌ Don't | ✅ Do |
 |---|---|
-| Start with "Hi, I'm…" + 10 s intro | First 3 s = the mesh snapping onto a face |
+| Start with "Hi, I'm…" + 10 s intro | First 3 s = the board tilting a 3D model on the laptop |
 | Film landscape (16:9) | 9:16 portrait — Etsy autoplays on mobile |
-| Demo on Safari / iPhone | Show Chrome / Edge only. iOS users will buy and refund |
+| Demo on Safari / iPhone | Show Chrome/Edge only. iOS users will buy and refund |
 | Skip captions | Burn in captions — the feed is muted by default |
-| Backlight the face (silhouette) | Front light — a clean mesh reads as "real tech" |
 | Whisper | Speak 15% louder and 10% slower than normal conversation |
 | Forget the CTA | "Link below" in the last 5 s, every single time |
 | End mid-sentence | Land your closing line. Then hold 2 seconds of silence |
@@ -137,7 +135,7 @@ Etsy loops the video, so the **end frame should match the cover** — keeps view
 1. Watch the playback **once**, eyes off the script. Does it land?
 2. If >60 s → trim with a simple editor (iMovie, CapCut, DaVinci). Aim for 55 s.
 3. Burn in captions if you haven't already. Keep them centered below the subject.
-4. First frame — set it to a strong, still visual (the face with the mesh on it, or the logo). This is your cover.
+4. First frame — set it to a strong, still visual (the board in hand, or the logo). This is your cover.
 5. Export MP4 / H.264, under 100 MB.
 6. Upload to the Etsy listing. Verify autoplay. Check on a phone with sound off.
 
@@ -146,9 +144,10 @@ Etsy loops the video, so the **end frame should match the cover** — keeps view
 ## Etsy-specific upload tips
 
 - Etsy listing videos appear at the top as an **autoplaying preview tile**. First frame is the cover — make it visually clean.
-- Use the listing **title** to echo the video's first words. If you say *"Watch an AI track my face in 60 seconds"*, the listing title starts with *"Face Tracking Kids — Browser Face-AI Lab…"*.
+- Use the listing **title** to echo the video's first words. If you say *"Your micro:bit becomes a playground"*, the listing title starts with *"Face Tracking Kids — BLE Control Panel…"*.
 - Add the captions text into the listing **description** — searchable, helps SEO.
 - Tag the listing with words you actually said in the video.
+- Price tiers: single user `{{PRICE}}` · classroom / site `{{PRICE}}`.
 
 ---
 
@@ -167,9 +166,9 @@ Etsy loops the video, so the **end frame should match the cover** — keeps view
 ## Quick-reference cheat card
 
 ```
-PRE     Chrome open · webcam live · mirror ON · 9:16 phone · good front light
+PRE     V2 has X icon · Chrome open · BLE green · 9:16 phone · Neon theme
 LAUNCH  Record → first words land in the first 3 seconds
-DURING  Smile/blink/turn → Demo+Speech calls them · Mesh→Contours→Points
+DURING  Tilt → 3D · A → LED · slider → landmark · Simulate → graph
 AFTER   Stop → trim to 55 s → burn captions → first frame = thumbnail
 UPLOAD  Etsy listing → upload MP4 → echo first words in listing title
 ```
@@ -180,51 +179,47 @@ UPLOAD  Etsy listing → upload MP4 → echo first words in listing title
 
 **Title (140 chars max):**
 ```
-Face Tracking Kids — Browser Face-AI Lab · Live Mesh · Smile & Blink Detection · Speech in 13 Langs · Optional micro:bit Bluetooth · Chrome / Edge
+Face Tracking Kids — BLE Control Panel for Teachers & Kids · Sensors · Landmarks · Live Graph · 3D Models · No Install · Chrome / Edge
 ```
 
 **160-char short description:**
 ```
-Browser face-tracking app for kids 8–15. Live face mesh, smile & blink detection, 13 voice languages, optional Bluetooth to micro:bit V2. No cloud, no uploads.
+Browser-based BLE control panel for the webcam. Sensors, landmarks, live graphs, 3D models, and a Detections — all from Chrome. No install, no account.
 ```
 
 **13 Etsy tags:**
 ```
-face tracking, face mesh, computer vision, kids AI, education, STEM, kids coding, teacher resource, smile detection, classroom, home school, micro:bit, web bluetooth
+micro:bit, BLE, bluetooth, education, STEM, robotics, kids coding, teacher resource, sensors, landmarks, classroom, home school, makerspace
 ```
 
 **Materials:**
 ```
-HTML5, CSS, JavaScript, MediaPipe, Web Speech API, Web Bluetooth, MakeCode
+HTML5, JavaScript, Web Bluetooth, MediaPipe, Three.js, PWA, MakeCode, TypeScript
 ```
 
 **SEO keywords:**
 ```
-browser-based · no-install · privacy-first · on-device AI · face landmarks · teacher resource · STEM workshop · kid-first AI
+browser-based · no-install · privacy-first · offline-capable · web bluetooth · micro:bit V2 · STEM workshop · teacher resource
 ```
 
-**Price tiers:**
+**Price tiers (fill the `{{PRICE}}` placeholders):**
 
 | Tier | Who | Price |
 |---|---|---|
-| Launch | Early-bird, first 50 buyers | `$14.99` |
-| Standard | Single user | `$19.99` |
-| Bundle | App + extended lesson pack | `$34.99` |
-| Tripwire | Intro upsell after opt-in | `$5` |
-| Site License | One school, up to 30 teachers | `$249` |
-| District License | Multiple schools | `$599` |
-| Promo `FACELAUNCH` | Launch code → tripwire | `$8` |
+| Single user | One teacher / family / maker | `{{PRICE}}` |
+| Classroom / Site | Up to 30 teachers at one school | `{{PRICE}}` |
+| District / OEM | Multiple sites — DM through order | Custom |
 
 ---
 
 ## 7-image listing order
 
-1. **Hero** — laptop screenshot with a smiling face wearing the green mesh overlay. Title overlay in Orbitron.
-2. **Three views** — Mesh · Contours · Points side-by-side, same face.
-3. **Detection grid** — six frames (smile, open mouth, wink-L, wink-R, blink, head turn) with captions.
-4. **Numerics close-up** — the live X/Y/yaw/pitch/smile panel in green.
-5. **BLE bridge** — laptop mesh → Bluetooth icon → micro:bit LEDs showing a heart.
-6. **Classroom shot** — a row of laptops, each with a different expression.
+1. **Hero** — real micro:bit + laptop, 3D model mirroring the board's tilt. Title overlay in Orbitron.
+2. **Tabs overview** — grid screenshot of all 11 signals with emoji labels.
+3. **Live graph** — MediaPipe close-up with colored lines + annotations, Record button glowing red.
+4. **3D models** — split screenshot of Buggy + Robot Arm.
+5. **Hand-holding** — real landmark plugged into P1, sliders on the screen.
+6. **Theme sampler** — 2×2 grid: Stealth · Neon · Arctic · Blaze.
 7. **License card** — "Single-user license · Lifetime updates · No cloud · Chrome / Edge" on a dark gradient.
 
 ---

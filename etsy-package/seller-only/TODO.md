@@ -11,10 +11,10 @@ on Etsy.
 These are the three items flagged as "likely launch killers" in the review
 that require human hands. Don't hit Publish until they're done.
 
-- [ ] **Photograph a kid (or your own face) with the live mesh on screen.**
-      Replace the current text-only hero (mockup 1) — a real face with the
-      mesh overlaid is the single biggest Etsy thumbnail conversion factor
-      for kid-AI-product listings. Follow the staging note in ETSY_LISTING.md.
+- [ ] **Photograph a real micro:bit propped on a laptop running the app.**
+      Replace the current text-only hero (mockup 1) — hardware in the photo
+      is the single biggest Etsy thumbnail conversion factor for teacher-
+      product listings. Follow the staging note in ETSY_LISTING.md.
 - [ ] **Record the 60-second listing video** following
       `seller-only/etsy-playbook.html` (EN). Export ≤100 MB, 1080p+,
       upload as the listing video. Etsy algorithmically prefers listings
@@ -30,12 +30,12 @@ that require human hands. Don't hit Publish until they're done.
 
 ### 🖼 Listing imagery
 
-- [ ] **Shoot a real face + mesh photo** for the hero. Current hero
+- [ ] **Shoot a real micro:bit photo** for the hero. Current hero
       (`etsy-mockups/etsy-mockup-1.png`) uses only an app screenshot.
-      Reviewers flagged that listings with a *real face plus the app*
-      convert better than UI-only shots. Retake the hero with a kid's
-      face on camera and the green mesh overlay clearly visible on
-      screen. Good front light, plain background, crop square.
+      Reviewers flagged that listings with *physical hardware + the
+      app together* convert better. Retake the hero with a micro:bit
+      V2 held next to (or propped on top of) a laptop showing the
+      Signals panel. Good light, plain background, crop square.
 - [ ] **Test Etsy's square thumbnail crop** on mockup 1. The canvas
       is 2000×1500 (4:3). Etsy will center-crop to square for the
       search thumbnail — make sure the product name and the
@@ -89,9 +89,8 @@ that require human hands. Don't hit Publish until they're done.
 - [x] ~~Host a live demo on GitHub Pages~~ — done. Live at
       <https://abourdim.github.io/face-tracking/>. Already in the
       listing description.
-- [ ] **Record a 5-second demo GIF** (smile → mesh reacts → Demo announces
-      it) — becomes listing image #3. Etsy mobile auto-plays GIFs in the
-      image grid.
+- [ ] **Record a 5-second demo GIF** (pairing + LED draw) — becomes
+      listing image #3. Etsy mobile auto-plays GIFs in the image grid.
 - [ ] **Create the tripwire $5 Classroom Poster listing** after main
       listing has 3 reviews. Drives buyers back for the full thing.
 - [ ] **Stand up the lead-magnet landing page** — free 3-lesson PDF
