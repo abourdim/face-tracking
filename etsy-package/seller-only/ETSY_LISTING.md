@@ -46,7 +46,7 @@
 
 ## Title (140 char max — pack it with searchable keywords)
 
-Bluetooth Web App for BBC micro:bit V2 + Illustrated Guide | Features, 11 Live Signals, Live Graphs | STEM Classroom | Digital Download
+Real-Time Face Tracking for Kids — Webcam + MediaPipe + Optional micro:bit V2 | 11 Live Signals, Speech, 12 Locales | Digital Download
 
 > Product name in your Etsy shop is **"Face Tracking"** — use the phrase **"for the BBC micro:bit V2"** everywhere else to stay within the Micro:bit Educational Foundation's trademark-use guidelines.
 
@@ -57,7 +57,7 @@ Digital Downloads → Educational Resources
 
 ## Tags (13 max — Etsy lets you use all 13, use them)
 
-micro:bit, microbit v2, STEM, coding kids, BBC microbit, bluetooth app, MakeCode, classroom resource, homeschool STEM, robotics, web bluetooth, coding club, chromebook stem
+face tracking kids, mediapipe browser, computer vision kids, webcam app, head tracking, smile detection, ai for kids, microbit v2, STEM classroom, homeschool STEM, coding club, chromebook stem, speech therapy
 
 > Replaced the two weakest tags (`edtech` — corporate, not what teachers search; `sensor playground` — zero search volume) with `coding club` and `chromebook stem` (both strong long-tail teacher queries).
 
@@ -82,18 +82,16 @@ micro:bit, microbit v2, STEM, coding kids, BBC microbit, bluetooth app, MakeCode
 > 🧪 **Try it now** (Simulate mode, no micro:bit needed): <https://abourdim.github.io/face-tracking/>
 >
 > ✨ **What you get** (instant download):
-> • A complete web app (HTML, CSS, JS) you run locally in Chrome or Edge
+> • Real-time **face mesh overlay** with 468 landmarks (Google MediaPipe FaceLandmarker, runs in-browser)
+> • **11 live signals** streamed at 10Hz: X, Y, distance (Z), yaw, pitch, roll, mouth-open, left-eye open, right-eye open, smile, face-visibility
+> • **10 ready-made demo detections**: Smile, Laugh, Wow, Mouth-open, Blink, Wink Left/Right, Head tilt, Look Left/Right/Up/Down
+> • Toggleable overlays — mesh, contours (face oval / lips / eyes / brows / nose), landmark points
+> • **Text-to-speech** in **12 locales** (en-US, en-GB, fr-FR, es-ES, de-DE, it-IT, pt-PT, pt-BR, nl-NL, ja-JP, ko-KR, zh-CN) with rate + pitch sliders
+> • Front/back camera switch, mirror toggle
+> • **Optional BBC micro:bit V2 bridge** — streams a 19-digit signal packet over BLE UART or Nordic UART, 10Hz
+> • Sample-ready signals — teachers can trigger any micro:bit behaviour from smile, head-nod, raised eyebrow, etc.
 > • Ready-to-flash micro:bit firmware (`makecode.ts`)
-> • **Illustrated trilingual user guide (EN/FR/AR) with built-in diagrams:**
->   — architecture diagram • micro:bit V2 pin-out • firmware flow storyboard
->   — interactive LED playground inside the guide (click cells, copy hex commands)
->   — visual troubleshooting: decision tree, symptom picker, icon gallery, reset recipe
-> • A printable Quick Setup guide (`SETUP.md`)
-> • 4 themes (Stealth, Neon, Arctic, Blaze)
-> • 11 signals: Face Overlay, Sensors, Landmarks, Detections, Graph, Face Mesh, Bench, Settings
-> • 5 interactive 3D models (micro:bit, Buggy, Robot Arm, Balance Game, Weather Station)
-> • Session recording, live graphs, annotations, JSON export
-> • Beginner & Expert modes — grows with the learner
+> • Works entirely in-browser — no cloud, no sign-in, no video frames leave the device
 >
 > 🧒 **Perfect for**: classrooms, homeschool, after-school clubs, makerspaces, STEM camps, robotics enthusiasts, parents teaching kids to code.
 >
@@ -130,18 +128,19 @@ Paste this block into the listing just above the FAQ. No fabricated reviews — 
 
 ## Compare table for the description
 
-**What makes Face Tracking different?** Side-by-side with the two free alternatives most teachers try first:
+**What makes Face Tracking different?** Side-by-side with the free / consumer alternatives:
 
-| Feature | Face Tracking | MakeCode Editor | Raw Web Bluetooth demos |
+| Feature | Face Tracking | Google MediaPipe demos | Snapchat / Instagram filters |
 |---|:---:|:---:|:---:|
-| Works in-browser, zero install | ✅ | ✅ | ✅ |
-| Ready-to-use sensor dashboard (temp, light, sound, accel, head pitch, touch) | ✅ | ❌ | ❌ |
-| Live graph + CSV / PNG export + session record & replay | ✅ | ❌ | ❌ |
-| Dual landmark control UI with gauges and trim | ✅ | ❌ | Build it yourself |
-| 5 interactive 3D models (micro:bit, Buggy, Arm, Balance, Weather) | ✅ | ❌ | ❌ |
-| Trilingual EN/FR/AR with full RTL support | ✅ | Partial | ❌ |
-| Classroom lesson plan + printable stickers & A3 poster | ✅ | ❌ | ❌ |
-| Works offline after first load (installable PWA) | ✅ | ❌ | ❌ |
+| 11 pre-computed signals (pitch / yaw / smile / eye / mouth) | ✅ | Raw landmarks only | ❌ |
+| Optional BBC micro:bit V2 bridge (10Hz signal stream) | ✅ | ❌ | ❌ |
+| Speech output in 12 locales with rate + pitch controls | ✅ | ❌ | ❌ |
+| 10 ready-to-trigger detections (smile, blink, head tilt…) | ✅ | ❌ | Preset filters only |
+| Runs 100% in-browser — no cloud, no account | ✅ | ✅ | ❌ |
+| Works on Chromebook | ✅ | ✅ | ❌ |
+| Kid-friendly UI (big buttons, toggleable overlays) | ✅ | ❌ (dev demo) | ✅ |
+| Signal packet format open for teachers to fork | ✅ | ❌ | ❌ |
+| Classroom lesson plan + printable stickers + A3 poster | ✅ | ❌ | ❌ |
 
 ---
 
