@@ -1,91 +1,91 @@
 {
-  "_comment": "Per-language strings for the poster (A3 portrait) and flyer (A4 portrait). Used by generate-print.mjs. Screenshots referenced are resolved from output/<lang>/screenshots/.",
+  "_comment": "Print specs for Face Tracking. MediaPipe FaceLandmarker 468 landmarks · 11 live signals @10 Hz · 10 pre-built detections · TTS 12 locales · optional micro:bit V2 BLE.",
 
   "common": {
     "url": "abourdim.github.io/face-tracking",
     "qrUrl": "https://abourdim.github.io/face-tracking/?utm_source=etsy&utm_medium=print&utm_campaign=poster",
     "screenshots": {
       "teacher": "screenshot-camera.png",
-      "kid": "screenshot-audience-kid-3d.png",
+      "kid": "screenshot-signals.png",
       "maker": "screenshot-audience-maker-3d.png"
     }
   },
 
   "en": {
     "brand": "face-tracking",
-    "posterTitle": "Every sensor.\nLive in every browser.",
-    "posterKicker": "WEB BLUETOOTH · MICRO:BIT V2",
-    "posterSubtitle": "Classroom-ready control panel. 30 laptops. Zero install.",
+    "posterTitle": "468 landmarks.\n11 live signals.",
+    "posterKicker": "MEDIAPIPE · 10 DETECTIONS · PRIVACY-FIRST",
+    "posterSubtitle": "Google MediaPipe in a browser tab. The webcam stream stays on the device.",
     "features": [
-      { "icon": "⚡", "h": "Live sensors", "p": "Temperature, sound, light, head yaw, head pitch — all streaming in real time." },
-      { "icon": "🎛️", "h": "Full control", "p": "Paint LEDs, toggle landmarks, drive motors. Record CSV sessions for lessons." },
-      { "icon": "🧊", "h": "Live 3D mirror", "p": "A photoreal board tilts with your micro:bit. Kids see the physics click." }
+      { "icon": "🔬", "h": "468 landmarks, 60 fps", "p": "Google's MediaPipe FaceLandmarker runs locally — no upload. 11 signals stream at 10 Hz." },
+      { "icon": "😀", "h": "10 pre-built detections", "p": "Smile, wink, blink, mouth open, eyebrow raise, head-yaw, head-pitch, head-roll, tongue out and more." },
+      { "icon": "🗣️", "h": "TTS in 12 locales", "p": "Narrate signals in 12 languages. Optional micro:bit V2: 19-digit packet → LED arrows." }
     ],
     "steps": [
-      "Plug in the micro:bit (USB or battery).",
       "Open Chrome or Edge on any laptop.",
-      "Visit the URL below — no install.",
-      "Click Connect, pick your board.",
-      "Dot goes green. You're live."
+      "Grant webcam access (stays local).",
+      "See 468 landmarks + live signals.",
+      "Toggle detections, tune thresholds.",
+      "(Optional) pair a micro:bit for LED output."
     ],
     "stepsHeader": "Get started in 60 seconds",
     "qrCaption": "Scan to try the live demo",
     "audienceLine": "For teachers, kids, and makers.",
-    "footerLeft": "Chrome / Edge · Works offline · No account",
-    "footerRight": "MakeCode firmware · Open source friendly",
-    "flyerTagline": "The browser IS the IDE.",
-    "motto": "Every scientist started by asking \"what happens if I press this?\""
+    "footerLeft": "Chrome / Edge · No account · Webcam stays local",
+    "footerRight": "MediaPipe · MakeCode firmware · Open source friendly",
+    "flyerTagline": "The browser IS the face-tracking lab.",
+    "motto": "A thousand students, zero pixels uploaded."
   },
 
   "fr": {
     "brand": "face-tracking",
-    "posterTitle": "Chaque capteur,\nen direct dans le navigateur.",
-    "posterKicker": "WEB BLUETOOTH · MICRO:BIT V2",
-    "posterSubtitle": "Panneau de contrôle prêt pour la classe. 30 ordinateurs. Zéro installation.",
+    "posterTitle": "468 points,\n11 signaux en direct.",
+    "posterKicker": "MEDIAPIPE · 10 DÉTECTIONS · 100 % LOCAL",
+    "posterSubtitle": "Google MediaPipe dans un onglet. La webcam ne quitte jamais l'appareil.",
     "features": [
-      { "icon": "⚡", "h": "Capteurs en direct", "p": "Fonctionnalités du produit — voir la description." },
-      { "icon": "🎛️", "h": "Contrôle complet", "p": "Peindre les LEDs, faire tourner les landmarks, piloter les moteurs. Export CSV." },
-      { "icon": "🧊", "h": "Miroir 3D", "p": "Une carte photoréaliste s'incline avec votre micro:bit. La physique prend vie." }
+      { "icon": "🔬", "h": "468 points, 60 fps", "p": "MediaPipe FaceLandmarker de Google, en local — aucun upload. 11 signaux à 10 Hz." },
+      { "icon": "😀", "h": "10 détections intégrées", "p": "Sourire, clin d'œil, clignement, bouche ouverte, sourcil levé, tête (yaw/pitch/roll), langue sortie…" },
+      { "icon": "🗣️", "h": "TTS en 12 langues", "p": "Narration des signaux en 12 locales. Option micro:bit V2 : paquet 19 chiffres → flèches LED." }
     ],
     "steps": [
-      "Branchez le micro:bit (USB ou pile).",
-      "Ouvrez Chrome ou Edge.",
-      "Visitez l'URL ci-dessous — rien à installer.",
-      "Cliquez Connecter, choisissez votre carte.",
-      "Le point passe au vert. C'est parti."
+      "Ouvre Chrome ou Edge.",
+      "Autorise la webcam (elle reste locale).",
+      "Vois les 468 points + signaux en direct.",
+      "Active/désactive des détections, règle les seuils.",
+      "(Optionnel) connecte un micro:bit pour la sortie LED."
     ],
     "stepsHeader": "Démarrez en 60 secondes",
     "qrCaption": "Scannez pour la démo en direct",
     "audienceLine": "Pour les enseignants, les enfants et les makers.",
-    "footerLeft": "Chrome / Edge · Hors ligne · Sans compte",
-    "footerRight": "Firmware MakeCode · Compatible open source",
-    "flyerTagline": "Le navigateur EST l'IDE.",
-    "motto": "Chaque scientifique a commencé par demander « que se passe-t-il si j'appuie ici ? »"
+    "footerLeft": "Chrome / Edge · Sans compte · La webcam reste locale",
+    "footerRight": "MediaPipe · Firmware MakeCode · Compatible open source",
+    "flyerTagline": "Le navigateur EST le labo de face tracking.",
+    "motto": "Mille élèves, zéro pixel téléversé."
   },
 
   "ar": {
     "brand": "face-tracking",
-    "posterTitle": "كل حساس،\nمباشرةً في المتصفح.",
-    "posterKicker": "WEB BLUETOOTH · MICRO:BIT V2",
-    "posterSubtitle": "لوحة تحكم جاهزة للقاعة الدراسية. 30 جهازاً. بدون تثبيت.",
+    "posterTitle": "468 نقطة،\n11 إشارة حية.",
+    "posterKicker": "MEDIAPIPE · 10 كشوفات · محلّي 100٪",
+    "posterSubtitle": "Google MediaPipe في علامة تبويب. الكاميرا لا تغادر الجهاز أبداً.",
     "features": [
-      { "icon": "⚡", "h": "مستشعرات حية", "p": "الحرارة، الصوت، الضوء، التسارع، البوصلة — كلها في الوقت الحقيقي." },
-      { "icon": "🎛️", "h": "تحكم كامل", "p": "ارسم على مصفوفة LED، أدِر السيرفو، قُد المحركات. تصدير CSV للدروس." },
-      { "icon": "🧊", "h": "مرآة ثلاثية الأبعاد", "p": "لوحة واقعية تميل مع micro:bit الفعلي. الفيزياء تصبح مرئية." }
+      { "icon": "🔬", "h": "468 نقطة @ 60 fps", "p": "MediaPipe FaceLandmarker من Google محلياً — بدون رفع. 11 إشارة عند 10 هرتز." },
+      { "icon": "😀", "h": "10 كشوفات جاهزة", "p": "ابتسامة، غمزة، رمش، فتح الفم، رفع الحاجب، دوران/ميلان الرأس، إخراج اللسان…" },
+      { "icon": "🗣️", "h": "نطق بـ 12 لغة", "p": "نطق الإشارات بـ 12 لغة. اختيارياً micro:bit V2: حزمة 19 رقماً → أسهم LED." }
     ],
     "steps": [
-      "وصّل micro:bit (USB أو بطارية).",
       "افتح Chrome أو Edge.",
-      "زُر الرابط أدناه — بدون تثبيت.",
-      "اضغط Connect واختر لوحتك.",
-      "تتحول النقطة إلى الأخضر. جاهز."
+      "اسمح للكاميرا (تبقى محلية).",
+      "شاهد 468 نقطة + الإشارات مباشرة.",
+      "شغّل/أوقف الكشوفات واضبط العتبات.",
+      "(اختياري) اربط micro:bit لإخراج LED."
     ],
     "stepsHeader": "ابدأ خلال 60 ثانية",
     "qrCaption": "امسح لتجربة العرض المباشر",
     "audienceLine": "للمعلمين والأطفال والمبدعين.",
-    "footerLeft": "Chrome / Edge · يعمل دون اتصال · بدون حساب",
-    "footerRight": "فيرموير MakeCode · متوافق مع المصدر المفتوح",
-    "flyerTagline": "المتصفح هو بيئة التطوير.",
-    "motto": "كل عالِم بدأ بسؤال: «ماذا يحدث لو ضغطت هنا؟»"
+    "footerLeft": "Chrome / Edge · بدون حساب · الكاميرا محلية",
+    "footerRight": "MediaPipe · فيرموير MakeCode · متوافق مع المصدر المفتوح",
+    "flyerTagline": "المتصفح هو مختبر تتبّع الوجه.",
+    "motto": "ألف طالب، صفر بكسل مرفوع."
   }
 }

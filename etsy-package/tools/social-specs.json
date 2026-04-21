@@ -1,5 +1,5 @@
 {
-  "_comment": "Social media kit specs — 4 aspect ratios per language, driven by generate-social.mjs. Screenshots resolved from output/<lang>/screenshots/.",
+  "_comment": "Social kit for Face Tracking. MediaPipe FaceLandmarker · 468 landmarks · 11 signals @10 Hz · privacy-first.",
 
   "formats": [
     { "name": "ig-post",    "w": 1080, "h": 1080, "label": "Instagram feed",   "layout": "square" },
@@ -12,29 +12,29 @@
 
   "en": {
     "brand": "face-tracking",
-    "kicker": "MICRO:BIT · WEB BLUETOOTH",
-    "title": "Every sensor.\nLive in the browser.",
-    "subtitle": "Chrome / Edge · Zero install · Works offline",
+    "kicker": "MEDIAPIPE · 468 LANDMARKS · PRIVACY-FIRST",
+    "title": "468 landmarks.\n11 live signals.",
+    "subtitle": "Chrome / Edge · Smile · Wink · Head-tilt · 10 detections · No upload",
     "cta": "Try the demo →",
     "url": "abourdim.github.io/face-tracking",
-    "hashtags": "#microbit  #STEM  #EdTech"
+    "hashtags": "#MediaPipe  #FaceTracking  #PrivacyFirst  #EdTech  #STEM"
   },
   "fr": {
     "brand": "face-tracking",
-    "kicker": "MICRO:BIT · WEB BLUETOOTH",
-    "title": "Chaque capteur,\nen direct dans le navigateur.",
-    "subtitle": "Chrome / Edge · Zéro installation · Hors ligne",
+    "kicker": "MEDIAPIPE · 468 POINTS · 100 % LOCAL",
+    "title": "468 points.\n11 signaux en direct.",
+    "subtitle": "Chrome / Edge · Sourire · Clin d'œil · Tête inclinée · 10 détections",
     "cta": "Essayer la démo →",
     "url": "abourdim.github.io/face-tracking",
-    "hashtags": "#microbit  #STEM  #EdTech"
+    "hashtags": "#MediaPipe  #FaceTracking  #RGPD  #EdTech  #STEM"
   },
   "ar": {
     "brand": "face-tracking",
-    "kicker": "MICRO:BIT · WEB BLUETOOTH",
-    "title": "كل حساس،\nمباشرةً في المتصفح.",
-    "subtitle": "Chrome / Edge · بدون تثبيت · يعمل دون اتصال",
+    "kicker": "MEDIAPIPE · 468 نقطة · خصوصية أولاً",
+    "title": "468 نقطة.\n11 إشارة حية.",
+    "subtitle": "Chrome / Edge · ابتسامة · غمزة · إمالة · 10 كشوفات · بدون رفع",
     "cta": "← جرّب العرض التوضيحي",
     "url": "abourdim.github.io/face-tracking",
-    "hashtags": "#microbit  #STEM  #EdTech"
+    "hashtags": "#MediaPipe  #تتبع_الوجه  #خصوصية  #EdTech  #STEM"
   }
 }
