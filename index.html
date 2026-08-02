@@ -61,6 +61,13 @@
       color:#a8ff9d;
       opacity:.95;
     }
+    .brandTitle .appName{
+      font-size:13px;
+      font-weight:800;
+      color: var(--blue);
+      margin-top:2px;
+      letter-spacing:.04em;
+    }
     .brandTitle .tag{
       font-size:12px;
       color:rgba(255,255,255,.65);
@@ -341,6 +348,7 @@
         </div>
         <div class="brandTitle">
           <div class="name">WORKSHOP-DIY.ORG</div>
+          <div class="appName" data-i18n="app_name">Face Tracking</div>
           <div class="tag" data-i18n="tagline">Explore · Create · Innovate</div>
         </div>
       </div>
@@ -602,7 +610,7 @@
   const RTL_LANGS = { ar: true };
   const I18N = {
     en: {
-      tagline: "Explore · Create · Innovate", ready_label: "READY",
+      tagline: "Explore · Create · Innovate", ready_label: "READY", app_name: "Face Tracking",
       card_faceapp_title: "Face App",
       ui_ready: "UI ready", ui_loading_model: "Loading model…", ui_model_loaded: "Model loaded",
       hint_steps: "Steps: 1) Start camera · 2) Connect micro:bit (in Live Link card) · 3) Start sending (in Live Link card)",
@@ -694,7 +702,7 @@
       speech_test_utterance: "Hello. This is a voice test.", speech_on_utterance: "Speech on"
     },
     fr: {
-      tagline: "Explorer · Créer · Innover", ready_label: "PRÊT",
+      tagline: "Explorer · Créer · Innover", ready_label: "PRÊT", app_name: "Face Tracking",
       card_faceapp_title: "Application Visage",
       ui_ready: "Interface prête", ui_loading_model: "Chargement du modèle…", ui_model_loaded: "Modèle chargé",
       hint_steps: "Étapes : 1) Démarrer la caméra · 2) Connecter le micro:bit (carte Liaison directe) · 3) Démarrer l'envoi (carte Liaison directe)",
@@ -786,7 +794,7 @@
       speech_test_utterance: "Bonjour. Ceci est un test vocal.", speech_on_utterance: "Voix activée"
     },
     ar: {
-      tagline: "استكشف · ابتكر · أبدع", ready_label: "جاهز",
+      tagline: "استكشف · ابتكر · أبدع", ready_label: "جاهز", app_name: "Face Tracking",
       card_faceapp_title: "تطبيق الوجه",
       ui_ready: "الواجهة جاهزة", ui_loading_model: "جاري تحميل النموذج…", ui_model_loaded: "تم تحميل النموذج",
       hint_steps: "الخطوات: 1) تشغيل الكاميرا · 2) توصيل micro:bit (بطاقة الاتصال المباشر) · 3) بدء الإرسال (بطاقة الاتصال المباشر)",
