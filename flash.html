@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#26d07c">
+  <title>Get micro:bit Code — Face Link</title>
+  <style>
+:root{
+  --bg0:#0a1020; --bg1:#070b14;
+  --border:rgba(255,255,255,.08);
+  --text:#d9e6ff; --muted:rgba(217,230,255,.65);
+  --green:#26d07c; --blue:#3aa0ff;
+  --radius:16px;
+}
+*{ box-sizing:border-box; }
+body{
+  margin:0; min-height:100vh;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(58,160,255,.22), transparent 60%),
+    radial-gradient(900px 500px at 80% 10%, rgba(38,208,124,.12), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  padding: 20px;
+}
+.wrap{ max-width: 720px; margin: 0 auto; }
+.back-link{
+  display:inline-flex; align-items:center; gap:6px;
+  color:var(--muted); text-decoration:none; font-weight:700; font-size:.9rem;
+  margin-bottom:16px;
+}
+.back-link:hover{ color:var(--blue); }
+h1{ font-size:1.6rem; margin:0 0 4px; }
+.subtitle{ color:var(--muted); margin:0 0 24px; }
+.card{
+  background: linear-gradient(180deg, rgba(12,22,40,.95), rgba(10,18,32,.92));
+  border:1px solid var(--border); border-radius: var(--radius);
+  padding:20px; margin-bottom:16px;
+  box-shadow: 0 0 0 1px rgba(120,200,255,.15), 0 12px 35px rgba(0,0,0,.45);
+}
+.card-title{ font-weight:900; font-size:1.05rem; margin:0 0 12px; display:flex; align-items:center; gap:8px; }
+.steps{ list-style:none; margin:0; padding:0; counter-reset:step; }
+.steps li{ counter-increment:step; display:flex; gap:12px; align-items:flex-start; padding:8px 0; font-size:.95rem; }
+.steps li::before{
+  content:counter(step); flex-shrink:0; width:26px; height:26px; border-radius:50%;
+  background: rgba(58,160,255,.14); color:var(--blue); font-weight:800;
+  display:flex; align-items:center; justify-content:center; font-size:.85rem;
+}
+.steps a{ color:var(--blue); font-weight:700; text-decoration:none; }
+.steps a:hover{ text-decoration:underline; }
+.copy-btn{
+  width:100%; border:none; border-radius:14px;
+  background: rgba(38,208,124,.85); color:#04150c;
+  font-weight:900; font-size:1.05rem; padding:16px; cursor:pointer;
+  box-shadow: 0 0 18px rgba(38,208,124,.25);
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  transition: transform .15s ease;
+}
+.copy-btn:active{ transform: scale(.97); }
+.copy-btn.copied{ background: rgba(58,160,255,.85); color:#04101f; box-shadow:none; }
+.open-makecode{
+  display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+  border:2px solid var(--border); border-radius:14px; background:transparent;
+  color:var(--text); font-weight:700; font-size:.95rem; padding:12px;
+  text-decoration:none; margin-top:10px;
+}
+.open-makecode:hover{ border-color:var(--blue); color:var(--blue); }
+.code-wrap{
+  position:relative; max-height:280px; overflow:auto;
+  background:#02040a; border-radius:14px; margin-top:14px;
+}
+pre{ margin:0; padding:14px; }
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:.72rem; line-height:1.5; color:#c9d1d9; white-space:pre;
+}
+.status{ font-size:.85rem; color:var(--muted); margin-top:8px; text-align:center; }
+footer{
+  text-align:center; margin-top:24px; padding-top:16px; border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  color:var(--muted); font-size:.8rem;
+}
+footer img{ height:18px; width:auto; }
+footer a{ color:var(--muted); text-decoration:none; font-weight:700; }
+footer a:hover{ color:var(--green); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back-link" href="index.html">← Back to Face Link</a>
+    <h1>🧠 Get the micro:bit Code</h1>
+    <p class="subtitle">Flash this once and your micro:bit reacts to your face over Bluetooth.</p>
+
+    <div class="card">
+      <div class="card-title">📋 Step 1 — Copy the code</div>
+      <button class="copy-btn" id="copyBtn" onclick="copyCode()">📋 Copy micro:bit Code</button>
+      <div class="status" id="status">Loading code…</div>
+      <div class="code-wrap"><pre><code id="codeBlock">Loading…</code></pre></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀 Step 2 — Paste it into MakeCode</div>
+      <ol class="steps">
+        <li>Open <a href="https://makecode.microbit.org" target="_blank" rel="noopener">makecode.microbit.org</a> and create a new project</li>
+        <li>Click the <strong>JavaScript</strong> tab (top right)</li>
+        <li>Paste the code you copied above</li>
+        <li>Click <strong>Extensions</strong> and add <strong>bluetooth</strong></li>
+        <li>In Project Settings, turn on <strong>"No Pairing Required"</strong></li>
+        <li>Download the file and flash it to your micro:bit (drag &amp; drop)</li>
+      </ol>
+      <a class="open-makecode" href="https://makecode.microbit.org/_FoshcmLiD7VJ" target="_blank" rel="noopener">🔗 Or open the ready-made MakeCode project</a>
+    </div>
+
+    <footer>
+      <img src="logo.svg" alt="Workshop-DIY logo">
+      <a href="https://workshop-diy.org" target="_blank" rel="noopener">Workshop-DIY.org</a>
+    </footer>
+  </div>
+
+<script>
+let sourceCode = '';
+
+async function loadCode() {
+  const status = $('status');
+  const block = $('codeBlock');
+  try {
+    const res = await fetch('./makecode.ts', { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    sourceCode = await res.text();
+    block.textContent = sourceCode;
+    status.textContent = '✅ Ready — ' + sourceCode.split('\n').length + ' lines';
+  } catch (e) {
+    status.textContent = '⚠️ Could not load the code. Try reloading the page.';
+    block.textContent = '// Failed to load makecode.ts';
+  }
+}
+
+function $(id) { return document.getElementById(id); }
+
+function copyCode() {
+  if (!sourceCode) return;
+  const btn = $('copyBtn');
+  const done = () => {
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy micro:bit Code'; btn.classList.remove('copied'); }, 2000);
+  };
+  navigator.clipboard.writeText(sourceCode).then(done).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = sourceCode;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    done();
+  });
+}
+
+loadCode();
+</script>
+</body>
+</html>

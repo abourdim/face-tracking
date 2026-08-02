@@ -321,6 +321,14 @@
       100% { transform: scale(1) rotate(0deg); }
     }
 
+    #lang-switch{ display:flex; gap:4px; }
+    .lang-flag-btn{
+      background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12);
+      display:flex; align-items:center; padding:3px; border-radius:5px;
+      cursor:pointer; opacity:.55; line-height:0;
+    }
+    .lang-flag-btn.active{ border-color: var(--blue); opacity:1; }
+    .lang-flag-btn svg{ display:block; border-radius:2px; }
   </style>
 </head>
 
@@ -333,13 +341,20 @@
         </div>
         <div class="brandTitle">
           <div class="name">WORKSHOP-DIY.ORG</div>
-          <div class="tag">Explore · Create · Innovate</div>
+          <div class="tag" data-i18n="tagline">Explore · Create · Innovate</div>
         </div>
       </div>
 
-      <div class="readyPill" id="readyPill">
-        <span class="dot"></span>
-        READY
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div id="lang-switch">
+          <button class="lang-flag-btn" data-lang="en" title="English" aria-label="English" onclick="setLang('en')"><svg width="22" height="15" viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="6.5"/><path d="M0 0L60 40M60 0L0 40" stroke="#C8102E" stroke-width="3.5"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="11"/><path d="M30 0V40M0 20H60" stroke="#C8102E" stroke-width="6.5"/></svg></button>
+          <button class="lang-flag-btn" data-lang="fr" title="Français" aria-label="Français" onclick="setLang('fr')"><svg width="22" height="15" viewBox="0 0 60 40"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg></button>
+          <button class="lang-flag-btn" data-lang="ar" title="العربية" aria-label="العربية" onclick="setLang('ar')"><svg width="22" height="15" viewBox="0 0 900 600"><defs><clipPath id="glFT1"><rect width="450" height="600"/></clipPath></defs><rect width="450" height="600" fill="#006233"/><rect x="450" width="450" height="600" fill="#FFF"/><g fill="#D21034" transform="translate(450,300)"><circle r="125"/><circle cx="25" r="100" fill="#FFF"/><g clip-path="url(#glFT1)" transform="translate(-450,-300)"><circle cx="475" cy="300" r="100" fill="#006233"/></g><path d="M85-12l22 67h71l-57 42 22 67-58-42-57 42 21-67-57-42h71z"/></g></svg></button>
+        </div>
+        <div class="readyPill" id="readyPill">
+          <span class="dot"></span>
+          <span data-i18n="ready_label">READY</span>
+        </div>
       </div>
     </div>
   </div>
@@ -350,44 +365,44 @@
       <!-- Face App (NO BLE status/buttons here) -->
       <div class="card">
         <div class="cardHeader">
-          <div class="title">🧠 Face App</div>
+          <div class="title"><span>🧠</span><span data-i18n="card_faceapp_title">Face App</span></div>
           <div class="chip" id="uiState">UI ready</div>
         </div>
         <div class="cardBody">
-          <div class="footerHint" style="margin-top:0">
+          <div class="footerHint" style="margin-top:0" data-i18n="hint_steps">
             Steps: 1) Start camera · 2) Connect micro:bit (in Live Link card) · 3) Start sending (in Live Link card)
           </div>
 
           <div class="btnRow" style="margin-top:12px">
-            <button class="btn blue" id="btnCam">📷 Start webcam</button>
-            <button class="btn" id="btnStopCam">⏹ Stop webcam</button>
+            <button class="btn blue" id="btnCam"><span>📷</span> <span data-i18n="btn_start_webcam">Start webcam</span></button>
+            <button class="btn" id="btnStopCam"><span>⏹</span> <span data-i18n="btn_stop_webcam">Stop webcam</span></button>
           </div>
 
           <div class="btnRow" style="margin-top:10px">
-            <button class="btn" id="switchCamBtn">🔄 Switch camera</button>
-            <button class="btn" id="flipCamBtn">🪞 Mirror ON</button>
+            <button class="btn" id="switchCamBtn"><span>🔄</span> <span data-i18n="btn_switch_camera">Switch camera</span></button>
+            <button class="btn" id="flipCamBtn"><span>🪞</span> <span data-i18n="mirror_on">Mirror ON</span></button>
           </div>
 
           <!-- Only camera + fps here -->
           <div class="statusLine">
-            <span class="pill bad" id="pillCam"><span class="miniDot"></span>📷 Camera: OFF</span>
-            <span class="pill" id="pillMirror"><span class="miniDot"></span>🪞 Mirror: ON</span>
-            <span class="pill bad" id="pillFace"><span class="miniDot"></span>👀 Looking for a face…</span>
+            <span class="pill bad" id="pillCam"><span class="miniDot"></span><span data-i18n="pill_camera_off">📷 Camera: OFF</span></span>
+            <span class="pill" id="pillMirror"><span class="miniDot"></span><span data-i18n="pill_mirror_on">🪞 Mirror: ON</span></span>
+            <span class="pill bad" id="pillFace"><span class="miniDot"></span><span data-i18n="pill_looking_face">👀 Looking for a face…</span></span>
             <span class="pill" id="pillFps"><span class="miniDot"></span>FPS: —</span>
           </div>
 
           <div class="statusLine" style="margin-top:10px">
             <label class="pill" style="gap:10px;">
               <input type="checkbox" id="chkMesh" checked>
-              Mesh
+              <span data-i18n="chk_mesh">Mesh</span>
             </label>
             <label class="pill" style="gap:10px;">
               <input type="checkbox" id="chkContours" checked>
-              Contours
+              <span data-i18n="chk_contours">Contours</span>
             </label>
             <label class="pill" style="gap:10px;">
               <input type="checkbox" id="chkPoints">
-              Points
+              <span data-i18n="chk_points">Points</span>
             </label>
           </div>
         </div>
@@ -396,7 +411,7 @@
       <!-- ✅ BLE single source-of-truth card -->
       <div class="card">
         <div class="cardHeader">
-          <div class="title">📡 micro:bit Live Link</div>
+          <div class="title"><span>📡</span><span data-i18n="card_ble_title">micro:bit Live Link</span></div>
           <div style="display:flex; gap:8px; align-items:center;">
             <div class="chip" id="bleProfile">—</div>
             <div class="chip" id="bleState">DISCONNECTED</div>
@@ -404,22 +419,22 @@
         </div>
         <div class="cardBody">
           <div class="btnRow">
-            <button class="btn primary" id="btnBt2">🔗 Connect</button>
-            <button class="btn" id="btnDisc">❌ Disconnect</button>
+            <button class="btn primary" id="btnBt2"><span>🔗</span> <span data-i18n="btn_connect">Connect</span></button>
+            <button class="btn" id="btnDisc"><span>❌</span> <span data-i18n="btn_disconnect">Disconnect</span></button>
           </div>
 
           <div class="btnRow" style="margin-top:12px">
-            <button class="btn" id="btnTest">🧪 Send TEST</button>
-            <button class="btn primary" id="btnStartSend">🚀 Start sending</button>
-            <button class="btn red" id="btnStopSend">🛑 Stop</button>
+            <button class="btn" id="btnTest"><span>🧪</span> <span data-i18n="btn_send_test">Send TEST</span></button>
+            <button class="btn primary" id="btnStartSend"><span>🚀</span> <span data-i18n="btn_start_sending">Start sending</span></button>
+            <button class="btn red" id="btnStopSend"><span>🛑</span> <span data-i18n="btn_stop">Stop</span></button>
           </div>
 
           <!-- BLE pill ONLY here -->
           <div class="statusLine">
-            <span class="pill bad" id="pillBle"><span class="miniDot"></span>BLE: disconnected</span>
+            <span class="pill bad" id="pillBle"><span class="miniDot"></span><span data-i18n="pill_ble_disconnected">BLE: disconnected</span></span>
           </div>
 
-          <div class="footerHint">BLE UART (micro:bit UART / Nordic UART). Keep micro:bit powered and nearby.</div>
+          <div class="footerHint" data-i18n="footer_ble_hint">BLE UART (micro:bit UART / Nordic UART). Keep micro:bit powered and nearby.</div>
           <div class="footerHint" id="bleDevice">DEVICE —</div>
           <div class="footerHint" id="lastTx">LAST TX —</div>
           <div class="footerHint" id="lastCmd">LAST CMD —</div>
@@ -430,44 +445,44 @@
       <!-- Outgoing Packet -->
       <div class="card">
         <div class="cardHeader">
-          <div class="title">📦 Outgoing Packet</div>
-          <div class="chip">19 digits</div>
+          <div class="title"><span>📦</span><span data-i18n="card_packet_title">Outgoing Packet</span></div>
+          <div class="chip" data-i18n="badge_19digits">19 digits</div>
         </div>
         <div class="cardBody">
           <div class="packet" id="out">—</div>
-          <div class="footerHint">Format: XX YY ZZ Yaw Pitch Mouth LEye REye Roll Smile Vis</div>
+          <div class="footerHint" data-i18n="footer_packet_format">Format: XX YY ZZ Yaw Pitch Mouth LEye REye Roll Smile Vis</div>
         </div>
       </div>
 
       <!-- ✅ Demo card -->
       <div class="card">
         <div class="cardHeader">
-          <div class="title">🎪 Demo (Funny detections)</div>
+          <div class="title"><span>🎪</span><span data-i18n="card_demo_title">Demo (Funny detections)</span></div>
           <div class="chip" id="demoState">OFF</div>
         </div>
         <div class="cardBody">
           <div class="btnRow">
-            <button class="btn primary" id="btnDemoOn">▶ Demo ON</button>
-            <button class="btn" id="btnDemoOff">⏸ Demo OFF</button>
-            <button class="btn" id="btnDemoReset">🔁 Reset</button>
+            <button class="btn primary" id="btnDemoOn"><span>▶</span> <span data-i18n="btn_demo_on">Demo ON</span></button>
+            <button class="btn" id="btnDemoOff"><span>⏸</span> <span data-i18n="btn_demo_off">Demo OFF</span></button>
+            <button class="btn" id="btnDemoReset"><span>🔁</span> <span data-i18n="btn_demo_reset">Reset</span></button>
           </div>
 
           <div class="statusLine" style="margin-top:10px">
-            <button class="btn" id="btnSpeechToggle">🔊 Start Speech</button>
+            <button class="btn" id="btnSpeechToggle"><span>🔊</span> <span data-i18n="btn_start_speech">Start Speech</span></button>
 
             <label class="pill" style="gap:10px;">
               <input type="checkbox" id="chkSendCmd">
-              Send CMD to micro:bit
+              <span data-i18n="chk_send_cmd">Send CMD to micro:bit</span>
             </label>
 
-            <button class="btn" id="btnSpeechTest">🔊 Test voice</button>
+            <button class="btn" id="btnSpeechTest"><span>🔊</span> <span data-i18n="btn_test_voice">Test voice</span></button>
           </div>
 
           <div class="statusLine" style="margin-top:10px">
             <label class="pill" style="gap:10px;">
-              Lang
+              <span data-i18n="label_lang">Lang</span>
               <select id="selSpeechLang">
-                <option value="">Auto</option>
+                <option value="" data-i18n="option_auto">Auto</option>
                 <option value="en-US">en-US</option>
                 <option value="en-GB">en-GB</option>
                 <option value="fr-FR">fr-FR</option>
@@ -484,27 +499,27 @@
             </label>
 
             <label class="pill" style="gap:10px; flex:1;">
-              Voice
+              <span data-i18n="label_voice">Voice</span>
               <select id="selSpeechVoice" style="flex:1;min-width:180px;">
-                <option value="">Auto</option>
+                <option value="" data-i18n="option_auto">Auto</option>
               </select>
             </label>
           </div>
 
           <div class="statusLine" style="margin-top:10px">
             <label class="pill" style="gap:10px;">
-              Rate
+              <span data-i18n="label_rate">Rate</span>
               <input type="range" id="rngSpeechRate" min="0.7" max="1.3" step="0.05" value="1" style="accent-color:#26d07c;">
             </label>
 
             <label class="pill" style="gap:10px;">
-              Pitch
+              <span data-i18n="label_pitch">Pitch</span>
               <input type="range" id="rngSpeechPitch" min="0.6" max="1.6" step="0.05" value="1.05" style="accent-color:#26d07c;">
             </label>
           </div>
 
           <div style="margin-top:12px; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.05);">
-            <div style="font-weight:900; letter-spacing:.08em; text-transform:uppercase; font-size:12px; color:rgba(255,255,255,.70);">
+            <div style="font-weight:900; letter-spacing:.08em; text-transform:uppercase; font-size:12px; color:rgba(255,255,255,.70);" data-i18n="label_current_detection">
               Current detection
             </div>
             <div id="demoLabel" style="margin-top:6px; font-size:22px; font-weight:900;">
@@ -515,8 +530,8 @@
             </div>
           </div>
 
-          <div class="footerHint" style="margin-top:10px;">
-            Demo uses existing values (no packet format change). If “Send CMD” is enabled it sends lines like <b>CMD:SMILE</b>.
+          <div class="footerHint" style="margin-top:10px;" data-i18n="footer_demo_hint">
+            Demo uses existing values (no packet format change). If &ldquo;Send CMD&rdquo; is enabled it sends lines like <b>CMD:SMILE</b>.
           </div>
         </div>
       </div>
@@ -527,22 +542,22 @@
     <div class="rightCol">
       <div class="card">
         <div class="cardHeader">
-          <div class="title">🎥 Webcam</div>
-          <div class="chip">Live view</div>
+          <div class="title"><span>🎥</span><span data-i18n="card_webcam_title">Webcam</span></div>
+          <div class="chip" data-i18n="badge_live_view">Live view</div>
         </div>
         <div class="cardBody">
           <div class="stage">
             <video id="video" autoplay playsinline muted></video>
             <canvas id="overlay"></canvas>
           </div>
-          <div class="footerHint">Tip: good lighting helps detection.</div>
+          <div class="footerHint" data-i18n="footer_lighting_tip">Tip: good lighting helps detection.</div>
         </div>
       </div>
 
       <div class="card">
         <div class="cardHeader">
-          <div class="title">🧾 Message Log</div>
-          <button class="btn" id="btnClearLog">🧹 Clear</button>
+          <div class="title"><span>🧾</span><span data-i18n="card_log_title">Message Log</span></div>
+          <button class="btn" id="btnClearLog"><span>🧹</span> <span data-i18n="btn_clear">Clear</span></button>
         </div>
         <div class="cardBody">
           <div class="log" id="log"></div>
@@ -551,22 +566,22 @@
 
       <div class="card">
         <div class="cardHeader">
-          <div class="title">📊 Numerics</div>
-          <div class="chip" id="normState">Normalized</div>
+          <div class="title"><span>📊</span><span data-i18n="card_numerics_title">Numerics</span></div>
+          <div class="chip" id="normState" data-i18n="normalized_label">Normalized</div>
         </div>
         <div class="cardBody">
           <div class="grid">
-            <div class="field"><label>X</label><input id="fX" readonly value="0"></div>
-            <div class="field"><label>Y</label><input id="fY" readonly value="0"></div>
-            <div class="field"><label>Distance</label><input id="fZ" readonly value="0"></div>
-            <div class="field"><label>Yaw</label><input id="fYaw" readonly value="0"></div>
-            <div class="field"><label>Pitch</label><input id="fPitch" readonly value="0"></div>
-            <div class="field"><label>Mouth</label><input id="fMouth" readonly value="0"></div>
-            <div class="field"><label>Left Eye</label><input id="fLE" readonly value="0"></div>
-            <div class="field"><label>Right Eye</label><input id="fRE" readonly value="0"></div>
-            <div class="field"><label>Roll</label><input id="fRoll" readonly value="0"></div>
-            <div class="field"><label>Smile/Kiss</label><input id="fSmile" readonly value="0"></div>
-            <div class="field"><label>Face Visible</label><input id="fVis" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_x">X</label><input id="fX" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_y">Y</label><input id="fY" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_distance">Distance</label><input id="fZ" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_yaw">Yaw</label><input id="fYaw" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_pitch">Pitch</label><input id="fPitch" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_mouth">Mouth</label><input id="fMouth" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_left_eye">Left Eye</label><input id="fLE" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_right_eye">Right Eye</label><input id="fRE" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_roll">Roll</label><input id="fRoll" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_smile_kiss">Smile/Kiss</label><input id="fSmile" readonly value="0"></div>
+            <div class="field"><label data-i18n="field_face_visible">Face Visible</label><input id="fVis" readonly value="0"></div>
           </div>
         </div>
       </div>
@@ -577,6 +592,318 @@
   import { FaceLandmarker, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.21";
 
   const el = (id) => document.getElementById(id);
+
+  // ----------------- i18n (EN/FR/AR) -----------------------------------
+  // Same data-i18n + dictionary pattern used across the WDIY app family.
+  // Many elements here are rewritten via innerHTML/textContent at runtime
+  // (pills, chips, log lines) -- those pass a *key* through tr() at the
+  // point of rendering rather than relying on data-i18n alone, and
+  // refreshDynamicUI() repaints them from tracked state on a lang switch.
+  const RTL_LANGS = { ar: true };
+  const I18N = {
+    en: {
+      tagline: "Explore · Create · Innovate", ready_label: "READY",
+      card_faceapp_title: "Face App",
+      ui_ready: "UI ready", ui_loading_model: "Loading model…", ui_model_loaded: "Model loaded",
+      hint_steps: "Steps: 1) Start camera · 2) Connect micro:bit (in Live Link card) · 3) Start sending (in Live Link card)",
+      btn_start_webcam: "Start webcam", btn_stop_webcam: "Stop webcam",
+      btn_switch_camera: "Switch camera",
+      mirror_on: "Mirror ON", mirror_off: "Mirror OFF",
+      pill_camera_off: "📷 Camera: OFF",
+      pill_front_camera_on: "🤳 Front camera ON", pill_back_camera_on: "📷 Back camera ON",
+      pill_changing_camera: "🔄 Changing camera…",
+      pill_mirror_on: "🪞 Mirror: ON", pill_mirror_off: "🪞 Mirror: OFF",
+      pill_looking_face: "👀 Looking for a face…", pill_face_found: "😊 Face found!",
+      pill_press_start_camera: "🙂 Press Start Camera",
+      label_fps: "FPS",
+      chk_mesh: "Mesh", chk_contours: "Contours", chk_points: "Points",
+      card_ble_title: "micro:bit Live Link",
+      ble_connected: "CONNECTED", ble_disconnected: "DISCONNECTED",
+      btn_connect: "Connect", btn_disconnect: "Disconnect", btn_send_test: "Send TEST",
+      btn_start_sending: "Start sending", btn_stop: "Stop",
+      pill_ble_connected: "BLE: connected", pill_ble_disconnected: "BLE: disconnected",
+      footer_ble_hint: "BLE UART (micro:bit UART / Nordic UART). Keep micro:bit powered and nearby.",
+      prefix_device: "DEVICE —", prefix_last_tx: "LAST TX —", prefix_last_cmd: "LAST CMD —", prefix_last_ack: "LAST ACK —",
+      device_default_name: "micro:bit",
+      card_packet_title: "Outgoing Packet", badge_19digits: "19 digits",
+      footer_packet_format: "Format: XX YY ZZ Yaw Pitch Mouth LEye REye Roll Smile Vis",
+      card_demo_title: "Demo (Funny detections)",
+      demo_on: "ON", demo_off: "OFF",
+      btn_demo_on: "Demo ON", btn_demo_off: "Demo OFF", btn_demo_reset: "Reset",
+      btn_start_speech: "Start Speech", btn_stop_speech: "Stop Speech",
+      chk_send_cmd: "Send CMD to micro:bit", btn_test_voice: "Test voice",
+      label_lang: "Lang", label_voice: "Voice", label_rate: "Rate", label_pitch: "Pitch",
+      option_auto: "Auto", label_current_detection: "Current detection",
+      demo_hint_default: "Tip: Smile / Open mouth / Wink / Turn head",
+      footer_demo_hint: "Demo uses existing values (no packet format change). If &ldquo;Send CMD&rdquo; is enabled it sends lines like <b>CMD:SMILE</b>.",
+      demo_no_face_label: "🙈 No face", demo_no_face_hint: "Step into view + good lighting",
+      demo_blink_label: "😆 Blink!", demo_blink_hint: "Nice! Try a wink 😉",
+      demo_wink_l_label: "😉 Left wink", demo_wink_l_hint: "Now try RIGHT wink!",
+      demo_wink_r_label: "😉 Right wink", demo_wink_r_hint: "Now try LEFT wink!",
+      demo_mouth_wide_label: "😮 WOOOW!", demo_mouth_wide_hint: "Big surprise face!",
+      demo_laugh_label: "😂 Laugh!", demo_laugh_hint: "Smile + open mouth",
+      demo_mouth_open_label: "😲 Mouth open!", demo_mouth_open_hint: "Try bigger / smaller",
+      demo_big_smile_label: "😄 Big smile!", demo_big_smile_hint: "Hold it for 2 seconds",
+      demo_tilt_label: "🤔 Head tilt!", demo_tilt_hint: "Tilt your head",
+      demo_look_left_label: "⬅️ Look LEFT", demo_look_left_hint: "Now look RIGHT",
+      demo_look_right_label: "➡️ Look RIGHT", demo_look_right_hint: "Now look LEFT",
+      demo_look_up_label: "⬆️ Look UP", demo_look_up_hint: "Now look DOWN",
+      demo_look_down_label: "⬇️ Look DOWN", demo_look_down_hint: "Now look UP",
+      demo_neutral_label: "🙂 Neutral", demo_neutral_hint: "Try: mouth open, blink, wink, look up/down, left/right",
+      card_webcam_title: "Webcam", badge_live_view: "Live view",
+      footer_lighting_tip: "Tip: good lighting helps detection.",
+      card_log_title: "Message Log", btn_clear: "Clear",
+      card_numerics_title: "Numerics", normalized_label: "Normalized",
+      field_x: "X", field_y: "Y", field_distance: "Distance", field_yaw: "Yaw", field_pitch: "Pitch",
+      field_mouth: "Mouth", field_left_eye: "Left Eye", field_right_eye: "Right Eye", field_roll: "Roll",
+      field_smile_kiss: "Smile/Kiss", field_face_visible: "Face Visible",
+      teacher_card_title: "For teachers",
+      link_teacher_guide: "Teacher guide &amp; code", link_get_code: "Get micro:bit code",
+      link_open_makecode: "Open MakeCode",
+      log_cleared: "Log cleared.", log_rx_prefix: "RX ← ",
+      log_ack_rtt_prefix: "ACK RTT: ", log_ack_rtt_suffix: " ms",
+      log_tx_blocked_prefix: "TX blocked (no BLE link): ", log_tx_failed_prefix: "TX failed: ",
+      log_trying_microbit_uart: "BLE: trying micro:bit UART service…",
+      log_trying_nus: "BLE: trying Nordic UART (NUS)…",
+      log_web_bt_unavailable: "Web Bluetooth not available. Use Chrome/Edge.",
+      log_requesting_microbit: "Requesting micro:bit…",
+      log_microbit_disconnected: "micro:bit disconnected.",
+      log_ble_connecting: "BLE: connecting…",
+      log_uart_not_found_trying_nus: "BLE: micro:bit UART not found, trying NUS…",
+      log_ble_notifications_on_prefix: "BLE notifications ON (", log_ble_notifications_on_suffix: ")",
+      log_microbit_connected_prefix: "micro:bit connected ✔ (", log_microbit_connected_suffix: ")",
+      log_ble_error_prefix: "BLE error: ", log_disconnected_period: "Disconnected.",
+      log_connect_microbit_first: "Connect micro:bit first.",
+      log_start_sending_enabled: "Start sending enabled.", log_sending_stopped: "Sending stopped.",
+      log_sent_test: "Sent TEST.",
+      log_demo_on: "Demo detections ON.", log_demo_off: "Demo detections OFF.", log_demo_reset: "Demo reset.",
+      log_speech_on: "🔊 Speech ON.", log_speech_on_unsupported: "🔊 Speech ON (not supported).",
+      log_speech_off: "🔇 Speech OFF.",
+      log_cmd_sending_on: "CMD sending ON.", log_cmd_sending_off: "CMD sending OFF.",
+      log_speech_lang_prefix: "Speech lang: ", log_speech_voice_prefix: "Speech voice: ",
+      log_press_start_speech_first: "Press Start Speech first.",
+      log_demo_arrow_prefix: "DEMO → ",
+      log_loading_mediapipe: "Loading MediaPipe model…", log_model_loaded: "Model loaded.",
+      log_requesting_webcam: "Requesting webcam…",
+      log_webcam_started: "Webcam started.", log_webcam_stopped: "Webcam stopped.",
+      log_camera_failed: "Camera failed. Check console.",
+      log_switch_camera_failed: "Switch camera failed. Check console.",
+      log_front_selected: "🤳 Front camera selected. Press Start webcam.",
+      log_back_selected: "📷 Back camera selected. Press Start webcam.",
+      log_ui_ready_boot: "UI ready → Start webcam → Connect micro:bit → Start sending",
+      speech_test_utterance: "Hello. This is a voice test.", speech_on_utterance: "Speech on"
+    },
+    fr: {
+      tagline: "Explorer · Créer · Innover", ready_label: "PRÊT",
+      card_faceapp_title: "Application Visage",
+      ui_ready: "Interface prête", ui_loading_model: "Chargement du modèle…", ui_model_loaded: "Modèle chargé",
+      hint_steps: "Étapes : 1) Démarrer la caméra · 2) Connecter le micro:bit (carte Liaison directe) · 3) Démarrer l'envoi (carte Liaison directe)",
+      btn_start_webcam: "Démarrer la webcam", btn_stop_webcam: "Arrêter la webcam",
+      btn_switch_camera: "Changer de caméra",
+      mirror_on: "Miroir ACTIVÉ", mirror_off: "Miroir DÉSACTIVÉ",
+      pill_camera_off: "📷 Caméra : ÉTEINTE",
+      pill_front_camera_on: "🤳 Caméra avant ACTIVÉE", pill_back_camera_on: "📷 Caméra arrière ACTIVÉE",
+      pill_changing_camera: "🔄 Changement de caméra…",
+      pill_mirror_on: "🪞 Miroir : ACTIVÉ", pill_mirror_off: "🪞 Miroir : DÉSACTIVÉ",
+      pill_looking_face: "👀 Recherche d'un visage…", pill_face_found: "😊 Visage trouvé !",
+      pill_press_start_camera: "🙂 Appuyez sur Démarrer la caméra",
+      label_fps: "IPS", // images par seconde
+      chk_mesh: "Maillage", chk_contours: "Contours", chk_points: "Points",
+      card_ble_title: "Liaison directe micro:bit",
+      ble_connected: "CONNECTÉ", ble_disconnected: "DÉCONNECTÉ",
+      btn_connect: "Connecter", btn_disconnect: "Déconnecter", btn_send_test: "Envoyer TEST",
+      btn_start_sending: "Démarrer l'envoi", btn_stop: "Arrêter",
+      pill_ble_connected: "BLE : connecté", pill_ble_disconnected: "BLE : déconnecté",
+      footer_ble_hint: "BLE UART (micro:bit UART / Nordic UART). Gardez le micro:bit alimenté et à proximité.",
+      prefix_device: "APPAREIL —", prefix_last_tx: "DERNIER ENVOI —", prefix_last_cmd: "DERNIÈRE CMD —", prefix_last_ack: "DERNIER ACK —",
+      device_default_name: "micro:bit",
+      card_packet_title: "Paquet sortant", badge_19digits: "19 chiffres",
+      footer_packet_format: "Format : XX YY ZZ Yaw Pitch Bouche OeilG OeilD Roll Sourire Vis",
+      card_demo_title: "Démo (détections amusantes)",
+      demo_on: "ACTIVÉ", demo_off: "DÉSACTIVÉ",
+      btn_demo_on: "Démo ACTIVÉE", btn_demo_off: "Démo DÉSACTIVÉE", btn_demo_reset: "Réinitialiser",
+      btn_start_speech: "Activer la voix", btn_stop_speech: "Arrêter la voix",
+      chk_send_cmd: "Envoyer CMD au micro:bit", btn_test_voice: "Tester la voix",
+      label_lang: "Langue", label_voice: "Voix", label_rate: "Vitesse", label_pitch: "Hauteur",
+      option_auto: "Auto", label_current_detection: "Détection actuelle",
+      demo_hint_default: "Astuce : Sourire / Ouvrir la bouche / Clin d'œil / Tourner la tête",
+      footer_demo_hint: "La démo utilise les valeurs existantes (pas de changement de format de paquet). Si « Envoyer CMD » est activé, elle envoie des lignes comme <b>CMD:SMILE</b>.",
+      demo_no_face_label: "🙈 Aucun visage", demo_no_face_hint: "Placez-vous dans le champ + bon éclairage",
+      demo_blink_label: "😆 Clin d'œil !", demo_blink_hint: "Bien ! Essayez un clin d'œil 😉",
+      demo_wink_l_label: "😉 Clin d'œil gauche", demo_wink_l_hint: "Essayez maintenant le clin d'œil DROIT !",
+      demo_wink_r_label: "😉 Clin d'œil droit", demo_wink_r_hint: "Essayez maintenant le clin d'œil GAUCHE !",
+      demo_mouth_wide_label: "😮 OH LÀ LÀ !", demo_mouth_wide_hint: "Grande surprise !",
+      demo_laugh_label: "😂 Rire !", demo_laugh_hint: "Sourire + bouche ouverte",
+      demo_mouth_open_label: "😲 Bouche ouverte !", demo_mouth_open_hint: "Essayez plus grand / plus petit",
+      demo_big_smile_label: "😄 Grand sourire !", demo_big_smile_hint: "Maintenez pendant 2 secondes",
+      demo_tilt_label: "🤔 Tête inclinée !", demo_tilt_hint: "Inclinez la tête",
+      demo_look_left_label: "⬅️ Regardez à GAUCHE", demo_look_left_hint: "Maintenant regardez à DROITE",
+      demo_look_right_label: "➡️ Regardez à DROITE", demo_look_right_hint: "Maintenant regardez à GAUCHE",
+      demo_look_up_label: "⬆️ Regardez en HAUT", demo_look_up_hint: "Maintenant regardez en BAS",
+      demo_look_down_label: "⬇️ Regardez en BAS", demo_look_down_hint: "Maintenant regardez en HAUT",
+      demo_neutral_label: "🙂 Neutre", demo_neutral_hint: "Essayez : bouche ouverte, clin d'œil, regard haut/bas, gauche/droite",
+      card_webcam_title: "Webcam", badge_live_view: "Vue en direct",
+      footer_lighting_tip: "Astuce : un bon éclairage aide la détection.",
+      card_log_title: "Journal des messages", btn_clear: "Effacer",
+      card_numerics_title: "Valeurs numériques", normalized_label: "Normalisé",
+      field_x: "X", field_y: "Y", field_distance: "Distance", field_yaw: "Yaw", field_pitch: "Pitch",
+      field_mouth: "Bouche", field_left_eye: "Œil gauche", field_right_eye: "Œil droit", field_roll: "Roll",
+      field_smile_kiss: "Sourire/Bisou", field_face_visible: "Visage visible",
+      teacher_card_title: "Pour les enseignants",
+      link_teacher_guide: "Guide enseignant &amp; code", link_get_code: "Obtenir le code micro:bit",
+      link_open_makecode: "Ouvrir MakeCode",
+      log_cleared: "Journal effacé.", log_rx_prefix: "RX ← ",
+      log_ack_rtt_prefix: "ACK RTT : ", log_ack_rtt_suffix: " ms",
+      log_tx_blocked_prefix: "TX bloqué (pas de liaison BLE) : ", log_tx_failed_prefix: "Échec TX : ",
+      log_trying_microbit_uart: "BLE : essai du service UART micro:bit…",
+      log_trying_nus: "BLE : essai du Nordic UART (NUS)…",
+      log_web_bt_unavailable: "Web Bluetooth non disponible. Utilisez Chrome/Edge.",
+      log_requesting_microbit: "Recherche du micro:bit…",
+      log_microbit_disconnected: "micro:bit déconnecté.",
+      log_ble_connecting: "BLE : connexion…",
+      log_uart_not_found_trying_nus: "BLE : UART micro:bit introuvable, essai du NUS…",
+      log_ble_notifications_on_prefix: "Notifications BLE ACTIVÉES (", log_ble_notifications_on_suffix: ")",
+      log_microbit_connected_prefix: "micro:bit connecté ✔ (", log_microbit_connected_suffix: ")",
+      log_ble_error_prefix: "Erreur BLE : ", log_disconnected_period: "Déconnecté.",
+      log_connect_microbit_first: "Connectez d'abord le micro:bit.",
+      log_start_sending_enabled: "Envoi démarré.", log_sending_stopped: "Envoi arrêté.",
+      log_sent_test: "TEST envoyé.",
+      log_demo_on: "Démo ACTIVÉE.", log_demo_off: "Démo DÉSACTIVÉE.", log_demo_reset: "Démo réinitialisée.",
+      log_speech_on: "🔊 Voix ACTIVÉE.", log_speech_on_unsupported: "🔊 Voix ACTIVÉE (non prise en charge).",
+      log_speech_off: "🔇 Voix DÉSACTIVÉE.",
+      log_cmd_sending_on: "Envoi CMD ACTIVÉ.", log_cmd_sending_off: "Envoi CMD DÉSACTIVÉ.",
+      log_speech_lang_prefix: "Langue de la voix : ", log_speech_voice_prefix: "Voix : ",
+      log_press_start_speech_first: "Appuyez d'abord sur Activer la voix.",
+      log_demo_arrow_prefix: "DÉMO → ",
+      log_loading_mediapipe: "Chargement du modèle MediaPipe…", log_model_loaded: "Modèle chargé.",
+      log_requesting_webcam: "Demande de la webcam…",
+      log_webcam_started: "Webcam démarrée.", log_webcam_stopped: "Webcam arrêtée.",
+      log_camera_failed: "Échec de la caméra. Vérifiez la console.",
+      log_switch_camera_failed: "Échec du changement de caméra. Vérifiez la console.",
+      log_front_selected: "🤳 Caméra avant sélectionnée. Appuyez sur Démarrer la webcam.",
+      log_back_selected: "📷 Caméra arrière sélectionnée. Appuyez sur Démarrer la webcam.",
+      log_ui_ready_boot: "Interface prête → Démarrer la webcam → Connecter le micro:bit → Démarrer l'envoi",
+      speech_test_utterance: "Bonjour. Ceci est un test vocal.", speech_on_utterance: "Voix activée"
+    },
+    ar: {
+      tagline: "استكشف · ابتكر · أبدع", ready_label: "جاهز",
+      card_faceapp_title: "تطبيق الوجه",
+      ui_ready: "الواجهة جاهزة", ui_loading_model: "جاري تحميل النموذج…", ui_model_loaded: "تم تحميل النموذج",
+      hint_steps: "الخطوات: 1) تشغيل الكاميرا · 2) توصيل micro:bit (بطاقة الاتصال المباشر) · 3) بدء الإرسال (بطاقة الاتصال المباشر)",
+      btn_start_webcam: "تشغيل الكاميرا", btn_stop_webcam: "إيقاف الكاميرا",
+      btn_switch_camera: "تبديل الكاميرا",
+      mirror_on: "المرآة مفعّلة", mirror_off: "المرآة معطّلة",
+      pill_camera_off: "📷 الكاميرا: متوقفة",
+      pill_front_camera_on: "🤳 الكاميرا الأمامية مفعّلة", pill_back_camera_on: "📷 الكاميرا الخلفية مفعّلة",
+      pill_changing_camera: "🔄 جاري تبديل الكاميرا…",
+      pill_mirror_on: "🪞 المرآة: مفعّلة", pill_mirror_off: "🪞 المرآة: معطّلة",
+      pill_looking_face: "👀 البحث عن وجه…", pill_face_found: "😊 تم العثور على وجه!",
+      pill_press_start_camera: "🙂 اضغط تشغيل الكاميرا",
+      label_fps: "إطار/ثانية",
+      chk_mesh: "الشبكة", chk_contours: "الخطوط", chk_points: "النقاط",
+      card_ble_title: "اتصال micro:bit المباشر",
+      ble_connected: "متصل", ble_disconnected: "غير متصل",
+      btn_connect: "اتصال", btn_disconnect: "قطع الاتصال", btn_send_test: "إرسال TEST",
+      btn_start_sending: "بدء الإرسال", btn_stop: "إيقاف",
+      pill_ble_connected: "BLE: متصل", pill_ble_disconnected: "BLE: غير متصل",
+      footer_ble_hint: "BLE UART (micro:bit UART / Nordic UART). أبقِ micro:bit مشحونًا وقريبًا.",
+      prefix_device: "الجهاز —", prefix_last_tx: "آخر إرسال —", prefix_last_cmd: "آخر أمر —", prefix_last_ack: "آخر تأكيد —",
+      device_default_name: "micro:bit",
+      card_packet_title: "الحزمة الصادرة", badge_19digits: "19 رقمًا",
+      footer_packet_format: "الصيغة: XX YY ZZ Yaw Pitch Mouth LEye REye Roll Smile Vis",
+      card_demo_title: "عرض توضيحي (اكتشافات مضحكة)",
+      demo_on: "مفعّل", demo_off: "معطّل",
+      btn_demo_on: "تفعيل العرض", btn_demo_off: "تعطيل العرض", btn_demo_reset: "إعادة ضبط",
+      btn_start_speech: "تفعيل الصوت", btn_stop_speech: "إيقاف الصوت",
+      chk_send_cmd: "إرسال أمر إلى micro:bit", btn_test_voice: "اختبار الصوت",
+      label_lang: "اللغة", label_voice: "الصوت", label_rate: "السرعة", label_pitch: "طبقة الصوت",
+      option_auto: "تلقائي", label_current_detection: "الاكتشاف الحالي",
+      demo_hint_default: "نصيحة: ابتسم / افتح فمك / اغمز / أدر رأسك",
+      footer_demo_hint: "يستخدم العرض التوضيحي القيم الحالية (بدون تغيير صيغة الحزمة). إذا تم تفعيل \"إرسال أمر\"، فسيرسل أسطرًا مثل <b>CMD:SMILE</b>.",
+      demo_no_face_label: "🙈 لا يوجد وجه", demo_no_face_hint: "قف أمام الكاميرا + إضاءة جيدة",
+      demo_blink_label: "😆 رمشة!", demo_blink_hint: "رائع! جرّب الغمزة 😉",
+      demo_wink_l_label: "😉 غمزة يسرى", demo_wink_l_hint: "جرّب الآن الغمزة اليمنى!",
+      demo_wink_r_label: "😉 غمزة يمنى", demo_wink_r_hint: "جرّب الآن الغمزة اليسرى!",
+      demo_mouth_wide_label: "😮 يا للعجب!", demo_mouth_wide_hint: "وجه متفاجئ كبير!",
+      demo_laugh_label: "😂 ضحك!", demo_laugh_hint: "ابتسامة + فم مفتوح",
+      demo_mouth_open_label: "😲 الفم مفتوح!", demo_mouth_open_hint: "جرّب أكبر / أصغر",
+      demo_big_smile_label: "😄 ابتسامة كبيرة!", demo_big_smile_hint: "استمر لمدة ثانيتين",
+      demo_tilt_label: "🤔 إمالة الرأس!", demo_tilt_hint: "أمِل رأسك",
+      demo_look_left_label: "⬅️ انظر يسارًا", demo_look_left_hint: "انظر الآن يمينًا",
+      demo_look_right_label: "➡️ انظر يمينًا", demo_look_right_hint: "انظر الآن يسارًا",
+      demo_look_up_label: "⬆️ انظر لأعلى", demo_look_up_hint: "انظر الآن لأسفل",
+      demo_look_down_label: "⬇️ انظر لأسفل", demo_look_down_hint: "انظر الآن لأعلى",
+      demo_neutral_label: "🙂 محايد", demo_neutral_hint: "جرّب: فتح الفم، الرمش، الغمز، النظر لأعلى/أسفل، يسار/يمين",
+      card_webcam_title: "الكاميرا", badge_live_view: "عرض مباشر",
+      footer_lighting_tip: "نصيحة: الإضاءة الجيدة تساعد في الاكتشاف.",
+      card_log_title: "سجل الرسائل", btn_clear: "مسح",
+      card_numerics_title: "القيم الرقمية", normalized_label: "موحّد",
+      field_x: "X", field_y: "Y", field_distance: "المسافة", field_yaw: "Yaw", field_pitch: "Pitch",
+      field_mouth: "الفم", field_left_eye: "العين اليسرى", field_right_eye: "العين اليمنى", field_roll: "Roll",
+      field_smile_kiss: "ابتسامة/قبلة", field_face_visible: "ظهور الوجه",
+      teacher_card_title: "للمعلمين",
+      link_teacher_guide: "دليل المعلم &amp; الكود", link_get_code: "الحصول على كود micro:bit",
+      link_open_makecode: "فتح MakeCode",
+      log_cleared: "تم مسح السجل.", log_rx_prefix: "استقبال ← ",
+      log_ack_rtt_prefix: "زمن الاستجابة: ", log_ack_rtt_suffix: " مللي ثانية",
+      log_tx_blocked_prefix: "تم حظر الإرسال (لا يوجد اتصال BLE): ", log_tx_failed_prefix: "فشل الإرسال: ",
+      log_trying_microbit_uart: "BLE: تجربة خدمة UART الخاصة بـ micro:bit…",
+      log_trying_nus: "BLE: تجربة Nordic UART (NUS)…",
+      log_web_bt_unavailable: "Web Bluetooth غير متاح. استخدم Chrome/Edge.",
+      log_requesting_microbit: "جاري البحث عن micro:bit…",
+      log_microbit_disconnected: "تم قطع اتصال micro:bit.",
+      log_ble_connecting: "BLE: جاري الاتصال…",
+      log_uart_not_found_trying_nus: "BLE: لم يتم العثور على UART micro:bit، جاري تجربة NUS…",
+      log_ble_notifications_on_prefix: "تم تفعيل إشعارات BLE (", log_ble_notifications_on_suffix: ")",
+      log_microbit_connected_prefix: "تم توصيل micro:bit ✔ (", log_microbit_connected_suffix: ")",
+      log_ble_error_prefix: "خطأ BLE: ", log_disconnected_period: "تم قطع الاتصال.",
+      log_connect_microbit_first: "قم بتوصيل micro:bit أولاً.",
+      log_start_sending_enabled: "تم تفعيل الإرسال.", log_sending_stopped: "تم إيقاف الإرسال.",
+      log_sent_test: "تم إرسال TEST.",
+      log_demo_on: "تم تفعيل العرض التوضيحي.", log_demo_off: "تم تعطيل العرض التوضيحي.", log_demo_reset: "تمت إعادة ضبط العرض.",
+      log_speech_on: "🔊 تم تفعيل الصوت.", log_speech_on_unsupported: "🔊 تم تفعيل الصوت (غير مدعوم).",
+      log_speech_off: "🔇 تم إيقاف الصوت.",
+      log_cmd_sending_on: "تم تفعيل إرسال الأوامر.", log_cmd_sending_off: "تم تعطيل إرسال الأوامر.",
+      log_speech_lang_prefix: "لغة الصوت: ", log_speech_voice_prefix: "الصوت: ",
+      log_press_start_speech_first: "اضغط تفعيل الصوت أولاً.",
+      log_demo_arrow_prefix: "العرض ← ",
+      log_loading_mediapipe: "جاري تحميل نموذج MediaPipe…", log_model_loaded: "تم تحميل النموذج.",
+      log_requesting_webcam: "جاري طلب الكاميرا…",
+      log_webcam_started: "تم تشغيل الكاميرا.", log_webcam_stopped: "تم إيقاف الكاميرا.",
+      log_camera_failed: "فشلت الكاميرا. تحقق من وحدة التحكم.",
+      log_switch_camera_failed: "فشل تبديل الكاميرا. تحقق من وحدة التحكم.",
+      log_front_selected: "🤳 تم اختيار الكاميرا الأمامية. اضغط تشغيل الكاميرا.",
+      log_back_selected: "📷 تم اختيار الكاميرا الخلفية. اضغط تشغيل الكاميرا.",
+      log_ui_ready_boot: "الواجهة جاهزة ← تشغيل الكاميرا ← توصيل micro:bit ← بدء الإرسال",
+      speech_test_utterance: "مرحبًا. هذا اختبار صوتي.", speech_on_utterance: "تم تفعيل الصوت"
+    }
+  };
+  const ORIG = {};
+  // I18N.en is authoritative for the many keys that have no static DOM home
+  // (log lines, demo labels, pill states) -- ORIG (captured from the page's
+  // own markup) is only a fallback for stray untagged text.
+  function tr(key) {
+    const lang = document.documentElement.lang || 'en';
+    if (I18N[lang] && I18N[lang][key] !== undefined) return I18N[lang][key];
+    if (I18N.en[key] !== undefined) return I18N.en[key];
+    return ORIG[key] !== undefined ? ORIG[key] : key;
+  }
+  function applyLang(lang) {
+    if (lang !== 'fr' && lang !== 'ar') lang = 'en';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = RTL_LANGS[lang] ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(elx => {
+      const key = elx.getAttribute('data-i18n');
+      if (ORIG[key] === undefined) ORIG[key] = elx.innerHTML;
+      elx.innerHTML = tr(key);
+    });
+    document.querySelectorAll('.lang-flag-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('facetrack-lang', lang); } catch (e) {}
+    if (typeof refreshDynamicUI === 'function') refreshDynamicUI();
+  }
+  window.setLang = applyLang;
 
   // ----------------- Log -----------------
   const logEl = el("log");
@@ -589,17 +916,21 @@
     logEl.appendChild(div);
     logEl.scrollTop = logEl.scrollHeight;
   }
-  el("btnClearLog").onclick = () => { logEl.innerHTML = ""; log("k","Log cleared."); };
+  el("btnClearLog").onclick = () => { logEl.innerHTML = ""; log("k",tr('log_cleared')); };
 
-  function setPill(pill, ok, text){
+  // setPill remembers the translation key on the element (data-pillkey) so
+  // refreshDynamicUI() can repaint it in the new language on a lang switch,
+  // without needing a separate shadow-state variable per pill.
+  function setPill(pill, ok, key){
     pill.classList.remove("ok","bad");
     pill.classList.add(ok ? "ok" : "bad");
-    pill.innerHTML = `<span class="miniDot"></span>${text}`;
+    pill.dataset.pillkey = key;
+    pill.innerHTML = `<span class="miniDot"></span>${tr(key)}`;
   }
 
   function updateMirrorStatus(){
     if(!pillMirror) return;
-    setPill(pillMirror, true, mirrorEnabled ? "🪞 Mirror: ON" : "🪞 Mirror: OFF");
+    setPill(pillMirror, true, mirrorEnabled ? 'pill_mirror_on' : 'pill_mirror_off');
   }
   function setBtnEnabled(btn, enabled){
     if(!btn) return;
@@ -640,6 +971,11 @@ const chkMesh = el("chkMesh");
   let sendingEnabled = false;
   let activeProfile = null;
 
+  // Raw (untranslated) values shown after the LAST TX/CMD/ACK/DEVICE prefixes,
+  // tracked separately so a language switch can repaint the prefix without
+  // losing the live value.
+  let lastTxRaw = null, lastCmdRaw = null, lastAckRaw = null;
+
   // ACK RTT tracking (echo ACK)
   let pendingAckFor = null;
   let pendingAckAt = 0;
@@ -653,19 +989,26 @@ const chkMesh = el("chkMesh");
     setBtnEnabled(btnStopSend, connected && sendingEnabled);
   }
 
-  function setBleUi(connected){
-    bleState.textContent = connected ? "CONNECTED" : "DISCONNECTED";
+  function renderBleText(){
+    const connected = !!writeChar;
+    bleState.textContent = tr(connected ? 'ble_connected' : 'ble_disconnected');
     bleProfileEl.textContent = connected ? (activeProfile || "—") : "—";
-    bleDeviceEl.textContent  = connected ? `DEVICE — ${bleDevice?.name || "micro:bit"}` : "DEVICE —";
-    setPill(pillBle, connected, connected ? "BLE: connected" : "BLE: disconnected");
+    bleDeviceEl.textContent = connected
+      ? `${tr('prefix_device')} ${bleDevice?.name || tr('device_default_name')}`
+      : tr('prefix_device');
+    setPill(pillBle, connected, connected ? 'pill_ble_connected' : 'pill_ble_disconnected');
+    lastTxEl.textContent  = lastTxRaw  !== null ? `${tr('prefix_last_tx')} ${lastTxRaw}`   : tr('prefix_last_tx');
+    lastCmdEl.textContent = lastCmdRaw !== null ? `${tr('prefix_last_cmd')} ${lastCmdRaw}` : tr('prefix_last_cmd');
+    lastAckEl.textContent = lastAckRaw !== null ? `${tr('prefix_last_ack')} ${lastAckRaw}` : tr('prefix_last_ack');
+  }
 
+  function setBleUi(connected){
     if(!connected){
-      lastTxEl.textContent  = "LAST TX —";
-      lastCmdEl.textContent = "LAST CMD —";
-      lastAckEl.textContent = "LAST ACK —";
+      lastTxRaw = null; lastCmdRaw = null; lastAckRaw = null;
       pendingAckFor = null;
       pendingAckAt = 0;
     }
+    renderBleText();
     refreshControls();
   }
 
@@ -675,14 +1018,15 @@ const chkMesh = el("chkMesh");
       const t = line.trim();
       if(!t) return;
 
-      log("k", "RX ← " + t);
+      log("k", tr('log_rx_prefix') + t);
 
       if(t.startsWith("ACK:")){
-        lastAckEl.textContent = `LAST ACK — ${t}`;
+        lastAckRaw = t;
+        renderBleText();
 
         if(pendingAckFor && t === ("ACK:" + pendingAckFor)){
           const rtt = Math.round(performance.now() - pendingAckAt);
-          log("ok", `ACK RTT: ${rtt} ms`);
+          log("ok", tr('log_ack_rtt_prefix') + rtt + tr('log_ack_rtt_suffix'));
           pendingAckFor = null;
           pendingAckAt = 0;
         }
@@ -692,12 +1036,13 @@ const chkMesh = el("chkMesh");
 
   async function sendLine(str){
     if(!writeChar){
-      log("warn","TX blocked (no BLE link): " + str);
+      log("warn",tr('log_tx_blocked_prefix') + str);
       return false;
     }
 
-    lastTxEl.textContent = `LAST TX — ${str}`;
-    if(str.startsWith("CMD:")) lastCmdEl.textContent = `LAST CMD — ${str}`;
+    lastTxRaw = str;
+    if(str.startsWith("CMD:")) lastCmdRaw = str;
+    renderBleText();
 
     const data = new TextEncoder().encode(str + "\n");
     try{
@@ -709,7 +1054,7 @@ const chkMesh = el("chkMesh");
       return true;
     }catch(e){
       console.error(e);
-      log("err","TX failed: " + (e?.message || e));
+      log("err",tr('log_tx_failed_prefix') + (e?.message || e));
       return false;
     }
   }
@@ -748,7 +1093,7 @@ const chkMesh = el("chkMesh");
   }
 
   async function tryMicrobitUart(server){
-    log("k", "BLE: trying micro:bit UART service…");
+    log("k", tr('log_trying_microbit_uart'));
     const service = await server.getPrimaryService(MB_UART_SERVICE_UUID);
     const rx = await service.getCharacteristic(MB_UART_RX_UUID);
     const tx = await service.getCharacteristic(MB_UART_TX_UUID);
@@ -756,7 +1101,7 @@ const chkMesh = el("chkMesh");
   }
 
   async function tryNus(server){
-    log("k", "BLE: trying Nordic UART (NUS)…");
+    log("k", tr('log_trying_nus'));
     const service = await server.getPrimaryService(NUS_SERVICE_UUID);
     const {rx, tx} = await pickCharsFromService(service, NUS_RX_UUID, NUS_TX_UUID);
     return {rx, tx, profile: "nus"};
@@ -765,11 +1110,11 @@ const chkMesh = el("chkMesh");
   async function connectMicrobit(){
     try{
       if(!navigator.bluetooth){
-        log("err","Web Bluetooth not available. Use Chrome/Edge.");
+        log("err",tr('log_web_bt_unavailable'));
         return;
       }
 
-      log("k","Requesting micro:bit…");
+      log("k",tr('log_requesting_microbit'));
       bleDevice = await navigator.bluetooth.requestDevice({
         acceptAllDevices: true,
         optionalServices: [MB_UART_SERVICE_UUID, NUS_SERVICE_UUID]
@@ -781,16 +1126,16 @@ const chkMesh = el("chkMesh");
         notifyChar = null;
         activeProfile = null;
         setBleUi(false);
-        log("warn","micro:bit disconnected.");
+        log("warn",tr('log_microbit_disconnected'));
       });
 
-      log("k","BLE: connecting…");
+      log("k",tr('log_ble_connecting'));
       const server = await bleDevice.gatt.connect();
 
       let prof;
       try{ prof = await tryMicrobitUart(server); }
       catch{
-        log("warn","BLE: micro:bit UART not found, trying NUS…");
+        log("warn",tr('log_uart_not_found_trying_nus'));
         prof = await tryNus(server);
       }
 
@@ -800,14 +1145,14 @@ const chkMesh = el("chkMesh");
 
       await notifyChar.startNotifications();
       notifyChar.addEventListener("characteristicvaluechanged", onNotify);
-      log("ok", "BLE notifications ON (" + activeProfile + ")");
+      log("ok", tr('log_ble_notifications_on_prefix') + activeProfile + tr('log_ble_notifications_on_suffix'));
 
       setBleUi(true);
-      log("ok","micro:bit connected ✔ (" + activeProfile + ")");
+      log("ok",tr('log_microbit_connected_prefix') + activeProfile + tr('log_microbit_connected_suffix'));
     }catch(e){
       console.error(e);
       setBleUi(false);
-      log("err","BLE error: " + (e?.message || e));
+      log("err",tr('log_ble_error_prefix') + (e?.message || e));
     }
   }
 
@@ -823,7 +1168,7 @@ const chkMesh = el("chkMesh");
       notifyChar = null;
       activeProfile = null;
       setBleUi(false);
-      log("warn","Disconnected.");
+      log("warn",tr('log_disconnected_period'));
     }
   }
 
@@ -831,24 +1176,24 @@ const chkMesh = el("chkMesh");
   btnDisc.addEventListener("click", disconnectMicrobit);
 
   btnStartSend.addEventListener("click", () => {
-    if(!writeChar){ log("warn","Connect micro:bit first."); return; }
+    if(!writeChar){ log("warn",tr('log_connect_microbit_first')); return; }
     sendingEnabled = true;
-    log("ok","Start sending enabled.");
+    log("ok",tr('log_start_sending_enabled'));
     refreshControls();
   });
 
   btnStopSend.addEventListener("click", () => {
     sendingEnabled = false;
-    log("warn","Sending stopped.");
+    log("warn",tr('log_sending_stopped'));
     refreshControls();
   });
 
   btnTest.addEventListener("click", async () => {
-    if(!writeChar){ log("warn","Connect micro:bit first."); return; }
+    if(!writeChar){ log("warn",tr('log_connect_microbit_first')); return; }
     pendingAckFor = "TEST";
     pendingAckAt = performance.now();
     await sendLine("TEST");
-    log("ok","Sent TEST.");
+    log("ok",tr('log_sent_test'));
   });
 
   // ----------------- Demo + Speech Params -----------------
@@ -880,7 +1225,7 @@ const chkSendCmd = el("chkSendCmd");
   let cachedVoices = [];
 
   function setDemoChip(on){
-    demoState.textContent = on ? "ON" : "OFF";
+    demoState.textContent = tr(on ? 'demo_on' : 'demo_off');
     demoState.style.opacity = on ? "1" : ".65";
   }
   setDemoChip(false);
@@ -893,7 +1238,7 @@ const chkSendCmd = el("chkSendCmd");
     cachedVoices = window.speechSynthesis.getVoices() || [];
     const prev = selSpeechVoice.value;
 
-    selSpeechVoice.innerHTML = `<option value="">Auto</option>`;
+    selSpeechVoice.innerHTML = `<option value="">${tr('option_auto')}</option>`;
 
     const sorted = [...cachedVoices].sort((a,b) => {
       const la = (a.lang || "").localeCompare(b.lang || "");
@@ -932,10 +1277,12 @@ const chkSendCmd = el("chkSendCmd");
     return null;
   }
 
-  function speakOnce(text, force=false){
+  // id identifies the detection (used to suppress idle "neutral"/"no_face"
+  // chatter regardless of language); pass id=null for forced test/toggle speech.
+  function speakOnce(id, text, force=false){
     if(!demo.speech) return;
     if(!canSpeak()) return;
-    if(!force && (text.includes("Neutral") || text.includes("No face"))) return;
+    if(!force && (id === "neutral" || id === "no_face")) return;
 
     try{
       window.speechSynthesis.cancel();
@@ -943,7 +1290,8 @@ const chkSendCmd = el("chkSendCmd");
       const u = new SpeechSynthesisUtterance(text);
       u.rate = demo.rate || 1;
       u.pitch = demo.pitch || 1.05;
-      if(demo.lang) u.lang = demo.lang;
+      const uiSpeechLangs = { en: "en-US", fr: "fr-FR", ar: "ar-SA" };
+      u.lang = demo.lang || uiSpeechLangs[document.documentElement.lang] || "en-US";
 
       const v = pickVoice();
       if(v) u.voice = v;
@@ -952,20 +1300,20 @@ const chkSendCmd = el("chkSendCmd");
     }catch{}
   }
 
-  el("btnDemoOn")?.addEventListener("click", () => { demo.on = true; setDemoChip(true); log("ok","Demo detections ON."); });
-  el("btnDemoOff")?.addEventListener("click", () => { demo.on = false; setDemoChip(false); log("warn","Demo detections OFF."); });
+  el("btnDemoOn")?.addEventListener("click", () => { demo.on = true; setDemoChip(true); log("ok",tr('log_demo_on')); });
+  el("btnDemoOff")?.addEventListener("click", () => { demo.on = false; setDemoChip(false); log("warn",tr('log_demo_off')); });
   el("btnDemoReset")?.addEventListener("click", () => {
-    demo.last = ""; demo.lastAt = 0;
+    demo.last = ""; demo.lastAt = 0; demo.lastId = null;
     demoLabelEl.textContent = "—";
-    demoHintEl.textContent  = "Tip: Smile / Open mouth / Wink / Turn head";
-    log("k","Demo reset.");
+    demoHintEl.textContent  = tr('demo_hint_default');
+    log("k",tr('log_demo_reset'));
   });
 
   demo.speech = false;
 
   function updateSpeechBtn(){
     if(!btnSpeechToggle) return;
-    btnSpeechToggle.textContent = demo.speech ? "🔇 Stop Speech" : "🔊 Start Speech";
+    btnSpeechToggle.textContent = tr(demo.speech ? 'btn_stop_speech' : 'btn_start_speech');
   }
   updateSpeechBtn();
 
@@ -974,10 +1322,10 @@ const chkSendCmd = el("chkSendCmd");
 
     if(demo.speech){
       if(canSpeak()) rebuildVoiceList();
-      log("ok", canSpeak() ? "🔊 Speech ON." : "🔊 Speech ON (not supported).");
-      speakOnce("Speech on", true);
+      log("ok", tr(canSpeak() ? 'log_speech_on' : 'log_speech_on_unsupported'));
+      speakOnce(null, tr('speech_on_utterance'), true);
     }else{
-      log("warn","🔇 Speech OFF.");
+      log("warn",tr('log_speech_off'));
       try{ window.speechSynthesis.cancel(); }catch{}
     }
 
@@ -985,7 +1333,7 @@ const chkSendCmd = el("chkSendCmd");
   });
 chkSendCmd.addEventListener("change", () => {
     demo.sendCmd = chkSendCmd.checked;
-    log(demo.sendCmd ? "ok" : "warn", demo.sendCmd ? "CMD sending ON." : "CMD sending OFF.");
+    log(demo.sendCmd ? "ok" : "warn", tr(demo.sendCmd ? 'log_cmd_sending_on' : 'log_cmd_sending_off'));
   });
 
   rngSpeechRate.value = "1";
@@ -1001,20 +1349,20 @@ chkSendCmd.addEventListener("change", () => {
 
   selSpeechLang.addEventListener("change", () => {
     demo.lang = selSpeechLang.value || "";
-    log("k", "Speech lang: " + (demo.lang || "Auto"));
+    log("k", tr('log_speech_lang_prefix') + (demo.lang || tr('option_auto')));
   });
 
   selSpeechVoice.addEventListener("change", () => {
     demo.voiceName = selSpeechVoice.value || "";
-    log("k", "Speech voice: " + (demo.voiceName || "Auto"));
+    log("k", tr('log_speech_voice_prefix') + (demo.voiceName || tr('option_auto')));
   });
 
   btnSpeechTest.addEventListener("click", () => {
     if(!demo.speech){
-      log("warn","Press Start Speech first.");
+      log("warn",tr('log_press_start_speech_first'));
       return;
     }
-    speakOnce("Hello. This is a voice test.", true);
+    speakOnce(null, tr('speech_test_utterance'), true);
   });
 
   if(canSpeak()){
@@ -1068,8 +1416,11 @@ chkSendCmd.addEventListener("change", () => {
     return { leftWinkEvent, rightWinkEvent, blinkEvent };
   }
 
+  // Returns a stable id (not translated text) so the demo label/hint can be
+  // looked up via tr() -- this is what makes demoUpdate's change-detection
+  // and speakOnce's "don't speak idle states" check language-independent.
   function demoDetect({Vis, Mouth, Smile9, Yaw, Pitch, Roll, eyeEvents}){
-    if(!Vis) return {label:"🙈 No face", hint:"Step into view + good lighting", cmd:null};
+    if(!Vis) return {id:"no_face", cmd:null};
 
     const midSmile = Smile9 >= 5;
     const mouthOpen = Mouth >= 18;
@@ -1081,41 +1432,42 @@ chkSendCmd.addEventListener("change", () => {
     const lookDown  = Pitch >= 65;
     const tilt = (Roll <= 2) || (Roll >= 8);
 
-    if(eyeEvents?.blinkEvent)      return {label:"😆 Blink!",     hint:"Nice! Try a wink 😉",  cmd:"BLINK"};
-    if(eyeEvents?.leftWinkEvent)   return {label:"😉 Left wink",  hint:"Now try RIGHT wink!", cmd:"WINK_L"};
-    if(eyeEvents?.rightWinkEvent)  return {label:"😉 Right wink", hint:"Now try LEFT wink!",  cmd:"WINK_R"};
+    if(eyeEvents?.blinkEvent)      return {id:"blink",    cmd:"BLINK"};
+    if(eyeEvents?.leftWinkEvent)   return {id:"wink_l",   cmd:"WINK_L"};
+    if(eyeEvents?.rightWinkEvent)  return {id:"wink_r",   cmd:"WINK_R"};
 
-    if(mouthWide && !midSmile) return {label:"😮 WOOOW!", hint:"Big surprise face!", cmd:"MOUTH_WIDE"};
-    if(mouthOpen && midSmile)  return {label:"😂 Laugh!", hint:"Smile + open mouth", cmd:"MOUTH_OPEN"};
-    if(mouthOpen && !midSmile) return {label:"😲 Mouth open!", hint:"Try bigger / smaller", cmd:"MOUTH_OPEN"};
+    if(mouthWide && !midSmile) return {id:"mouth_wide", cmd:"MOUTH_WIDE"};
+    if(mouthOpen && midSmile)  return {id:"laugh",      cmd:"MOUTH_OPEN"};
+    if(mouthOpen && !midSmile) return {id:"mouth_open", cmd:"MOUTH_OPEN"};
 
-    if(!mouthOpen && Smile9 >= 7) return {label:"😄 Big smile!", hint:"Hold it for 2 seconds", cmd:"SMILE"};
+    if(!mouthOpen && Smile9 >= 7) return {id:"big_smile", cmd:"SMILE"};
 
-    if(tilt)     return {label:"🤔 Head tilt!", hint:"Tilt your head", cmd:null};
-    if(lookLeft) return {label:"⬅️ Look LEFT", hint:"Now look RIGHT", cmd:"LOOK_LEFT"};
-    if(lookRight)return {label:"➡️ Look RIGHT", hint:"Now look LEFT", cmd:"LOOK_RIGHT"};
-    if(lookUp)   return {label:"⬆️ Look UP", hint:"Now look DOWN", cmd:"LOOK_UP"};
-    if(lookDown) return {label:"⬇️ Look DOWN", hint:"Now look UP", cmd:"LOOK_DOWN"};
+    if(tilt)     return {id:"tilt",       cmd:null};
+    if(lookLeft) return {id:"look_left",  cmd:"LOOK_LEFT"};
+    if(lookRight)return {id:"look_right", cmd:"LOOK_RIGHT"};
+    if(lookUp)   return {id:"look_up",    cmd:"LOOK_UP"};
+    if(lookDown) return {id:"look_down",  cmd:"LOOK_DOWN"};
 
-    return {label:"🙂 Neutral", hint:"Try: mouth open, blink, wink, look up/down, left/right", cmd:null};
+    return {id:"neutral", cmd:null};
   }
 
   function demoUpdate(values){
     if(!demo.on) return;
 
     const eyeEvents = updateEyeEvents(values.LE, values.RE);
-    const {label, hint, cmd} = demoDetect({ ...values, eyeEvents });
+    const {id, cmd} = demoDetect({ ...values, eyeEvents });
 
-    demoLabelEl.textContent = label;
-    demoHintEl.textContent  = hint;
+    demo.lastId = id;
+    demoLabelEl.textContent = tr('demo_' + id + '_label');
+    demoHintEl.textContent  = tr('demo_' + id + '_hint');
 
     const now = performance.now();
     const eventFired = eyeEvents.leftWinkEvent || eyeEvents.rightWinkEvent || eyeEvents.blinkEvent;
 
-    if((label !== demo.last || eventFired) && (now - demo.lastAt) > 450){
-      demo.last = label;
+    if((id !== demo.last || eventFired) && (now - demo.lastAt) > 450){
+      demo.last = id;
       demo.lastAt = now;
-      log("k",`DEMO → ${label}`);
+      log("k",tr('log_demo_arrow_prefix') + tr('demo_' + id + '_label'));
 
       if(cmd && demo.sendCmd && writeChar){
         const line = `CMD:${cmd}`;
@@ -1125,7 +1477,7 @@ chkSendCmd.addEventListener("change", () => {
       }
 
       if(demo.speech){
-        speakOnce(label.replace(/^[^A-Za-z0-9]+\s*/,""));
+        speakOnce(id, tr('demo_' + id + '_label').replace(/^[^A-Za-z0-9]+\s*/,""));
       }
     }
   }
@@ -1176,7 +1528,7 @@ chkSendCmd.addEventListener("change", () => {
 
   function setFlipBtnLabel(){
     const btn = el("flipCamBtn");
-    if(btn) btn.textContent = mirrorEnabled ? "🪞 Mirror ON" : "🪞 Mirror OFF";
+    if(btn) btn.textContent = "🪞 " + tr(mirrorEnabled ? 'mirror_on' : 'mirror_off');
   }
 
   function applyMirror(){
@@ -1312,9 +1664,14 @@ chkSendCmd.addEventListener("change", () => {
     return { yaw99: clamp(to99(yaw),0,99), pitch99: clamp(to99(pitch),0,99), roll9: clamp((roll/1.1)*5+5,0,9) };
   }
 
+  // uiStateKey is tracked separately so refreshDynamicUI() can repaint the
+  // "UI ready / Loading model… / Model loaded" chip on a language switch.
+  let uiStateKey = 'ui_ready';
+  function setUiState(key){ uiStateKey = key; uiState.textContent = tr(key); }
+
   async function initLandmarker(){
-    uiState.textContent = "Loading model…";
-    log("k","Loading MediaPipe model…");
+    setUiState('ui_loading_model');
+    log("k",tr('log_loading_mediapipe'));
     const fileset = await FilesetResolver.forVisionTasks(
       "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.21/wasm"
     );
@@ -1328,13 +1685,13 @@ chkSendCmd.addEventListener("change", () => {
       outputFaceBlendshapes: true,
       outputFacialTransformationMatrixes: true,
     });
-    uiState.textContent = "Model loaded";
-    log("ok","Model loaded.");
+    setUiState('ui_model_loaded');
+    log("ok",tr('log_model_loaded'));
   }
 
   async function startCamera(){
     if(!faceLandmarker) await initLandmarker();
-    log("k","Requesting webcam…");
+    log("k",tr('log_requesting_webcam'));
 
     // Pause processing while (re)starting the camera
     running = false;
@@ -1366,10 +1723,10 @@ chkSendCmd.addEventListener("change", () => {
     const wasRunning = running;
     running = true;
 
-    setPill(pillCam,true, currentFacingMode === "user" ? "🤳 Front camera ON" : "📷 Back camera ON");
-    log("ok","Webcam started.");
+    setPill(pillCam,true, currentFacingMode === "user" ? 'pill_front_camera_on' : 'pill_back_camera_on');
+    log("ok",tr('log_webcam_started'));
     updateMirrorStatus();
-    if(pillFace) setPill(pillFace,false,"👀 Looking for a face…");
+    if(pillFace) setPill(pillFace,false,'pill_looking_face');
 // Start (or restart) the loop
     startLoop();
   }
@@ -1383,33 +1740,30 @@ chkSendCmd.addEventListener("change", () => {
     }
     video.srcObject = null;
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    setPill(pillCam,false,"📷 Camera: OFF");
-      if(pillFace) setPill(pillFace,false,"🙂 Press Start Camera");
-    log("warn","Webcam stopped.");
+    setPill(pillCam,false,'pill_camera_off');
+      if(pillFace) setPill(pillFace,false,'pill_press_start_camera');
+    log("warn",tr('log_webcam_stopped'));
   }
 
-  el("btnCam").onclick = () => startCamera().catch(e => { console.error(e); log("err","Camera failed. Check console."); });
+  el("btnCam").onclick = () => startCamera().catch(e => { console.error(e); log("err",tr('log_camera_failed')); });
   el("btnStopCam").onclick = () => stopCamera();
 
   // Separate controls: switch camera vs mirror (flip)
   el("switchCamBtn").onclick = () => {
     const wasRunning = !!camStream;
-    setPill(pillCam,true,"🔄 Changing camera…");
+    setPill(pillCam,true,'pill_changing_camera');
 
     currentFacingMode = (currentFacingMode === "user") ? "environment" : "user";
     // Friendly default: mirror ON for front camera, OFF for back camera
     mirrorEnabled = (currentFacingMode === "user");
 
     if (wasRunning) {
-      startCamera().catch(e => { console.error(e); log("err","Switch camera failed. Check console."); });
+      startCamera().catch(e => { console.error(e); log("err",tr('log_switch_camera_failed')); });
     } else {
       applyMirror();
-      log("k", currentFacingMode === "user"
-        ? "🤳 Front camera selected. Press Start webcam."
-        : "📷 Back camera selected. Press Start webcam."
-      );
+      log("k", tr(currentFacingMode === "user" ? 'log_front_selected' : 'log_back_selected'));
       // Show a friendly idle status
-      setPill(pillCam,false,"📷 Camera: OFF");
+      setPill(pillCam,false,'pill_camera_off');
     }
   };
 
@@ -1428,7 +1782,7 @@ chkSendCmd.addEventListener("change", () => {
     const now = performance.now();
     const dt = now - lastT;
     lastT = now;
-    pillFps.innerHTML = `<span class="miniDot"></span>FPS: ${Math.round(1000/dt)}`;
+    pillFps.innerHTML = `<span class="miniDot"></span>${tr('label_fps')}: ${Math.round(1000/dt)}`;
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -1443,7 +1797,7 @@ chkSendCmd.addEventListener("change", () => {
 
     
     if(pillFace){
-      setPill(pillFace, !!hasFace, hasFace ? "😊 Face found!" : "👀 Looking for a face…");
+      setPill(pillFace, !!hasFace, hasFace ? 'pill_face_found' : 'pill_looking_face');
     }
 let X=0,Y=0,Z=0,Yaw=49,Pitch=49,Mouth=0,LE=0,RE=0,Roll=5,Smile9=0,Vis=0;
 
@@ -1511,23 +1865,57 @@ let X=0,Y=0,Z=0,Yaw=49,Pitch=49,Mouth=0,LE=0,RE=0,Roll=5,Smile9=0,Vis=0;
     rafId = requestAnimationFrame(loop);
   }
 
+  // Repaints every dynamically-set piece of text in the current language.
+  // Called at the end of applyLang() (see the i18n block near the top) so a
+  // language switch mid-session updates live pills/chips/log-derived state,
+  // not just the static data-i18n-tagged markup.
+  function refreshDynamicUI(){
+    document.querySelectorAll('.pill[data-pillkey]').forEach(p => {
+      setPill(p, p.classList.contains('ok'), p.dataset.pillkey);
+    });
+    if (uiState) uiState.textContent = tr(uiStateKey);
+    renderBleText();
+    setDemoChip(demo.on);
+    setFlipBtnLabel();
+    updateMirrorStatus();
+    updateSpeechBtn();
+    if (demo.lastId) {
+      demoLabelEl.textContent = tr('demo_' + demo.lastId + '_label');
+      demoHintEl.textContent  = tr('demo_' + demo.lastId + '_hint');
+    } else {
+      demoHintEl.textContent = tr('demo_hint_default');
+    }
+    if (canSpeak()) rebuildVoiceList();
+  }
+
   // Boot
-  log("k","UI ready → Start webcam → Connect micro:bit → Start sending");
-  setPill(pillCam,false,"📷 Camera: OFF");
+  setPill(pillCam,false,'pill_camera_off');
   setBleUi(false);
   refreshControls();
+  demoHintEl.textContent = tr('demo_hint_default');
+
+  let savedLang = 'en';
+  try { savedLang = localStorage.getItem('facetrack-lang') || 'en'; } catch (e) {}
+  applyLang(savedLang);
+
+  log("k",tr('log_ui_ready_boot'));
 </script>
 </br>
 <div class="teacherCard">
-  <div class="teacherCardTitle">For teachers</div>
+  <div class="teacherCardTitle" data-i18n="teacher_card_title">For teachers</div>
 
   <a class="teacherBtn" href="https://github.com/abourdim/face-tracking" target="_blank">
-    👩‍🏫 Teacher guide &amp; code
+    👩‍🏫 <span data-i18n="link_teacher_guide">Teacher guide &amp; code</span>
+  </a>
+</br>
+
+  <a class="teacherBtn" href="flash.html">
+    💾 <span data-i18n="link_get_code">Get micro:bit code</span>
   </a>
 </br>
 
   <a class="teacherBtn" href="https://makecode.microbit.org/_FoshcmLiD7VJ" target="_blank">
-    🧩 Open MakeCode
+    🧩 <span data-i18n="link_open_makecode">Open MakeCode</span>
   </a>
 </div>
 
